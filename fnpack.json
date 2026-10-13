@@ -22,7 +22,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -49,7 +49,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -76,7 +76,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -103,7 +103,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -130,7 +130,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -157,7 +157,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -184,7 +184,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -211,7 +211,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -230,6 +230,8 @@
     "install_type": "存储空间",
     "size": "18",
     "changelog": "修复内置面板不能http链接的问题；解决静态编译配置错误导致arm版缺失lib库",
+    "appname": "Aria2",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.27/Aria2-1.0.1-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.27/Aria2-1.0.1-x86.fpk"
@@ -238,7 +240,6 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.27/Aria2-1.0.1-arm.fpk"
       }
     },
-    "appname": "Aria2",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -265,7 +266,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -284,6 +285,8 @@
     "install_type": "存储空间",
     "size": "1.6",
     "changelog": "更新版本",
+    "appname": "asdf",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.27/asdf-0.19.0-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.27/asdf-0.19.0-x86.fpk"
@@ -292,7 +295,6 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.27/asdf-0.19.0-arm.fpk"
       }
     },
-    "appname": "asdf",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -319,7 +321,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -346,7 +348,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -373,7 +375,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -400,7 +402,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -427,7 +429,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -454,7 +456,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -473,18 +475,18 @@
     "install_type": "存储空间",
     "size": "22",
     "changelog": "测试版webui已支持移动页面",
+    "appname": "Bitcomet",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/Bitcomet-2.21.2-1-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/Bitcomet-2.21.2-1-x86.fpk"
       },
       "arm": {
-        "size": "17",
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/Bitcomet-2.21.2-1-arm.fpk"
       }
     },
-    "appname": "Bitcomet",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "bitmeteor": {
     "display_name": "BitMeteor",
@@ -494,7 +496,6 @@
     "desc": "☄️BitMeteor是为BitComet设计的飞牛通用软件框架，运行后自动下载并安装BitComet。",
     "labels": "原生,下载,工具",
     "version": "1.3.0",
-    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.22/BitMeteor-1.3.0-all.fpk",
     "distributor": "shuangji66",
     "distributor_url": "https://github.com/shuangji66/FnDepot",
     "bug_report_url": "https://github.com/shuangji66/FnDepot/issues",
@@ -502,6 +503,7 @@
     "size": "0.7",
     "changelog": "重构项目，改为自动下载安装，新增双入口",
     "appname": "BitMeteor",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.22/BitMeteor-1.3.0-all.fpk",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -528,7 +530,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -540,7 +542,6 @@
     "desc": "🎮游戏也是一种情感纽带。",
     "labels": "原生,游戏,平台",
     "version": "1.0.1",
-    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.15/Bond-1.0.1-all.fpk",
     "distributor": "shuangji66",
     "distributor_url": "https://github.com/shuangji66/FnDepot",
     "bug_report_url": "https://github.com/shuangji66/FnDepot/issues",
@@ -548,8 +549,9 @@
     "size": "5",
     "changelog": "修复停止函数故障",
     "appname": "Bond",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.15/Bond-1.0.1-all.fpk",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "calibre-web": {
     "appname": "calibre-web",
@@ -574,7 +576,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -601,7 +603,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -619,9 +621,9 @@
     "install_type": "系统空间",
     "isdocker": "false",
     "size": "22488.54KB",
-    "download_url": "https://github.com/narrator-z/FnDepot/releases/download/vchat2api-1.6.10/chat2api_all.fpk",
     "changelog": "修复 1.6.9 安装后管理界面仍白屏：入口 url /app/chat2api（无尾斜杠）+ index.html 相对资源路径 ./assets/，无尾斜杠下资源被解析到 /app/assets/（少一层），服务端 fallback 返回 HTML 而非 JS，导致白屏。现双重修复：server-entry.js 对无尾斜杠网关前缀 302 重定向到带尾斜杠；renderer 构建加 base=/app/chat2api/，资源改绝对路径。另附 1.6.8 白屏修复：electron 替身包（node_modules/electron）+ locateEntry() 抛真实原因。",
     "appname": "chat2api",
+    "download_url": "https://github.com/narrator-z/FnDepot/releases/download/vchat2api-1.6.10/chat2api_all.fpk",
     "history": {},
     "source_repo": "narrator-z/FnDepot"
   },
@@ -648,7 +650,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -675,7 +677,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -702,7 +704,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -729,7 +731,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -748,6 +750,8 @@
     "install_type": "存储空间",
     "size": "15",
     "changelog": "上游更新版本",
+    "appname": "CloudDrive",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.26/CloudDrive-1.0.13-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.26/CloudDrive-1.0.13-x86.fpk"
@@ -756,9 +760,8 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.26/CloudDrive-1.0.13-arm.fpk"
       }
     },
-    "appname": "CloudDrive",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "clouddrive2": {
     "appname": "clouddrive2",
@@ -783,7 +786,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -810,7 +813,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -829,18 +832,18 @@
     "install_type": "存储空间",
     "size": "353",
     "changelog": "初始版本",
+    "appname": "Cloudimgs",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.28/Cloudimgs-1.7.27-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.28/Cloudimgs-1.7.27-x86.fpk"
       },
       "arm": {
-        "size": "146",
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.28/Cloudimgs-1.7.27-arm.fpk"
       }
     },
-    "appname": "Cloudimgs",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "cloudreve": {
     "appname": "cloudreve",
@@ -865,7 +868,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -884,6 +887,8 @@
     "install_type": "存储空间",
     "size": "23",
     "changelog": "更新上游版本",
+    "appname": "CloudSaver",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.16/CloudSaver-0.9.0-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.16/CloudSaver-0.9.0-x86.fpk"
@@ -892,9 +897,8 @@
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.16/CloudSaver-0.9.0-arm.fpk"
       }
     },
-    "appname": "CloudSaver",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "coder": {
     "display_name": "Coder 原生版",
@@ -911,6 +915,8 @@
     "install_type": "存储空间",
     "size": "6.5",
     "changelog": "修复工作目录权限问题，统一改用systemctl来管理进程。",
+    "appname": "coder",
+    "download_url": "./coder/coder-amd64.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "./coder/coder-amd64.fpk"
@@ -919,7 +925,6 @@
         "download_url": "./coder/coder-arm64.fpk"
       }
     },
-    "appname": "coder",
     "history": {},
     "source_repo": "ctllo-bit/FnDepot"
   },
@@ -946,7 +951,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -973,7 +978,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1000,7 +1005,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1027,7 +1032,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1054,7 +1059,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1081,7 +1086,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1096,11 +1101,12 @@
     "version": "1.1.1-003",
     "author": "BoB",
     "author_url": "https://github.com/710850609",
-    "download_url": "https://github.com/710850609/fpk-dbland/releases/download/1.1.1-003/dbland-1.1.1-003-amd64.fpk",
     "bug_report_url": "https://github.com/710850609/fpk-DBland/issues",
     "install_type": "存储空间",
     "size": "15",
     "history": {},
+    "appname": "DBland",
+    "download_url": "https://github.com/710850609/fpk-dbland/releases/download/1.1.1-003/dbland-1.1.1-003-amd64.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/710850609/fpk-dbland/releases/download/1.1.1-003/dbland-1.1.1-003-amd64.fpk"
@@ -1109,7 +1115,6 @@
         "download_url": "https://github.com/710850609/fpk-dbland/releases/download/1.1.1-003/dbland-1.1.1-003-aarch64.fpk"
       }
     },
-    "appname": "DBland",
     "changelog": "",
     "source_repo": "710850609/FnDepot"
   },
@@ -1127,9 +1132,9 @@
     "size": "3",
     "install_type": "系统空间",
     "isdocker": "false",
-    "download_url": "https://github.com/harbiu317/feiniu-dbmanager/releases/download/v1.0.0/levis.dbmanager.fpk",
     "changelog": "v1.0.0：\n- M1 骨架发布：项目结构、Go 后端、Vue 3 前端、fpk 打包流程\n- 端到端 Hello 验证（/api/version 联通）\n- ⚠️ 暂无业务功能；不能进行数据库管理操作",
     "appname": "dbmanager",
+    "download_url": "https://github.com/harbiu317/feiniu-dbmanager/releases/download/v1.0.0/levis.dbmanager.fpk",
     "history": {},
     "source_repo": "harbiu317/FnDepot"
   },
@@ -1156,7 +1161,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1174,6 +1179,8 @@
     "bug_report_url": "https://github.com/yuexps/deepseek.harness.fnos/issues",
     "install_type": "系统空间",
     "size": "78.5",
+    "appname": "deepseek.harness",
+    "download_url": "https://github.com/yuexps/deepseek.harness.fnos/releases/download/v0.2.5/deepseek.harness-x86-prebuilt.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/yuexps/deepseek.harness.fnos/releases/download/v0.2.5/deepseek.harness-x86-prebuilt.fpk"
@@ -1182,7 +1189,6 @@
         "download_url": "https://github.com/yuexps/deepseek.harness.fnos/releases/download/v0.2.5/deepseek.harness-arm-prebuilt.fpk"
       }
     },
-    "appname": "deepseek.harness",
     "changelog": "",
     "history": {},
     "source_repo": "SaucdX233/FnDepot"
@@ -1210,7 +1216,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1237,7 +1243,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1257,12 +1263,13 @@
     "bug_report_url": "https://github.com/zyp1690/FnDepot/duanju",
     "install_type": "系统空间",
     "size": "3800KB",
+    "appname": "duanju",
+    "download_url": "https://github.com/zyp1690/FnDepot/releases/download/duanju/duanju.v1.1.0.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/zyp1690/FnDepot/releases/download/duanju/duanju.v1.1.0.fpk"
       }
     },
-    "appname": "duanju",
     "changelog": "",
     "history": {},
     "source_repo": "zyp1690/FnDepot"
@@ -1290,7 +1297,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1317,7 +1324,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1332,23 +1339,21 @@
     "version": "2.5.020604",
     "author": "BoB",
     "author_url": "https://github.com/710850609",
-    "download_url": "https://github.com/710850609/EasyTier-EUI/releases/download/2.2.020604/EasyTier-EUI-fnos-x86_64-2.2.020604.fpk",
     "bug_report_url": "https://github.com/710850609/EasyTier-EUI/issues",
     "install_type": "存储空间",
     "size": "9",
     "history": {},
-    "arch_diff": {
-      "x86": {
-        "download_url": "https://github.com/710850609/EasyTier-EUI/releases/download/2.5.020604/EasyTier-EUI-fnos-x86_64-2.5.020604.fpk",
-        "size": "9"
-      },
-      "arm": {
-        "download_url": "https://github.com/710850609/EasyTier-EUI/releases/download/2.5.020604/EasyTier-EUI-fnos-aarch64-2.5.020604.fpk",
-        "size": "11"
-      }
-    },
     "changelog": "- 优化：【配置】页面统一下拉输入框显示背景\n- 修复：尝试修复docker版本自更新需要更新2次才成功\n----\n- 新增：【配置】页面新增配置项：UDP广播中继，并调整聚合新子模块：连接代理\n- 优化：【配置】页面首次新增支持：扫码、读剪切板、快速、自定义多种新增模式。优化新增配置流程，减少不必要的点击操作\n- 优化：【配置】页面扫码组件替换为qr-scanner，提高二维码识别成功率\n- 修复：【配置】页面-分享配置，在开启加密时，分享的配置无法加入虚拟网络\n----\n- 新增：实验性功能 STUN监听地址，参考 亮一光 大佬实现\n - 安卓版本不支持\n - FnOS / FygoOS / Docker 版本支持开机运行\n - 其它版本仅支持随应用启动\n- 修复：飞牛版本stun执行脚本无权限问题\n- 修复：清理日志，支持stun日志\n- 修复：切换页面时，偶发未能终止节点页面定时查询\n----\n- 优化：【STUN】页面支持转发端口，以解决应用端口冲突问题，优化相关提示文案\n- 优化：安卓版本被其它VPN抢占时，通知栏提示VPN被停止\n- 修复：安卓版本，小米15点击通知栏进入应用后，页面无法使用\n\n<br>\n\n----\n\n- Optimized: [Config] page unified dropdown input box background display\n- Fixed: Docker version self-update required two update attempts to succeed\n---- \n- New: [Config] page added configuration item: UDP Broadcast Relay, and consolidated new sub-module: Connection Proxy\n- Improved: [Config] page first-time add now supports multiple modes: QR scan, clipboard, quick, and custom. Optimized new config flow to reduce unnecessary clicks\n- Improved: [Config] page replaced QR scan component with qr-scanner, improving QR code recognition success rate\n- Fixed: [Config] page - shared config with encryption enabled could not join the virtual network\n----\n- New: Experimental feature - STUN listen address, inspired by 亮一光 (LiangYiGuang)\n - Not supported on Android\n - FnOS / FygoOS / Docker versions support auto-start on boot\n - Other versions only support launching with the app\n- Fixed: FnOS version STUN execution script permission denied issue\n- Fixed: Cleaned up logs, added STUN log support\n- Fixed: When switching pages, occasionally failed to stop the node page's periodic polling requests\n- Fixed: Android version, Xiaomi 15 clicking notification bar to enter app causes page to become unusable\n----\n- Optimized: [STUN] page supports forwarding port to resolve application port conflicts, optimized related hint copy\n- Optimized: Android version shows Toast notification with stop reason when VPN is preempted by other apps\n- Fixed: Android version, Xiaomi 15 clicking notification bar to enter app causes page to become unusable",
     "appname": "EasyTier-EUI",
+    "download_url": "https://github.com/710850609/EasyTier-EUI/releases/download/2.2.020604/EasyTier-EUI-fnos-x86_64-2.2.020604.fpk",
+    "arch_diff": {
+      "x86": {
+        "download_url": "https://github.com/710850609/EasyTier-EUI/releases/download/2.5.020604/EasyTier-EUI-fnos-x86_64-2.5.020604.fpk"
+      },
+      "arm": {
+        "download_url": "https://github.com/710850609/EasyTier-EUI/releases/download/2.5.020604/EasyTier-EUI-fnos-aarch64-2.5.020604.fpk"
+      }
+    },
     "source_repo": "710850609/FnDepot"
   },
   "ech0": {
@@ -1366,18 +1371,18 @@
     "install_type": "存储空间",
     "size": "34",
     "changelog": "初始版本",
+    "appname": "Ech0",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.28/Ech0-5.4.6-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.28/Ech0-5.4.6-x86.fpk"
       },
       "arm": {
-        "size": "30",
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.28/Ech0-5.4.6-arm.fpk"
       }
     },
-    "appname": "Ech0",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "embyserver": {
     "appname": "embyserver",
@@ -1402,7 +1407,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1429,7 +1434,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1456,7 +1461,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1475,6 +1480,8 @@
     "install_type": "存储空间",
     "size": "100 KB",
     "changelog": "重构项目",
+    "appname": "FakeHTTP",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.18/FakeHTTP-0.9.18-17-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.18/FakeHTTP-0.9.18-17-x86.fpk"
@@ -1483,7 +1490,6 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.18/FakeHTTP-0.9.18-17-arm.fpk"
       }
     },
-    "appname": "FakeHTTP",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -1502,6 +1508,8 @@
     "install_type": "存储空间",
     "size": "100 KB",
     "changelog": "重构项目",
+    "appname": "FakeSIP",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.19/FakeSIP-0.9.1-5-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.19/FakeSIP-0.9.1-5-x86.fpk"
@@ -1510,7 +1518,6 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.19/FakeSIP-0.9.1-5-arm.fpk"
       }
     },
-    "appname": "FakeSIP",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -1537,7 +1544,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1564,7 +1571,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1591,7 +1598,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1618,7 +1625,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -1637,25 +1644,24 @@
     "install_type": "存储空间",
     "size": "73",
     "changelog": "重新打包基准版本，老用户可忽略更新",
+    "appname": "Fluxor",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.26/Fluxor-2.5.1-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.26/Fluxor-2.5.1-x86.fpk"
       },
       "arm": {
-        "size": "30",
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.26/Fluxor-2.5.1-arm.fpk"
       }
     },
-    "appname": "Fluxor",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "fn-aic8800": {
     "display_name": "aic8800",
     "desc": "AICSemi/爱科微科技 AIC8800 芯片的 WiFi6 模组驱动，提供对该芯片的网络功能支持。",
     "labels": "工具",
     "version": "1.0.3",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-aic8800_all_v1.0.3.fpk",
     "author": "Ing",
     "author_url": "https://github.com/RROrg",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
@@ -1665,6 +1671,7 @@
       "v1.0.3": "Initial release of fn-aic8800 package."
     },
     "appname": "fn-aic8800",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-aic8800_all_v1.0.3.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -1677,7 +1684,6 @@
     "desc": "Broadcom STA 是 BCM4311-、BCM4312-、BCM4313-、BCM4321-、BCM4322-、BCM43142-、BCM43224-、BCM43225-、BCM43227-、BCM43228-、BCM4331-、BCM4360- 和 BCM4352 等 IEEE 802.11a/b/g/n 无线网卡的驱动程序。",
     "labels": "工具",
     "version": "1.0.3",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-broadcom-sta_all_v1.0.3.fpk",
     "author": "Ing",
     "author_url": "https://github.com/RROrg",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
@@ -1687,6 +1693,7 @@
       "v1.0.3": "Initial release of fn-broadcom-sta package."
     },
     "appname": "fn-broadcom-sta",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-broadcom-sta_all_v1.0.3.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -1699,16 +1706,16 @@
     "desc": "Chromium 是一个开源的网页浏览器项目，旨在为用户提供更安全、更快速和更稳定的浏览体验。",
     "labels": "工具",
     "version": "1.0.2",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-chromium_all_v1.0.2.fpk",
     "author": "linuxserver",
     "author_url": "https://github.com/linuxserver/docker-chromium",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
-    "install_type": "",
+    "install_type": "存储空间",
     "size": " 0.046",
     "history": {
       "v1.0.2": "Initial release of fn-chromium package."
     },
     "appname": "fn-chromium",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-chromium_all_v1.0.2.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -1721,16 +1728,16 @@
     "desc": "Chromium-desktop 是一个基于 KMS/DRM 的网页浏览器及音频支持，旨在本地显示器提供浏览器功能。",
     "labels": "工具",
     "version": "1.0.0",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-chromium-desktop_all_v1.0.0.fpk",
     "author": "Ing",
     "author_url": "https://github.com/RROrg",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
-    "install_type": "",
+    "install_type": "存储空间",
     "size": " 0.047",
     "history": {
       "v1.0.0": "Initial release of fn-chromium-desktop package."
     },
     "appname": "fn-chromium-desktop",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-chromium-desktop_all_v1.0.0.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -1743,16 +1750,16 @@
     "desc": "code-server 是 VS Code 的在线版本，允许您通过浏览器进行代码编辑和开发。",
     "labels": "工具",
     "version": "1.0.6",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-codeserver_all_v1.0.6.fpk",
     "author": "Ing",
     "author_url": "https://github.com/RROrg",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
-    "install_type": "",
+    "install_type": "存储空间",
     "size": " 0.016",
     "history": {
       "v1.0.6": "Initial release of fn-codeserver package."
     },
     "appname": "fn-codeserver",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-codeserver_all_v1.0.6.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -1765,7 +1772,6 @@
     "desc": "fail2ban 是一个开源的入侵防御工具，用于保护 Linux 服务器免受暴力破解攻击。 它通过监控日志文件，检测可疑的登录尝试，并自动封禁恶意 IP 地址，从而增强系统的安全性。",
     "labels": "工具",
     "version": "1.0.1",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-fail2ban_all_v1.0.1.fpk",
     "author": "Ing",
     "author_url": "https://github.com/RROrg",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
@@ -1775,6 +1781,7 @@
       "v1.0.1": "Initial release of fn-fail2ban package."
     },
     "appname": "fn-fail2ban",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-fail2ban_all_v1.0.1.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -1787,16 +1794,16 @@
     "desc": "基于 aarch64 架构 的 fnOS 系统。",
     "labels": "工具",
     "version": "1.0.0",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-fnOS-aarch64_x86_v1.0.0.fpk",
     "author": "Ing",
     "author_url": "https://github.com/RROrg",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
-    "install_type": "",
+    "install_type": "存储空间",
     "size": " 0.039",
     "history": {
       "v1.0.0": "Initial release of fn-fnOS-aarch64 package."
     },
     "appname": "fn-fnOS-aarch64",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-fnOS-aarch64_x86_v1.0.0.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -1809,16 +1816,16 @@
     "desc": "可观测性数据收集器，收集系统日志、应用日志发送到 Loki",
     "labels": "工具",
     "version": "1.13.2",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-grafana-alloy_all_v1.13.2.fpk",
     "author": "Grafana Labs",
     "author_url": "",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
-    "install_type": "",
+    "install_type": "存储空间",
     "size": " 216.803",
     "history": {
       "v1.13.2": "Initial release of fn-grafana-alloy package."
     },
     "appname": "fn-grafana-alloy",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-grafana-alloy_all_v1.13.2.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -1831,16 +1838,16 @@
     "desc": "Kodi 是一个免费且开源的媒体播放器软件，用于播放视频、音频和图像。",
     "labels": "工具",
     "version": "1.0.6",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-kodi_all_v1.0.6.fpk",
     "author": "Ing",
     "author_url": "https://github.com/RROrg",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
-    "install_type": "",
+    "install_type": "存储空间",
     "size": " 0.048",
     "history": {
       "v1.0.6": "Initial release of fn-kodi package."
     },
     "appname": "fn-kodi",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-kodi_all_v1.0.6.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -1853,7 +1860,6 @@
     "desc": "显示器/电源设置应用，用于配置系统的显示器和电源选选项。",
     "labels": "工具",
     "version": "1.0.2",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-monitor_all_v1.0.2.fpk",
     "author": "Ing",
     "author_url": "https://github.com/RROrg",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
@@ -1863,6 +1869,7 @@
       "v1.0.2": "Initial release of fn-monitor package."
     },
     "appname": "fn-monitor",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-monitor_all_v1.0.2.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -1875,7 +1882,6 @@
     "desc": "ntfs3 驱动是一个用于 Linux 内核的开源 NTFS 文件系统驱动程序，旨在提供对 NTFS 格式化分区的高性能读写支持。",
     "labels": "工具",
     "version": "1.0.7",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-ntfs3_all_v1.0.7.fpk",
     "author": "Ing",
     "author_url": "https://github.com/RROrg",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
@@ -1885,6 +1891,7 @@
       "v1.0.7": "Initial release of fn-ntfs3 package."
     },
     "appname": "fn-ntfs3",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-ntfs3_all_v1.0.7.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -1897,7 +1904,6 @@
     "desc": "Open-VM-Tools 是 VMware Tools 的开源替代品，旨在为运行在 VMware 环境中的虚拟机提供更好的性能和用户体验。",
     "labels": "工具",
     "version": "1.0.8",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-open-vm-tools_all_v1.0.8.fpk",
     "author": "Ing",
     "author_url": "https://github.com/RROrg",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
@@ -1907,6 +1913,7 @@
       "v1.0.8": "Initial release of fn-open-vm-tools package."
     },
     "appname": "fn-open-vm-tools",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-open-vm-tools_all_v1.0.8.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -1919,7 +1926,6 @@
     "desc": "QEMU Guest Agent 是一个运行在虚拟机内部的守护进程，旨在通过与虚拟化主机的交互，执行一系列操作以增强虚拟机的管理能力。",
     "labels": "工具",
     "version": "1.0.8",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-qemu-ga_all_v1.0.8.fpk",
     "author": "Ing",
     "author_url": "https://github.com/RROrg",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
@@ -1929,6 +1935,7 @@
       "v1.0.8": "Initial release of fn-qemu-ga package."
     },
     "appname": "fn-qemu-ga",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-qemu-ga_all_v1.0.8.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -1941,7 +1948,6 @@
     "desc": "轻量级的任务计划应用，支持设置定时任务以自动执行脚本或命令，同时也支持基于条件的任务触发，例如在特定时间、特定事件或特定文件变化时执行任务。",
     "labels": "工具",
     "version": "1.2.0",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-scheduler_all_v1.2.0.fpk",
     "author": "Ing",
     "author_url": "https://github.com/RROrg",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
@@ -1951,6 +1957,7 @@
       "v1.2.0": "Initial release of fn-scheduler package."
     },
     "appname": "fn-scheduler",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-scheduler_all_v1.2.0.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -1963,16 +1970,16 @@
     "desc": "硬盘 S.M.A.R.T 健康监控采集器，定时采集硬盘健康数据发送到 Scrutiny Web 服务",
     "labels": "工具",
     "version": "1.34.0",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-scrutiny-collector_all_v1.34.0.fpk",
     "author": "Starosdev",
     "author_url": "https://github.com/Starosdev/scrutiny",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "history": {
       "v1.34.0": "Initial release of fn-scrutiny-collector package."
     },
     "appname": "fn-scrutiny-collector",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-scrutiny-collector_all_v1.34.0.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -1985,7 +1992,6 @@
     "desc": "设置 root 用户密码，修改 SSHD 配置.",
     "labels": "工具",
     "version": "1.0.5",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-sshd-config_all_v1.0.5.fpk",
     "author": "Ing",
     "author_url": "https://github.com/RROrg",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
@@ -1995,6 +2001,7 @@
       "v1.0.5": "Initial release of fn-sshd-config package."
     },
     "appname": "fn-sshd-config",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-sshd-config_all_v1.0.5.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -2007,16 +2014,16 @@
     "desc": "terminal (ttyd + tmux) 是一个基于 Web 的终端应用程序，允许用户通过浏览器访问和管理服务器终端会话，提供便捷的远程终端操作体验。",
     "labels": "工具",
     "version": "1.0.9",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-terminal_all_v1.0.9.fpk",
     "author": "Ing",
     "author_url": "https://github.com/RROrg",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
-    "install_type": "",
+    "install_type": "存储空间",
     "size": " 2.497",
     "history": {
       "v1.0.9": "Initial release of fn-terminal package."
     },
     "appname": "fn-terminal",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-terminal_all_v1.0.9.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -2029,16 +2036,16 @@
     "desc": "VirtualHere USB 服务器支持通过网络远程访问 USB 设备。",
     "labels": "工具",
     "version": "4.8.6",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-VirtualHereServer_all_v4.8.6.fpk",
     "author": "VirtualHere Pty. Ltd.",
     "author_url": "https://www.virtualhere.com/usb_server_software",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
-    "install_type": "",
+    "install_type": "存储空间",
     "size": " 3.082",
     "history": {
       "v4.8.6": "Initial release of fn-VirtualHereServer package."
     },
     "appname": "fn-VirtualHereServer",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-VirtualHereServer_all_v4.8.6.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -2051,7 +2058,6 @@
     "desc": "无线热点创建工具，允许用户轻松地将计算机变成一个 Wi-Fi 热点，分享网络连接给其他设备。",
     "labels": "工具",
     "version": "1.0.8",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-wifi-hotspot_all_v1.0.8.fpk",
     "author": "Ing",
     "author_url": "https://github.com/RROrg",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
@@ -2061,6 +2067,7 @@
       "v1.0.8": "Initial release of fn-wifi-hotspot package."
     },
     "appname": "fn-wifi-hotspot",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-wifi-hotspot_all_v1.0.8.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -2073,7 +2080,6 @@
     "desc": "Motorcomm/裕太微 千兆有线网卡 YT6801 驱动，提供对该芯片的网络功能支持。",
     "labels": "工具",
     "version": "1.0.3",
-    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-yt6801_all_v1.0.3.fpk",
     "author": "Ing",
     "author_url": "https://github.com/RROrg",
     "bug_report_url": "https://github.com/RROrg/fn-apps/issues",
@@ -2083,6 +2089,7 @@
       "v1.0.3": "Initial release of fn-yt6801 package."
     },
     "appname": "fn-yt6801",
+    "download_url": "https://github.com/RROrg/fn-apps/releases/download/2026.03.04-1835/fn-yt6801_all_v1.0.3.fpk",
     "changelog": "",
     "source_repo": "Soley911/FnDepot",
     "platform": [
@@ -2113,7 +2120,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2130,10 +2137,10 @@
     "bug_report_url": "https://github.com/dinding1/FnDepot/issues",
     "labels": "实用效率",
     "size": "20",
-    "download_url": "https://github.com/DinDing1/fnnas-notes/releases/download/v1.0.2/fnnas.notes.fpk",
     "install_type": "存储空间",
     "changelog": "添加了通知和快照",
     "appname": "fnnas.notes",
+    "download_url": "https://github.com/DinDing1/fnnas-notes/releases/download/v1.0.2/fnnas.notes.fpk",
     "history": {},
     "source_repo": "DinDing1/FnDepot"
   },
@@ -2147,13 +2154,13 @@
     "version": "1.0.0",
     "distributor": "nono",
     "distributor_url": "https://github.com/mynono33/FnDepot",
-    "download_url": "https://github.com/mynono33/fnos-kvm/releases/download/v1.0.0/fnos_kvmm_v1.0.0-x86.fpk",
     "isdocker": "false",
     "bug_report_url": "https://github.com/mynono33/FnDepot/issues",
     "install_type": "系统空间",
     "size": "3.96",
     "changelog": "",
     "appname": "fnos-kvmm",
+    "download_url": "https://github.com/mynono33/fnos-kvm/releases/download/v1.0.0/fnos_kvmm_v1.0.0-x86.fpk",
     "history": {},
     "source_repo": "mynono33/FnDepot"
   },
@@ -2180,7 +2187,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2199,6 +2206,8 @@
     "install_type": "存储空间",
     "size": "3",
     "changelog": "初始版本",
+    "appname": "fnpack-editor",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.16/fnpack-editor-1.1.0-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.16/fnpack-editor-1.1.0-x86.fpk"
@@ -2207,9 +2216,8 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.16/fnpack-editor-1.1.0-arm.fpk"
       }
     },
-    "appname": "fnpack-editor",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "fntvplus": {
     "appname": "fntvplus",
@@ -2234,7 +2242,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2261,36 +2269,9 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
-  },
-  "fpk-dockercopilot": {
-    "display_name": "Docker Copilot",
-    "platform": [
-      "x86",
-      "arm"
-    ],
-    "version": "2.1.12",
-    "desc": "Docker 容器管理工具，支持 CGI 同源嵌入，适配 fnOS Web 页面内打开。",
-    "labels": "Docker,运维,容器,工具",
-    "distributor": "ifsherlock",
-    "distributor_url": "https://github.com/ifsherlock/dockerCopilot",
-    "bug_report_url": "https://github.com/ifsherlock/dockerCopilot/issues",
-    "install_type": "系统空间",
-    "size": "13",
-    "changelog": "同步 DockerCopilot 2.1.12 Release，自动构建 x86 / arm 双架构 FPK。",
-    "arch_diff": {
-      "x86": {
-        "size": "13"
-      },
-      "arm": {
-        "size": "12"
-      }
-    },
-    "appname": "fpk-dockercopilot",
-    "history": {},
-    "source_repo": "ifsherlock/FnDepot"
   },
   "fpk-factorio": {
     "display_name": "异星工厂服务器",
@@ -2300,7 +2281,6 @@
     "version": "2.0.72",
     "desc": "异星工厂（Factorio）服务器 - 一个自动化工厂建设游戏服务器。\n支持多人联机，提供完整的游戏服务器管理功能。",
     "labels": "游戏,服务器,多人,自动化",
-    "download_url": "https://github.com/yaya918/FnDepot/releases/download/1.0.0/fpk-factorio.fpk",
     "distributor": "yayaol",
     "distributor_url": "https://github.com/yaya918/FnDepot",
     "bug_report_url": "https://forums.factorio.com",
@@ -2312,6 +2292,7 @@
       "1.1.0": "性能优化和Bug修复"
     },
     "appname": "fpk-factorio",
+    "download_url": "https://github.com/yaya918/FnDepot/releases/download/1.0.0/fpk-factorio.fpk",
     "source_repo": "aeson70/FnDepot"
   },
   "fpk-suwayomi": {
@@ -2322,7 +2303,6 @@
     "version": "v2.1.1867-4",
     "desc": "Suwayomi 是一个开源的漫画阅读服务器。\n支持多种漫画源，提供Web阅读界面和移动端应用。",
     "labels": "媒体,漫画,阅读,服务器",
-    "download_url": "https://github.com/yaya918/FnDepot/releases/download/1.0.0/fpk-suwayomi.fpk",
     "distributor": "yayaol",
     "distributor_url": "https://github.com/yaya918/FnDepot",
     "bug_report_url": "https://github.com/Suwayomi/Suwayomi-Server/issues",
@@ -2335,6 +2315,7 @@
       "v2.1.1867": "主要功能更新和Bug修复"
     },
     "appname": "fpk-suwayomi",
+    "download_url": "https://github.com/yaya918/FnDepot/releases/download/1.0.0/fpk-suwayomi.fpk",
     "source_repo": "aeson70/FnDepot"
   },
   "freshrss": {
@@ -2360,7 +2341,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2387,7 +2368,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2414,7 +2395,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2433,6 +2414,8 @@
     "install_type": "存储空间",
     "size": "314",
     "changelog": "更新上游版本",
+    "appname": "Git",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.23/Git-2.55.0-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.23/Git-2.55.0-x86.fpk"
@@ -2441,9 +2424,8 @@
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.23/Git-2.55.0-arm.fpk"
       }
     },
-    "appname": "Git",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "gitea": {
     "appname": "gitea",
@@ -2468,7 +2450,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2495,7 +2477,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2522,7 +2504,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2541,6 +2523,8 @@
     "install_type": "存储空间",
     "size": "63",
     "changelog": "更新版本",
+    "appname": "golang",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.27/golang-1.26.5-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.27/golang-1.26.5-x86.fpk"
@@ -2549,9 +2533,8 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.27/golang-1.26.5-arm.fpk"
       }
     },
-    "appname": "golang",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "gopeed": {
     "appname": "gopeed",
@@ -2576,7 +2559,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2603,7 +2586,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2630,7 +2613,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2642,7 +2625,6 @@
     "desc": "♣️一个可直接运行的四人掼蛋单机与局域网 Web 游戏。",
     "labels": "原生,棋牌,游戏",
     "version": "1.3.2",
-    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.29/Guandan-1.3.2-all.fpk",
     "distributor": "shuangji66",
     "distributor_url": "https://github.com/shuangji66/FnDepot",
     "bug_report_url": "https://github.com/shuangji66/FnDepot/issues",
@@ -2650,8 +2632,9 @@
     "size": "260 KB",
     "changelog": "初始版本",
     "appname": "Guandan",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.29/Guandan-1.3.2-all.fpk",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "handbrake": {
     "appname": "handbrake",
@@ -2676,7 +2659,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2695,6 +2678,8 @@
     "install_type": "存储空间",
     "size": "48",
     "changelog": "改进控制面板，添加日志显示，修正大量bug",
+    "appname": "Harness",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.22/Harness-0.1.1-3-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.22/Harness-0.1.1-3-x86.fpk"
@@ -2703,7 +2688,6 @@
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.22/Harness-0.1.1-3-arm.fpk"
       }
     },
-    "appname": "Harness",
     "history": {},
     "source_repo": "LI1223081906/FnDepot"
   },
@@ -2730,7 +2714,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2748,9 +2732,9 @@
     "isdocker": "true",
     "install_type": "存储空间",
     "size": "0.75",
-    "download_url": "https://github.com/ccyo-fang/FnDepot/releases/download/FnDepot/hidns-2.1.2-x86.fpk",
     "changelog": "新增引导界面设置端口界面",
     "appname": "HiDNS",
+    "download_url": "https://github.com/ccyo-fang/FnDepot/releases/download/FnDepot/hidns-2.1.2-x86.fpk",
     "history": {},
     "source_repo": "ccyo-fang/FnDepot"
   },
@@ -2777,7 +2761,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2804,7 +2788,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2831,7 +2815,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2858,7 +2842,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2877,6 +2861,8 @@
     "install_type": "存储空间",
     "size": "71",
     "changelog": "切换端口访问",
+    "appname": "igame",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.6.6/igame-1.1.0-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.6.6/igame-1.1.0-x86.fpk"
@@ -2885,7 +2871,6 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.6.6/igame-1.1.0-arm.fpk"
       }
     },
-    "appname": "igame",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -2912,7 +2897,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -2933,12 +2918,13 @@
     "bug_report_url": "https://github.com/Guovin/iptv-api/issues",
     "install_type": "存储空间",
     "size": "122KB",
+    "appname": "iptv-api",
+    "download_url": "https://raw.githubusercontent.com/zyp1690/FnDepot/main/iptv-api/iptv-api-v1.7.3-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://raw.githubusercontent.com/zyp1690/FnDepot/main/iptv-api/iptv-api-v1.7.3-x86.fpk"
       }
     },
-    "appname": "iptv-api",
     "changelog": "",
     "history": {},
     "source_repo": "zyp1690/FnDepot"
@@ -2948,13 +2934,13 @@
     "version": "1.0.1",
     "desc": "基于Web的iSCSI目标挂载工具，支持iSCSI目标发现、登录、挂载和开机自启动功能",
     "labels": "工具",
-    "download_url": "https://github.com/0999we/FnDepot/releases/download/1.0.1/iscsi-manager.fpk",
     "distributor": "0999we",
     "author_url": "https://github.com/0999we/FnDepot",
     "install_type": "存储空间",
     "size": "10.4",
     "changelog": "初始版本",
     "appname": "iscsi-manager",
+    "download_url": "https://github.com/0999we/FnDepot/releases/download/1.0.1/iscsi-manager.fpk",
     "history": {},
     "source_repo": "0999we/FnDepot",
     "platform": [
@@ -2985,7 +2971,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3004,6 +2990,8 @@
     "install_type": "存储空间",
     "size": "22",
     "changelog": "初始版本",
+    "appname": "iVentoy",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.16/iVentoy-1.0.39-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.16/iVentoy-1.0.39-x86.fpk"
@@ -3012,9 +3000,8 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.16/iVentoy-1.0.39-arm.fpk"
       }
     },
-    "appname": "iVentoy",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "jackett": {
     "appname": "jackett",
@@ -3039,7 +3026,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3058,6 +3045,8 @@
     "install_type": "存储空间",
     "size": "52",
     "changelog": "更新版本",
+    "appname": "java-11-openj9",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.12/java-11-openj9-11.0.31-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.12/java-11-openj9-11.0.31-x86.fpk"
@@ -3066,7 +3055,6 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.12/java-11-openj9-11.0.31-arm.fpk"
       }
     },
-    "appname": "java-11-openj9",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -3085,18 +3073,18 @@
     "install_type": "存储空间",
     "size": "186",
     "changelog": "初始版本",
+    "appname": "java-11-openjdk",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/java-11-openjdk-11.0.32-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/java-11-openjdk-11.0.32-x86.fpk"
       },
       "arm": {
-        "size": "183",
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/java-11-openjdk-11.0.32-arm.fpk"
       }
     },
-    "appname": "java-11-openjdk",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "java-17-openj9": {
     "display_name": "java-17-openj9",
@@ -3113,6 +3101,8 @@
     "install_type": "存储空间",
     "size": "52",
     "changelog": "更新版本",
+    "appname": "java-17-openj9",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.12/java-17-openj9-17.0.19-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.12/java-17-openj9-17.0.19-x86.fpk"
@@ -3121,7 +3111,6 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.12/java-17-openj9-17.0.19-arm.fpk"
       }
     },
-    "appname": "java-17-openj9",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -3140,18 +3129,18 @@
     "install_type": "存储空间",
     "size": "184",
     "changelog": "初始版本",
+    "appname": "java-17-openjdk",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/java-17-openjdk-17.0.20-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/java-17-openjdk-17.0.20-x86.fpk"
       },
       "arm": {
-        "size": "182",
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/java-17-openjdk-17.0.20-arm.fpk"
       }
     },
-    "appname": "java-17-openjdk",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "java-21-openj9": {
     "display_name": "java-21-openj9",
@@ -3168,6 +3157,8 @@
     "install_type": "存储空间",
     "size": "56",
     "changelog": "更新版本",
+    "appname": "java-21-openj9",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.12/java-21-openj9-21.0.11-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.12/java-21-openj9-21.0.11-x86.fpk"
@@ -3176,7 +3167,6 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.12/java-21-openj9-21.0.11-arm.fpk"
       }
     },
-    "appname": "java-21-openj9",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -3195,18 +3185,18 @@
     "install_type": "存储空间",
     "size": "197",
     "changelog": "初始版本",
+    "appname": "java-21-openjdk",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/java-21-openjdk-21.0.12-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/java-21-openjdk-21.0.12-x86.fpk"
       },
       "arm": {
-        "size": "195",
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/java-21-openjdk-21.0.12-arm.fpk"
       }
     },
-    "appname": "java-21-openjdk",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "java-25-openj9": {
     "display_name": "java-25-openj9",
@@ -3223,6 +3213,8 @@
     "install_type": "存储空间",
     "size": "56",
     "changelog": "更新版本",
+    "appname": "java-25-openj9",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.12/java-25-openj9-25.0.3-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.12/java-25-openj9-25.0.3-x86.fpk"
@@ -3231,7 +3223,6 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.12/java-25-openj9-25.0.3-arm.fpk"
       }
     },
-    "appname": "java-25-openj9",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -3250,18 +3241,18 @@
     "install_type": "存储空间",
     "size": "134",
     "changelog": "更新版本",
+    "appname": "java-25-openjdk",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/java-25-openjdk-25.0.4-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/java-25-openjdk-25.0.4-x86.fpk"
       },
       "arm": {
-        "size": "133",
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/java-25-openjdk-25.0.4-arm.fpk"
       }
     },
-    "appname": "java-25-openjdk",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "java-8-openj9": {
     "display_name": "java-8-openj9",
@@ -3278,6 +3269,8 @@
     "install_type": "存储空间",
     "size": "51",
     "changelog": "更新版本",
+    "appname": "java-8-openj9",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.12/java-8-openj9-1.8.0_492-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.12/java-8-openj9-1.8.0_492-x86.fpk"
@@ -3286,7 +3279,6 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.12/java-8-openj9-1.8.0_492-arm.fpk"
       }
     },
-    "appname": "java-8-openj9",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -3305,6 +3297,8 @@
     "install_type": "存储空间",
     "size": "98",
     "changelog": "初始版本",
+    "appname": "java-8-openjdk",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/java-8-openjdk-1.8.0_502-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/java-8-openjdk-1.8.0_502-x86.fpk"
@@ -3313,9 +3307,8 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.12/java-8-openjdk-1.8.0_502-arm.fpk"
       }
     },
-    "appname": "java-8-openjdk",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "jellyfin": {
     "appname": "jellyfin",
@@ -3340,7 +3333,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3367,7 +3360,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3394,7 +3387,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3421,7 +3414,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3441,12 +3434,13 @@
     "bug_report_url": "https://github.com/unilei/kerkerker/issues",
     "install_type": "存储空间",
     "size": "216KB",
+    "appname": "kerkerker",
+    "download_url": "https://raw.githubusercontent.com/zyp1690/FnDepot/main/kerkerker/kerkerker-1.0.0-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://raw.githubusercontent.com/zyp1690/FnDepot/main/kerkerker/kerkerker-1.0.0-x86.fpk"
       }
     },
-    "appname": "kerkerker",
     "changelog": "",
     "history": {},
     "source_repo": "zyp1690/FnDepot"
@@ -3474,7 +3468,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3501,7 +3495,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3528,7 +3522,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3547,6 +3541,8 @@
     "install_type": "存储空间",
     "size": "6",
     "changelog": "更新上游版本",
+    "appname": "Komari-Agent",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.26/Komari-Agent-1.2.60-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.26/Komari-Agent-1.2.60-x86.fpk"
@@ -3555,9 +3551,8 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.26/Komari-Agent-1.2.60-arm.fpk"
       }
     },
-    "appname": "Komari-Agent",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "komga": {
     "appname": "komga",
@@ -3582,7 +3577,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3609,7 +3604,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3628,6 +3623,8 @@
     "install_type": "存储空间",
     "size": "1",
     "changelog": "初始版本",
+    "appname": "Landlord",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.28/Landlord-1.2.45-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.28/Landlord-1.2.45-x86.fpk"
@@ -3636,9 +3633,8 @@
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.28/Landlord-1.2.45-arm.fpk"
       }
     },
-    "appname": "Landlord",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "lanraragi": {
     "appname": "lanraragi",
@@ -3663,7 +3659,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3682,6 +3678,8 @@
     "install_type": "存储空间",
     "size": "2",
     "changelog": "更新上游版本",
+    "appname": "Liars-Bar",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.31/Liars-Bar-1.7.1-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.31/Liars-Bar-1.7.1-x86.fpk"
@@ -3690,9 +3688,8 @@
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.31/Liars-Bar-1.7.1-arm.fpk"
       }
     },
-    "appname": "Liars-Bar",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "librechat": {
     "appname": "librechat",
@@ -3717,7 +3714,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3744,7 +3741,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3771,7 +3768,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3798,7 +3795,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3825,7 +3822,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3844,6 +3841,8 @@
     "install_type": "存储空间",
     "size": "2",
     "changelog": "初始版本",
+    "appname": "LocalSend-Web",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.10/LocalSend-Web-1.0.0-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.10/LocalSend-Web-1.0.0-x86.fpk"
@@ -3852,9 +3851,8 @@
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.10/LocalSend-Web-1.0.0-arm.fpk"
       }
     },
-    "appname": "LocalSend-Web",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "loki": {
     "appname": "loki",
@@ -3879,7 +3877,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3897,9 +3895,9 @@
     "install_type": "系统空间",
     "isdocker": "true",
     "size": "10.58KB",
-    "download_url": "https://github.com/narrator-z/FnDepot/releases/download/vloomyproxy-1.1.1/loomyproxy_all.fpk",
     "changelog": "1.1.1 修复「升级后登录态（认证）丢失」。原因：①备份源写死在安装目录 TRIM_APPDEST 之下，而它正是升级时最易被替换的位置，且未以真实挂载为准；②备份固定落在易失的 /tmp，临时目录一清就无物可恢复。现改为：升级前用 docker inspect 反查 /data/loomy-profile 真实挂载源（权威），逐级兜底到官方变量 TRIM_PKGVAR / TRIM_APPDEST；备份落到持久数据区同级目录（最后才退到官方升级临时目录 TRIM_TEMP_UPGRADE_FOLDER），跨升级与重启保留；升级后仅在目标目录为空且有备份时恢复，已有登录态不覆盖。注意本次修复保护的是后续升级，已丢失的登录态仍需按 README 重新迁移 loomy-profile。 1.1.0 性能与稳定性修复：①真流式（1.0.x 流式实现是未完成的死代码，实际等上游整段生成完再回放，首字延迟=完整生成耗时），改为页内边读边写入独立缓冲、Node 侧 80ms 轮询增量即时回写；②并发控制在途上限（默认 2）+ 单请求 120s 超时 + 客户端断开即 AbortController 中止上游；③每请求独立 reqId 作页面侧缓冲 key，消除多请求共用缓冲导致的响应串扰；④/v1/models 加 300s 缓存；⑤新增结构化访问日志与 docker 日志轮转（10MB×3），此前 24 小时零日志完全不可观测；⑥内存上限 1G→1.5G（实测常驻 650MB、峰值 681MB，1G 仅剩 33% 余量，易 OOMKill 中断在途请求）；⑦新增健康检查；⑧新增向导开关「渲染减负」（默认 0 关闭），置 1 可把空闲常驻 CPU 由 25~60% 降到 5% 以下、磁盘写入基本归零，异常时改回 0 即可。 1.0.0 首个版本：以 Docker 应用形态交付 Loomy Web 浏览器侧代理。镜像内置 Node 20 + Playwright Chromium（headless），容器内先起带 CDP 的持久化浏览器会话，再由 proxy.js 经 CDP 在页面内调用上游接口并转换为 OpenAI 协议。登录态（loomy-profile）挂载在应用数据目录 ./data/loomy-profile，升级不丢；因飞牛无图形会话，登录态需在有界面的电脑上用 login.js 生成后迁移。状态检查沿用仓库约定：从 docker-compose.yaml 解析 container_name 后 docker inspect。",
     "appname": "loomyproxy",
+    "download_url": "https://github.com/narrator-z/FnDepot/releases/download/vloomyproxy-1.1.1/loomyproxy_all.fpk",
     "history": {},
     "source_repo": "narrator-z/FnDepot"
   },
@@ -3926,7 +3924,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3944,9 +3942,9 @@
     "size": "4",
     "install_type": "系统空间",
     "isdocker": "false",
-    "download_url": "https://github.com/harbiu317/lxserver/releases/download/v1.0.5/levis.lxserver.fpk",
     "changelog": "v1.0.5：\n- 全新应用图标\n- 安装向导支持设置密码\n- 修复静态文件和权限问题",
     "appname": "lxserver",
+    "download_url": "https://github.com/harbiu317/lxserver/releases/download/v1.0.5/levis.lxserver.fpk",
     "history": {},
     "source_repo": "harbiu317/FnDepot"
   },
@@ -3973,7 +3971,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -3985,7 +3983,6 @@
     "desc": "🀄一个功能完整、支持中国境内所有麻将种类的网页版麻将游戏。",
     "labels": "原生,棋牌,游戏",
     "version": "1.0.1",
-    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.30/Mahjong-1.0.1-all.fpk",
     "distributor": "shuangji66",
     "distributor_url": "https://github.com/shuangji66/FnDepot",
     "bug_report_url": "https://github.com/shuangji66/FnDepot/issues",
@@ -3993,8 +3990,9 @@
     "size": "290 KB",
     "changelog": "更新联机说明",
     "appname": "Mahjong",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.30/Mahjong-1.0.1-all.fpk",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "mail-archiver": {
     "appname": "mail-archiver",
@@ -4019,7 +4017,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4031,7 +4029,6 @@
     "desc": "🀄单机版小日本麻将。",
     "labels": "原生,棋牌,游戏",
     "version": "2.5.1",
-    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.29/Majiang-2.5.1-all.fpk",
     "distributor": "shuangji66",
     "distributor_url": "https://github.com/shuangji66/FnDepot",
     "bug_report_url": "https://github.com/shuangji66/FnDepot/issues",
@@ -4039,8 +4036,9 @@
     "size": "2",
     "changelog": "初始版本",
     "appname": "Majiang",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.29/Majiang-2.5.1-all.fpk",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "mattermost": {
     "appname": "mattermost",
@@ -4065,7 +4063,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4092,7 +4090,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4104,7 +4102,6 @@
     "desc": "🤵🏻MBTI测试93题版，仅供学习，请勿当真。",
     "labels": "原生,测试",
     "version": "1.0.0",
-    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.22/MBTI-1.0.0-all.fpk",
     "distributor": "shuangji66",
     "distributor_url": "https://github.com/shuangji66/FnDepot",
     "bug_report_url": "https://github.com/shuangji66/FnDepot/issues",
@@ -4112,6 +4109,7 @@
     "size": "600 KB",
     "changelog": "初始版本",
     "appname": "MBTI",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.22/MBTI-1.0.0-all.fpk",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -4138,7 +4136,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4157,6 +4155,8 @@
     "size": "30.02",
     "install_type": "存储空间",
     "changelog": "第三波更新，添加了媒体信息提取功能，加快STRM文件在Emby里面起播速度",
+    "appname": "MediaHub",
+    "download_url": "https://github.com/DinDing1/Fndepot/releases/latest/download/mediahub.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/DinDing1/Fndepot/releases/latest/download/mediahub.fpk"
@@ -4165,7 +4165,6 @@
         "download_url": "https://github.com/DinDing1/Fndepot/releases/latest/download/mediahub_arm.fpk"
       }
     },
-    "appname": "MediaHub",
     "history": {},
     "source_repo": "DinDing1/FnDepot"
   },
@@ -4192,7 +4191,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4219,7 +4218,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4246,7 +4245,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4273,7 +4272,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4300,7 +4299,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4327,7 +4326,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4354,7 +4353,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4381,7 +4380,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4393,7 +4392,6 @@
     "desc": "💣再好的电脑扫雷也只有1帧。",
     "labels": "原生,益智,游戏",
     "version": "1.13.1",
-    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.30/Minesweeper-1.13.1-all.fpk",
     "distributor": "shuangji66",
     "distributor_url": "https://github.com/shuangji66/FnDepot",
     "bug_report_url": "https://github.com/shuangji66/FnDepot/issues",
@@ -4401,8 +4399,9 @@
     "size": "370 KB",
     "changelog": "初始版本",
     "appname": "Minesweeper",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.30/Minesweeper-1.13.1-all.fpk",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "miniflux": {
     "appname": "miniflux",
@@ -4427,7 +4426,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4454,7 +4453,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4473,6 +4472,8 @@
     "install_type": "存储空间",
     "size": "1.3",
     "changelog": "同步上架x86、arm版本",
+    "appname": "MoveCar",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.5.15/MoveCar-2.4.2-1-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.5.15/MoveCar-2.4.2-1-x86.fpk"
@@ -4481,7 +4482,6 @@
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.5.15/MoveCar-2.4.2-1-arm.fpk"
       }
     },
-    "appname": "MoveCar",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -4508,7 +4508,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4526,9 +4526,9 @@
     "isdocker": "true",
     "install_type": "存储空间",
     "size": "0.35",
-    "download_url": "https://github.com/ccyo-fang/FnDepot/releases/download/FnDepot/moviepilot-v2.fpk",
     "changelog": "新增安装引导添加媒体库目录，默认访问端口改为：3000 fpk自用打包",
     "appname": "moviepilot-v2",
+    "download_url": "https://github.com/ccyo-fang/FnDepot/releases/download/FnDepot/moviepilot-v2.fpk",
     "history": {},
     "source_repo": "ccyo-fang/FnDepot"
   },
@@ -4547,6 +4547,8 @@
     "install_type": "存储空间",
     "size": "14",
     "changelog": "初始版本",
+    "appname": "MrRSS",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.2/MrRSS-1.3.25-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.2/MrRSS-1.3.25-x86.fpk"
@@ -4555,9 +4557,8 @@
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.2/MrRSS-1.3.25-arm.fpk"
       }
     },
-    "appname": "MrRSS",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "msf": {
     "appname": "msf",
@@ -4582,7 +4583,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4601,6 +4602,8 @@
     "install_type": "存储空间",
     "size": "43",
     "changelog": "初始版本",
+    "appname": "MTranServer",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.30/MTranServer-4.0.33-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.30/MTranServer-4.0.33-x86.fpk"
@@ -4609,9 +4612,8 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.30/MTranServer-4.0.33-arm.fpk"
       }
     },
-    "appname": "MTranServer",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "mysql8": {
     "display_name": "MySQL8",
@@ -4628,6 +4630,8 @@
     "install_type": "存储空间",
     "size": "95",
     "changelog": "初始版本",
+    "appname": "MySQL8",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.13/MySQL8-8.4.11-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.13/MySQL8-8.4.11-x86.fpk"
@@ -4636,9 +4640,8 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.13/MySQL8-8.4.11-arm.fpk"
       }
     },
-    "appname": "MySQL8",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "n8n": {
     "appname": "n8n",
@@ -4663,7 +4666,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4690,7 +4693,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4711,12 +4714,13 @@
     "bug_report_url": "https://gitee.com/yanfanVIP/nas-music/issues",
     "install_type": "存储空间",
     "size": "202KB",
+    "appname": "nas-music",
+    "download_url": "https://raw.githubusercontent.com/zyp1690/FnDepot/main/nas-music/nas-music-1.0.0-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://raw.githubusercontent.com/zyp1690/FnDepot/main/nas-music/nas-music-1.0.0-x86.fpk"
       }
     },
-    "appname": "nas-music",
     "changelog": "",
     "history": {},
     "source_repo": "zyp1690/FnDepot"
@@ -4744,7 +4748,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4771,7 +4775,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4798,7 +4802,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4825,7 +4829,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4852,7 +4856,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4871,6 +4875,8 @@
     "install_type": "存储空间",
     "size": "42",
     "changelog": "修改语言匹配源代码，正确匹配浏览器语言，仍为英文的需清除浏览器缓存",
+    "appname": "NextExplorer",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.31/NextExplorer-2.2.7-3-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.31/NextExplorer-2.2.7-3-x86.fpk"
@@ -4879,9 +4885,8 @@
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.7.31/NextExplorer-2.2.7-3-arm.fpk"
       }
     },
-    "appname": "NextExplorer",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "nginx": {
     "display_name": "Nginx",
@@ -4898,6 +4903,8 @@
     "install_type": "存储空间",
     "size": "55",
     "changelog": "更新主线分支，更新ui",
+    "appname": "Nginx",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.20/Nginx-1.3.4-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.20/Nginx-1.3.4-x86.fpk"
@@ -4906,7 +4913,6 @@
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.20/Nginx-1.3.4-arm.fpk"
       }
     },
-    "appname": "Nginx",
     "history": {},
     "source_repo": "LI1223081906/FnDepot"
   },
@@ -4933,7 +4939,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4960,7 +4966,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -4987,7 +4993,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5014,7 +5020,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5041,7 +5047,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5068,7 +5074,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5079,7 +5085,6 @@
     "version": "1.0",
     "author": "mac1256",
     "author_url": "https://github.com/mac1256/FnDepot",
-    "download_url": "https://github.com/mac1256/FnDepot/releases/download/1.0/nodejs_v22-arm.fpk",
     "bug_report_url": "https://qm.qq.com/q/4MKTzfs9os",
     "install_type": "存储空间",
     "size": "51.8",
@@ -5087,6 +5092,7 @@
       "v1.0": "初始版本"
     },
     "appname": "nodejs_v22-arm",
+    "download_url": "https://github.com/mac1256/FnDepot/releases/download/1.0/nodejs_v22-arm.fpk",
     "changelog": "",
     "source_repo": "mac1256/FnDepot",
     "platform": [
@@ -5109,6 +5115,8 @@
     "install_type": "存储空间",
     "size": "30",
     "changelog": "初始版本",
+    "appname": "nodejs_v24",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.15/nodejs_v24-24.19.0-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.15/nodejs_v24-24.19.0-x86.fpk"
@@ -5117,9 +5125,8 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.15/nodejs_v24-24.19.0-arm.fpk"
       }
     },
-    "appname": "nodejs_v24",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "ntfy": {
     "appname": "ntfy",
@@ -5144,7 +5151,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5171,7 +5178,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5198,7 +5205,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5225,7 +5232,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5252,7 +5259,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5271,18 +5278,18 @@
     "install_type": "存储空间",
     "size": "85",
     "changelog": "更新内核和面板",
+    "appname": "OMS",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.26/OMS-1.0.1-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.26/OMS-1.0.1-x86.fpk"
       },
       "arm": {
-        "size": "82",
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.26/OMS-1.0.1-arm.fpk"
       }
     },
-    "appname": "OMS",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "one server": {
     "display_name": "One Server",
@@ -5299,6 +5306,8 @@
     "size": "50.0",
     "install_type": "存储空间",
     "changelog": "添加了Sftp",
+    "appname": "One Server",
+    "download_url": "https://github.com/DinDing1/FnDepot/releases/download/OneServer-v1.0.9/OneServer-v1.0.9-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/DinDing1/FnDepot/releases/download/OneServer-v1.0.9/OneServer-v1.0.9-x86.fpk"
@@ -5307,7 +5316,6 @@
         "download_url": "https://github.com/DinDing1/FnDepot/releases/download/OneServer-v1.0.9/OneServer-v1.0.9-arm.fpk"
       }
     },
-    "appname": "One Server",
     "history": {},
     "source_repo": "DinDing1/FnDepot"
   },
@@ -5334,7 +5342,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5361,7 +5369,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5380,16 +5388,16 @@
     "install_type": "存储空间",
     "size": "66",
     "changelog": "更新测试版本",
+    "appname": "Openlist-beta",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.22/Openlist-beta-2026.8.22-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.22/Openlist-beta-2026.8.22-x86.fpk"
       },
       "arm": {
-        "size": "63",
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.22/Openlist-beta-2026.8.22-arm.fpk"
       }
     },
-    "appname": "Openlist-beta",
     "history": {},
     "source_repo": "LI1223081906/FnDepot"
   },
@@ -5416,7 +5424,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5443,7 +5451,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5455,7 +5463,6 @@
     "desc": "🛡️BT 反吸血工具 - 自动封禁不受欢迎、吸血和异常的 BT 客户端，并支持自定义规则。支持qB/qBEE/Deluge/BiglyBT/BitComet。💡依赖Java25环境，优先调用java-25-openj9。",
     "labels": "JAVA,工具,网络",
     "version": "9.5.0",
-    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.19/PeerBanHelper-9.5.0-all.fpk",
     "distributor": "shuangji66",
     "distributor_url": "https://github.com/shuangji66/FnDepot",
     "bug_report_url": "https://github.com/shuangji66/FnDepot/issues",
@@ -5463,8 +5470,9 @@
     "size": "69",
     "changelog": "更新上游版本",
     "appname": "PeerBanHelper",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.8.19/PeerBanHelper-9.5.0-all.fpk",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "penpot": {
     "appname": "penpot",
@@ -5489,7 +5497,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5516,7 +5524,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5540,12 +5548,13 @@
     "bug_report_url": "https://github.com/php-epg/php-epg/issues",
     "install_type": "存储空间",
     "size": "64.3KB",
+    "appname": "php-epg",
+    "download_url": "https://raw.githubusercontent.com/zyp1690/FnDepot/main/php-epg/php-epg.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://raw.githubusercontent.com/zyp1690/FnDepot/main/php-epg/php-epg.fpk"
       }
     },
-    "appname": "php-epg",
     "changelog": "",
     "history": {},
     "source_repo": "zyp1690/FnDepot"
@@ -5565,12 +5574,13 @@
     "bug_report_url": "https://github.com/zyp1690/FnDepot/issues",
     "install_type": "存储空间",
     "size": "220KB",
+    "appname": "php-runtime",
+    "download_url": "https://raw.githubusercontent.com/zyp1690/FnDepot/main/php-runtime/php-runtime.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://raw.githubusercontent.com/zyp1690/FnDepot/main/php-runtime/php-runtime.fpk"
       }
     },
-    "appname": "php-runtime",
     "changelog": "",
     "history": {},
     "source_repo": "zyp1690/FnDepot"
@@ -5589,9 +5599,9 @@
     "size": "10",
     "install_type": "系统空间",
     "isdocker": "false",
-    "download_url": "https://github.com/harbiu317/feiniu-pichub/releases/download/v1.0.16/pichub_1.0.16_x86.fpk",
     "changelog": "v1.0.16：\n- 修复图库页面图片缩略图不显示的问题",
     "appname": "pichub",
+    "download_url": "https://github.com/harbiu317/feiniu-pichub/releases/download/v1.0.16/pichub_1.0.16_x86.fpk",
     "history": {},
     "source_repo": "harbiu317/FnDepot"
   },
@@ -5618,7 +5628,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5645,7 +5655,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5663,8 +5673,8 @@
     "author_url": "https://qm.qq.com/q/mVrB8ASTXc",
     "bug_report_url": "https://qm.qq.com/q/mVrB8ASTXc",
     "install_type": "系统空间",
-    "download_url": "https://raw.githubusercontent.com/ZhangZsky/FnDepot/main/PipeBridge/PipeBridge_x86.fpk",
     "appname": "PipeBridge",
+    "download_url": "https://raw.githubusercontent.com/ZhangZsky/FnDepot/main/PipeBridge/PipeBridge_x86.fpk",
     "history": {},
     "source_repo": "ZhangZsky/FnDepot"
   },
@@ -5683,18 +5693,18 @@
     "install_type": "存储空间",
     "size": "104",
     "changelog": "更新上游版本",
+    "appname": "Plex",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.26/Plex-1.43.3-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.26/Plex-1.43.3-x86.fpk"
       },
       "arm": {
-        "size": "97",
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.26/Plex-1.43.3-arm.fpk"
       }
     },
-    "appname": "Plex",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "plexmediaserver": {
     "appname": "plexmediaserver",
@@ -5719,7 +5729,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5746,7 +5756,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5765,6 +5775,8 @@
     "install_type": "存储空间",
     "size": "32",
     "changelog": "重构项目：改进运行文件映射结构，修改数据存储路径，添加运行模式切换，改进启停脚本",
+    "appname": "Podman",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.26/Podman-5.8.2-2-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.26/Podman-5.8.2-2-x86.fpk"
@@ -5773,7 +5785,6 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.26/Podman-5.8.2-2-arm.fpk"
       }
     },
-    "appname": "Podman",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -5800,7 +5811,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5827,7 +5838,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5854,7 +5865,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5881,7 +5892,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -5900,6 +5911,8 @@
     "install_type": "存储空间",
     "size": "25",
     "changelog": "初始版本",
+    "appname": "python312",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.3/python312-3.12.13-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.3/python312-3.12.13-x86.fpk"
@@ -5908,9 +5921,8 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.3/python312-3.12.13-arm.fpk"
       }
     },
-    "appname": "python312",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "python313": {
     "display_name": "Python 3.13",
@@ -5927,6 +5939,8 @@
     "install_type": "存储空间",
     "size": "25",
     "changelog": "初始版本",
+    "appname": "python313",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.3/python312-3.13.14-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.3/python312-3.13.14-x86.fpk"
@@ -5935,9 +5949,8 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.3/python312-3.13.14-arm.fpk"
       }
     },
-    "appname": "python313",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "python314": {
     "display_name": "Python 3.14",
@@ -5954,6 +5967,8 @@
     "install_type": "存储空间",
     "size": "25",
     "changelog": "初始版本",
+    "appname": "python314",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.3/python312-3.14.6-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.3/python312-3.14.6-x86.fpk"
@@ -5962,9 +5977,8 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.3/python312-3.14.6-arm.fpk"
       }
     },
-    "appname": "python314",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "qbittorrent": {
     "appname": "qbittorrent",
@@ -5989,7 +6003,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6008,6 +6022,8 @@
     "install_type": "存储空间",
     "size": "28",
     "changelog": "更新版本",
+    "appname": "qBittorrent-Enhanced",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.26/qBittorrent-Enhanced-5.2.3-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.26/qBittorrent-Enhanced-5.2.3-x86.fpk"
@@ -6016,9 +6032,8 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.26/qBittorrent-Enhanced-5.2.3-arm.fpk"
       }
     },
-    "appname": "qBittorrent-Enhanced",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "qinglong": {
     "appname": "qinglong",
@@ -6043,7 +6058,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6070,7 +6085,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6088,8 +6103,8 @@
     "author_url": "https://qm.qq.com/q/mVrB8ASTXc",
     "bug_report_url": "https://qm.qq.com/q/mVrB8ASTXc",
     "install_type": "系统空间",
-    "download_url": "https://raw.githubusercontent.com/ZhangZsky/FnDepot/main/r1toolbox/r1toolbox_x86.fpk",
     "appname": "r1toolbox",
+    "download_url": "https://raw.githubusercontent.com/ZhangZsky/FnDepot/main/r1toolbox/r1toolbox_x86.fpk",
     "history": {},
     "source_repo": "ZhangZsky/FnDepot"
   },
@@ -6116,7 +6131,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6143,7 +6158,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6170,7 +6185,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6182,7 +6197,6 @@
     "desc": "📚轻阅读是一款开源的多平台阅读器，支持Android、iOS、HarmonyOS、Windows、MacOS和服务端，提供丰富的功能和灵活的部署选项。💡软件依赖Java25环境，优先调用java-25-openj9。",
     "labels": "JAVA,工具,阅读",
     "version": "3.4.6-2",
-    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.5.15/Read-3.4.6-2-all.fpk",
     "distributor": "shuangji66",
     "distributor_url": "https://github.com/shuangji66/FnDepot",
     "bug_report_url": "https://github.com/shuangji66/FnDepot/issues",
@@ -6190,6 +6204,7 @@
     "size": "103",
     "changelog": "更新上游版本",
     "appname": "Read",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.5.15/Read-3.4.6-2-all.fpk",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -6216,7 +6231,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6228,7 +6243,6 @@
     "desc": "📚Reader3是一款开源的网络小说阅读器，提供书源管理、书架同步、WebDAV备份等功能，原作者已删库，现由社区接力维护。",
     "labels": "JAVA,阅读,工具",
     "version": "4.0.7",
-    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.3/Reader-4.0.7-all.fpk",
     "distributor": "shuangji66",
     "distributor_url": "https://github.com/shuangji66/FnDepot",
     "bug_report_url": "https://github.com/shuangji66/FnDepot/issues",
@@ -6236,8 +6250,9 @@
     "size": "68",
     "changelog": "更新社区维护版本",
     "appname": "Reader",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.3/Reader-4.0.7-all.fpk",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "reader-rust": {
     "display_name": "Reader-Rust",
@@ -6254,6 +6269,8 @@
     "install_type": "存储空间",
     "size": "10",
     "changelog": "修复arm版构建时错误提取x86二进制文件",
+    "appname": "Reader-Rust",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.6.24/Reader-Rust-1.0.8-1-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.6.24/Reader-Rust-1.0.8-1-x86.fpk"
@@ -6262,9 +6279,8 @@
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.6.24/Reader-Rust-1.0.8-1-arm.fpk"
       }
     },
-    "appname": "Reader-Rust",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "rocketchat": {
     "appname": "rocketchat",
@@ -6289,7 +6305,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6316,7 +6332,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6343,7 +6359,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6370,7 +6386,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6385,12 +6401,12 @@
     "distributor": "renlixing",
     "distributor_url": "https://github.com/renlixing87",
     "bug_report_url": "https://github.com/renlixing87/FnDepot/issues",
-    "download_url": "https://download.savextube.com/savextube/savextube-fnos/source/x86_64/SaveXTube-1.0.4-fnOS-x86_64-source.fpk",
     "install_type": "存储空间",
     "size": "226.54",
     "changelog": "1.0.4 更新：增加 Facebook 图片下载功能；增加核心插件功能；支持抖音分段图文类型视频下载；切换授权服务器。",
     "isdocker": "false",
     "appname": "savextube",
+    "download_url": "https://download.savextube.com/savextube/savextube-fnos/source/x86_64/SaveXTube-1.0.4-fnOS-x86_64-source.fpk",
     "history": {},
     "source_repo": "renlixing87/FnDepot"
   },
@@ -6402,7 +6418,6 @@
     "desc": "🌿卧槽，没一个诗人。",
     "labels": "原生,搞笑,测试",
     "version": "1.0.0",
-    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.20/SBTI-1.0.0-all.fpk",
     "distributor": "shuangji66",
     "distributor_url": "https://github.com/shuangji66/FnDepot",
     "bug_report_url": "https://github.com/shuangji66/FnDepot/issues",
@@ -6410,6 +6425,7 @@
     "size": "4.7",
     "changelog": "初始版本",
     "appname": "SBTI",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.20/SBTI-1.0.0-all.fpk",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -6436,7 +6452,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6463,7 +6479,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6490,7 +6506,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6517,7 +6533,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6544,7 +6560,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6571,7 +6587,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6598,7 +6614,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6625,7 +6641,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6652,7 +6668,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6679,7 +6695,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6706,7 +6722,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6733,7 +6749,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6760,7 +6776,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6787,7 +6803,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6814,7 +6830,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6841,7 +6857,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6856,12 +6872,13 @@
     "version": "0.4.0-10",
     "author": "BoB",
     "author_url": "https://github.com/710850609",
-    "download_url": "https://github.com/710850609/fpk-TaoSync/releases/download/0.4.0-10/TaoSync-0.4.0-10-x86.fpk",
     "bug_report_url": "https://github.com/710850609/fpk-TaoSync/issues",
     "install_type": "存储空间",
     "size": "2",
     "history": {},
     "changelog": "",
+    "appname": "TaoSync",
+    "download_url": "https://github.com/710850609/fpk-TaoSync/releases/download/0.4.0-10/TaoSync-0.4.0-10-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/710850609/fpk-TaoSync/releases/download/0.4.0-10/TaoSync-0.4.0-10-x86.fpk"
@@ -6870,7 +6887,6 @@
         "download_url": "https://github.com/710850609/fpk-TaoSync/releases/download/0.4.0-10/TaoSync-0.4.0-10-arm.fpk"
       }
     },
-    "appname": "TaoSync",
     "source_repo": "710850609/FnDepot"
   },
   "tautulli": {
@@ -6896,7 +6912,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6914,9 +6930,9 @@
     "size": "2",
     "install_type": "系统空间",
     "isdocker": "false",
-    "download_url": "https://github.com/harbiu317/feiniu-terminal/releases/download/v1.0.1/levis.terminal.fpk",
     "changelog": "v1.0.1：\n- 新增 WebGL 渲染加速，不支持时自动回退 Canvas\n- 优化终端输出的二进制数据处理，修复 ANSI 转义序列和 UTF-8 显示问题",
     "appname": "terminal",
+    "download_url": "https://github.com/harbiu317/feiniu-terminal/releases/download/v1.0.1/levis.terminal.fpk",
     "history": {},
     "source_repo": "harbiu317/FnDepot"
   },
@@ -6943,7 +6959,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -6962,6 +6978,8 @@
     "install_type": "存储空间",
     "size": "4",
     "changelog": "更新上游版本",
+    "appname": "Tomato",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.6.27/Tomato-2.4.13-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.6.27/Tomato-2.4.13-x86.fpk"
@@ -6970,9 +6988,8 @@
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.6.27/Tomato-2.4.13-arm.fpk"
       }
     },
-    "appname": "Tomato",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "traefik": {
     "display_name": "Traefik 反向代理",
@@ -6988,9 +7005,9 @@
     "install_type": "系统空间",
     "isdocker": "true",
     "size": "81.60KB",
-    "download_url": "https://github.com/narrator-z/FnDepot/releases/download/vtraefik-1.1.1/traefik_all.fpk",
     "changelog": "修复安装失败(10266 too many colons)：compose 卷改为整块 ${TRIM_DATA_SHARE_PATHS}:/data 挂载；配置统一落到 /data；修正 ACME CA(prod/staging) 注入",
     "appname": "traefik",
+    "download_url": "https://github.com/narrator-z/FnDepot/releases/download/vtraefik-1.1.1/traefik_all.fpk",
     "history": {},
     "source_repo": "avicii0129ccc-creator/FnDepot"
   },
@@ -7008,9 +7025,9 @@
     "isdocker": "false",
     "install_type": "系统空间",
     "size": "0.09",
-    "download_url": "https://github.com/w5456448820/FnDepot/releases/download/v1.0.3/traffic-keeper.fpk",
     "changelog": "v1.0.3 修复 Web 界面日志/历史数据/统计信息不显示 + GitHub Release 大小检查\n- 修复 webserver 环境变量缺失导致日志/历史数据/统计信息无法读取\n- 修复 GitHub Release 链接跳过文件大小检查，现在优先 HEAD 获取实际大小\n- 修复 web 界面日志、历史数据、顶部统计信息无输出的问题\n\nv1.0.2 版本号更新\n- 同步 NAS 运行代码到仓库\n\nv1.0.1 修复 Web 界面和限额解析问题\n- 修复 busybox awk 大数溢出导致单日限额解析错误（200G→2.00 B）\n- 修复完全清理后重新安装参数无默认值的问题\n- 修复配置保存后参数名不匹配导致脚本不生效的问题\n- 修复新旧键名冲突时旧值覆盖新值的问题\n- 修复终端日志页面空白的问题\n- 新增安装时自动初始化默认配置文件\n- 新增卸载时可选是否删除全部数据\n- 每轮最大下载次数默认值从 3 改为 30\n\nv1.0.0 首个飞牛 NAS 原生 FPK 版本\n- 飞牛应用中心原生集成，支持「打开」按钮直接访问\n- 自动下载大文件维持网络流量活跃\n- Web 管理界面（浏览器配置 + 实时日志 + 链接管理）\n- 多下载源自动切换（GitHub、镜像站）\n- 支持可选时间/数据单位（s/m/h, K/M/G/T）\n- 每日流量限额、限速、休眠时间等灵活配置\n- 运行端口：8080\n- 添加完整源代码到 源代码/ 目录",
     "appname": "traffic-keeper",
+    "download_url": "https://github.com/w5456448820/FnDepot/releases/download/v1.0.3/traffic-keeper.fpk",
     "history": {},
     "source_repo": "w5456448820/FnDepot"
   },
@@ -7037,7 +7054,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -7055,9 +7072,9 @@
     "size": "11",
     "install_type": "系统空间",
     "isdocker": "false",
-    "download_url": "https://github.com/harbiu317/feiniu-tunebox/releases/download/v1.0.1/tunebox_1.0.1_x86.fpk",
     "changelog": "v1.0.1：\n- 修复歌曲列表中点击下载按钮旁的下拉菜单被下一张卡片遮挡的问题",
     "appname": "tunebox",
+    "download_url": "https://github.com/harbiu317/feiniu-tunebox/releases/download/v1.0.1/tunebox_1.0.1_x86.fpk",
     "history": {},
     "source_repo": "harbiu317/FnDepot"
   },
@@ -7076,6 +7093,8 @@
     "install_type": "存储空间",
     "size": "31",
     "changelog": "初始版本",
+    "appname": "Tvheadend",
+    "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.4.18/Tvheadend-4.3.0-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/Fndepot/releases/download/2026.4.18/Tvheadend-4.3.0-x86.fpk"
@@ -7084,7 +7103,6 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.4.18/Tvheadend-4.3.0-arm.fpk"
       }
     },
-    "appname": "Tvheadend",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -7111,7 +7129,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -7138,7 +7156,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -7165,7 +7183,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -7192,7 +7210,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -7219,7 +7237,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -7246,7 +7264,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -7273,7 +7291,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -7300,7 +7318,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -7327,7 +7345,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -7346,6 +7364,8 @@
     "install_type": "存储空间",
     "size": "3",
     "changelog": "初始版本",
+    "appname": "Wol",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.29/Wol-1.0.0-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.29/Wol-1.0.0-x86.fpk"
@@ -7354,9 +7374,8 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.29/Wol-1.0.0-arm.fpk"
       }
     },
-    "appname": "Wol",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "wolgoweb": {
     "appname": "wolgoweb",
@@ -7381,7 +7400,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -7390,13 +7409,13 @@
     "version": "1.0.0",
     "desc": "一个WORD模板批量填充工具",
     "labels": "工具",
-    "download_url": "http://zfile12.s.odn.cc/directlink/ZFile/wordmbdy.fpk",
     "distributor": "0999we",
     "author_url": "https://github.com/0999we/FnDepot",
     "install_type": "系统空间",
     "size": "297",
     "changelog": "初始版本",
     "appname": "wordmbdy",
+    "download_url": "http://zfile12.s.odn.cc/directlink/ZFile/wordmbdy.fpk",
     "history": {},
     "source_repo": "0999we/FnDepot",
     "platform": [
@@ -7419,6 +7438,8 @@
     "install_type": "存储空间",
     "size": "6",
     "changelog": "重构项目",
+    "appname": "Xboard",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.6.15/Xboard-2.0.0-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.6.15/Xboard-2.0.0-x86.fpk"
@@ -7427,7 +7448,6 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.6.15/Xboard-2.0.0-arm.fpk"
       }
     },
-    "appname": "Xboard",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -7439,7 +7459,6 @@
     "desc": "🀄中国象棋网页游戏，支持单机双人对战、人机对战和局域网联机对战。",
     "labels": "原生,棋牌,游戏",
     "version": "1.1.0",
-    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.29/XiangQi-1.1.0-all.fpk",
     "distributor": "shuangji66",
     "distributor_url": "https://github.com/shuangji66/FnDepot",
     "bug_report_url": "https://github.com/shuangji66/FnDepot/issues",
@@ -7447,8 +7466,9 @@
     "size": "220 KB",
     "changelog": "初始版本",
     "appname": "XiangQi",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.7.29/XiangQi-1.1.0-all.fpk",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "yarr": {
     "display_name": "Yarr阅读器",
@@ -7465,6 +7485,8 @@
     "install_type": "存储空间",
     "size": "6",
     "changelog": "初始版本",
+    "appname": "Yarr",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.1/Yarr-2.8.0-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.1/Yarr-2.8.0-x86.fpk"
@@ -7473,9 +7495,8 @@
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.8.1/Yarr-2.8.0-arm.fpk"
       }
     },
-    "appname": "Yarr",
     "history": {},
-    "source_repo": "LI1223081906/FnDepot"
+    "source_repo": "SaucdX233/FnDepot"
   },
   "zdir": {
     "display_name": "Zdir",
@@ -7492,16 +7513,16 @@
     "install_type": "存储空间",
     "size": "33",
     "changelog": "初始版本",
+    "appname": "Zdir",
+    "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.22/Zdir-4.6.2-x86.fpk",
     "arch_diff": {
       "x86": {
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.22/Zdir-4.6.2-x86.fpk"
       },
       "arm": {
-        "size": "28",
         "download_url": "https://github.com/shuangji66/FnDepot/releases/download/2026.5.22/Zdir-4.6.2-arm.fpk"
       }
     },
-    "appname": "Zdir",
     "history": {},
     "source_repo": "33205q/FnDepot-"
   },
@@ -7528,7 +7549,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -7555,7 +7576,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -7582,7 +7603,7 @@
     },
     "changelog": "",
     "history": {},
-    "install_type": "",
+    "install_type": "存储空间",
     "size": "",
     "source_repo": "fnos-apps"
   },
@@ -7594,7 +7615,6 @@
     "author": "KKKK987",
     "author_url": "https://github.com/KKKK987/xiaosongshu",
     "bug_report_url": "https://github.com/KKKK987/xiaosongshu/issues",
-    "download_url": "https://github.com/KKKK987/FnDepot/releases/download/xiaosongshu/xiaosongshu-0.1.2-3250952-amd64.fpk",
     "install_type": "系统空间",
     "size": "26.93",
     "history": {
@@ -7602,6 +7622,7 @@
       "v0.0.7": "⚠️ 重要提示：为避免兼容性问题，安装新版前必须完全卸载旧版本并清除数据！"
     },
     "appname": "小松鼠",
+    "download_url": "https://github.com/KKKK987/FnDepot/releases/download/xiaosongshu/xiaosongshu-0.1.2-3250952-amd64.fpk",
     "changelog": "",
     "source_repo": "KKKK987/FnDepot",
     "platform": [
