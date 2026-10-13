@@ -6,7 +6,7 @@
     "distributor": "kitblue",
     "generated_by": "FnUnify aggregate.py",
     "description": "聚合 FnDepot 生态与 fnos-apps 共 137 个源、294 个应用（去重后），每日自动刷新。",
-    "updated_at": "2026-10-14T05:43:15"
+    "updated_at": "2026-10-13T21:45:59"
   },
   "apps": {
     "1panel": {
@@ -1093,6 +1093,10 @@
       "display_name": "DBland",
       "desc": "Go语言实现的Web版本数据库连接工具，内存占用少，启动快，支持MySQL，Oracle，SQLite等",
       "labels": "开发工具,数据库连接工具",
+      "platform": [
+        "x86",
+        "arm"
+      ],
       "version": "1.1.1-003",
       "author": "BoB",
       "author_url": "https://github.com/710850609",
@@ -1111,7 +1115,7 @@
       },
       "appname": "DBland",
       "changelog": "",
-      "source_repo": "33205q/FnDepot"
+      "source_repo": "710850609/FnDepot"
     },
     "dbmanager": {
       "display_name": "数据库管理",
