@@ -135,3 +135,19 @@ zj249234448/FnDepot
 zuohaill/FnDepot
 zyp1690/FnDepot
 zzdx713/FnDepot
+# ---- 单项目源（2026-10-14 补充）----
+KITblue/fantune
+ASH-C776/FnDepot
+BearHero520/FnDepot
+JaxSupero/FnDepot
+Kasbuky-sudo/FnDepot
+ccrabit/FnDepot
+frankluise5220/FnDepot
+hzs-sama/moekoe-fnos
+jiaaom/FnDepot
+jiankujidu/Store
+rockchild2332/fnos-apps-fndepot
+xfengyin/FnDepot
+yunchui/fnos-source
+RONGLINC93/FnDepot
+mayishidai/FnDepot
