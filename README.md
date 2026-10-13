@@ -6,7 +6,7 @@ FnUnify 聚合了 **FnDepot 生态（117+ 社区源）** 与 **fnos-apps（官�
 
 ## 下载与安装
 
-**官方应用商店直接安装**：前往 [FnDepot 仓库 Release 页面](https://github.com/EWEDLCM/FnDepot/releases)，下载 `.fpk` 安装包后通过 fnOS 应用中心「安装应用」导入即可。
+**第三方应用商店直接安装**：前往 [FnDepot 仓库 Release 页面](https://github.com/EWEDLCM/FnDepot/releases)，下载 `.fpk` 安装包后通过 fnOS 应用中心「安装应用」导入即可。
 
 **第三方源自动发现**（推荐）：在 fnOS 应用中心「第三方应用商店」→ 添加第三方源，使用以下任一方式添加，即可自动浏览安装 300+ 聚合应用。
 
