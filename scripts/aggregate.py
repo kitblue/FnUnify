@@ -139,21 +139,45 @@ def main():
     # 清理内部字段并规范化输出
     apps_out = {}
     for an, e in sorted(merged.items()):
-        has_dl = bool(e.get("download_url") or e.get("arch_diff"))
-        if not has_dl:
+        # 规范化 arch_diff：每个 arch 必须是 {"download_url": url}，否则剔除该 arch
+        ad = {}
+        raw_ad = e.get("arch_diff")
+        if isinstance(raw_ad, dict):
+            for arch, av in raw_ad.items():
+                if isinstance(av, dict) and av.get("download_url"):
+                    ad[arch] = {"download_url": av["download_url"]}
+        # 顶层 download_url 强制补齐：缺失时从 arch_diff 回填（优先 x86，其次 arm，再其次任意）
+        dl = e.get("download_url")
+        if not dl:
+            for arch in ("x86", "arm"):
+                if arch in ad:
+                    dl = ad[arch]["download_url"]
+                    break
+            if not dl and ad:
+                dl = next(iter(ad.values()))["download_url"]
+        if not dl:
             continue  # 无下载地址的条目对用户不可安装，过滤
         out = {}
         src_repo = e.get("_src", "")
         for k, v in e.items():
-            if k in ("_src", "_orig"):
+            if k in ("_src", "_orig", "arch_diff", "download_url"):
                 continue
             out[k] = v
-        # 补默认字段
+        out["download_url"] = dl
+        if ad:
+            out["arch_diff"] = ad
+        # 补默认字段（install_type 缺失时按 FnDepot 主流取值兜底）
         out.setdefault("labels", "")
         out.setdefault("changelog", "")
         out.setdefault("history", {})
-        out.setdefault("install_type", "")
+        out.setdefault("install_type", "存储空间")
         out.setdefault("size", "")
+        # size 缺失时从 arch_diff 回填（若来源条目在 arch 级带了 size）
+        if not out.get("size"):
+            for arch in ("x86", "arm"):
+                if arch in ad and raw_ad.get(arch, {}).get("size"):
+                    out["size"] = raw_ad[arch]["size"]
+                    break
         if src_repo:
             out["source_repo"] = src_repo  # 标注来源仓库便于追溯
         # platform 统一为数组（兼容客户端解析）；缺失时从 arch_diff 推导，再退回默认双架构
@@ -161,7 +185,6 @@ def main():
         if isinstance(plat, str):
             out["platform"] = [plat]
         elif not isinstance(plat, list) or not plat:
-            ad = out.get("arch_diff") or {}
             out["platform"] = list(ad.keys()) if ad else ["x86", "arm"]
         # V2 键统一用小写 appname，无 appname 时退回源键小写
         key = (e.get("appname") or an).lower()
