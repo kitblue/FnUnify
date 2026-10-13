@@ -6,6 +6,12 @@ FnUnify 聚合了 **FnDepot 生态（117+ 社区源）** 与 **fnos-apps（官�
 
 ## 快速开始（fnOS 应用中心添加源）
 
+添加源有两种方式，选一种即可：
+
+### 方式一：JSON 直链（推荐）
+
+在 fnOS 应用中心「第三方应用商店」→ 添加第三方源，输入以下 JSON 地址：
+
 ```
 https://raw.githubusercontent.com/kitblue/FnUnify/main/fnpack.json
 ```
@@ -14,6 +20,14 @@ https://raw.githubusercontent.com/kitblue/FnUnify/main/fnpack.json
 
 ```
 https://cdn.jsdelivr.net/gh/kitblue/FnUnify@main/fnpack.json
+```
+
+### 方式二：仓库地址
+
+直接填写仓库地址，应用中心会自动读取根目录的 `fnpack.json`：
+
+```
+https://github.com/kitblue/FnUnify
 ```
 
 ## 功能特性
