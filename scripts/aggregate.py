@@ -156,26 +156,21 @@ def main():
         out.setdefault("size", "")
         if src_repo:
             out["source_repo"] = src_repo  # 标注来源仓库便于追溯
+        # platform 统一为数组（兼容客户端解析）；缺失时从 arch_diff 推导，再退回默认双架构
+        plat = out.get("platform")
+        if isinstance(plat, str):
+            out["platform"] = [plat]
+        elif not isinstance(plat, list) or not plat:
+            ad = out.get("arch_diff") or {}
+            out["platform"] = list(ad.keys()) if ad else ["x86", "arm"]
         # V2 键统一用小写 appname，无 appname 时退回源键小写
         key = (e.get("appname") or an).lower()
         apps_out[key] = out
 
-    result = {
-        "schema_version": "fnpack_v2",
-        "source_info": {
-            "name": "FnUnify 聚合源",
-            "homepage": "https://github.com/kitblue/FnUnify",
-            "distributor": "kitblue",
-            "generated_by": "FnUnify aggregate.py",
-            "description": f"聚合 FnDepot 生态与 fnos-apps 共 {len(sources)} 个源、{len(apps_out)} 个应用（去重后），每日自动刷新。",
-            "updated_at": datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S%z"),
-        },
-        "apps": apps_out,
-    }
-
+    # FnDepot V2 规范：顶层直接是 应用键 -> 详情 的映射，不允许任何包装层
     with open(OUTPUT, "w", encoding="utf-8") as f:
-        json.dump(result, f, ensure_ascii=False, indent=2)
-    print(f"完成: {len(apps_out)} 个应用 -> {OUTPUT}")
+        json.dump(apps_out, f, ensure_ascii=False, indent=2)
+    print(f"完成: {len(apps_out)} 个应用 -> {OUTPUT} (FnDepot V2 顶层键式)")
 
 if __name__ == "__main__":
     main()
