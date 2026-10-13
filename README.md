@@ -4,9 +4,11 @@
 
 FnUnify 聚合了 **FnDepot 生态（117+ 社区源）** 与 **fnos-apps（官方社区源）**，按应用名去重、保留最新版本，统一输出为 FnDepot V2 规范的 `fnpack.json`，并通过 GitHub Actions 每日自动刷新。
 
-## 快速开始（fnOS 应用中心添加源）
+## 下载与安装
 
-添加源有两种方式，选一种即可：
+**官方应用商店直接安装**：前往 [FnDepot 仓库 Release 页面](https://github.com/EWEDLCM/FnDepot/releases)，下载 `.fpk` 安装包后通过 fnOS 应用中心「安装应用」导入即可。
+
+**第三方源自动发现**（推荐）：在 fnOS 应用中心「第三方应用商店」→ 添加第三方源，使用以下任一方式添加，即可自动浏览安装 300+ 聚合应用。
 
 ### 方式一：JSON 直链（推荐）
 
