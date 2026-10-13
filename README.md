@@ -59,6 +59,7 @@ https://github.com/kitblue/FnUnify
 
 - [conversun/fnos-apps](https://github.com/conversun/fnos-apps) — 官方社区源，175+ 应用
 - [710850609/FnDepot](https://github.com/710850609/FnDepot) — FnDepot 生态源列表
+- [EWEDLCM/FnDepot](https://github.com/EWEDLCM/FnDepot) — FnDepot 社区源，涵盖更多实用工具与效率应用
 - [Blue-Mink/moo](https://github.com/Blue-Mink/moo) — Moo 精选源列表
 - 各社区维护者的 FnDepot 分支仓库
 
