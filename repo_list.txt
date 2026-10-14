@@ -49,7 +49,6 @@ boater-man/FnDepot
 ccyo-fang/FnDepot
 cmbya/FnDepot
 cometzhang/FnDepot
-conversun/fnos-apps
 ctllo-bit/FnDepot
 dahe6688/FnDepot
 damadingding/FnDepot

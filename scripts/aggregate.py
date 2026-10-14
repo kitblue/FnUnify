@@ -14,6 +14,7 @@ from collections import defaultdict
 import urllib.request, concurrent.futures
 
 REPO_LIST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "repo_list.txt")
+OFFICIAL_LIST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "official_apps.txt")
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "fnpack.json")
 RAW = "https://raw.githubusercontent.com"
 API = "https://api.github.com"
@@ -308,9 +309,33 @@ def probe_size(url):
         pass
     return None
 
+def load_official_excludes():
+    """读取官方应用商店排除清单（conversun/fnos-apps 的 appname，小写归一化）"""
+    try:
+        with open(OFFICIAL_LIST, encoding="utf-8") as f:
+            names = [l.strip().lower() for l in f if l.strip() and not l.startswith("#")]
+        return set(names)
+    except FileNotFoundError:
+        return set()
+
+# 输出精简：download_url/arch_diff/version/size 已从 releases 提取，releases 属冗余；
+# maintainer* 并入 author/distributor；source_repo/changelog/history/bug_report_url 非必需
+TRIM_FIELDS = ("releases", "maintainer", "maintainer_url", "source_repo",
+               "changelog", "history", "bug_report_url", "details_url")
+
+def trim_entry(e):
+    """精简单个条目：删除已由 download_url/arch_diff 承载的冗余字段"""
+    for k in TRIM_FIELDS:
+        e.pop(k, None)
+    return e
+
+
 def main():
     with open(REPO_LIST, encoding="utf-8") as f:
         sources = [l.strip() for l in f if l.strip() and not l.startswith("#")]
+    official_excludes = load_official_excludes()
+    if official_excludes:
+        print(f"官方应用排除清单: {len(official_excludes)} 个（fnOS 官方商店自带，不重复收录）")
     print(f"源订阅模式: 拉取 {len(sources)} 个源...")
 
     # 全量收录：不去重、不按版本择优，保留每个源的全部条目（字段原样）
@@ -424,6 +449,12 @@ def main():
             print(f"  {appname}: {len(keys)} 源 -> {winner} (+{len(keys)-1} 合并)")
 
     apps_out = final_out
+    # 排除 fnOS 官方商店自带应用（不重复收录，官方由官方商店提供）
+    if official_excludes:
+        dropped = [a for a in apps_out if a in official_excludes]
+        for a in dropped:
+            del apps_out[a]
+        print(f"排除官方应用 {len(dropped)} 个 -> 剩余 {len(apps_out)} 个")
     print(f"去重后: {len(apps_out)} 唯一应用 (合并 {sum(len(v) for v in name_groups.values())} 条源条目)")
 
     if missing_icons:
@@ -458,9 +489,11 @@ def main():
         print(f"size 探测补全 {got}/{len(missing_sizes)} 个")
 
     # 输出前统一清理内部字段（_src 为溯源字段保留；_src_meta/_orig/_branch 已用完）
+    # 并精简冗余字段，将 fnpack.json 控制在 jsDelivr 1024KB 限制内
     for e in apps_out.values():
         for k in ("_src_meta", "_orig", "_branch"):
             e.pop(k, None)
+        trim_entry(e)
 
     with open(OUTPUT, "w", encoding="utf-8") as f:
         json.dump(apps_out, f, ensure_ascii=False, indent=2)
