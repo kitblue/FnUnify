@@ -6,10 +6,11 @@ FnUnify 聚合脚本 v3
 - 相对路径 icon_url/download_url/preview_urls 转 raw 绝对直链
 - 开发者信息归一化：author/author_url 继承 maintainer/distributor/developer/source_info，缺失兜底仓库 owner
 - 连接优先 API：设置了 GITHUB_TOKEN 时用 GitHub API 拉取（限流宽松），否则回退 raw 直链
-- 去重：appname 小写，fnos-apps 优先，版本最高者胜
+- 去重（源订阅模式）：appname 同名同包名，保留数据最完整的一个，其他标记 _fork_of 溯源
 - 输出 FnDepot V2 顶层键式 fnpack.json（platform 数组、arch_diff 规范）
 """
 import json, re, os, sys, datetime, base64
+from collections import defaultdict
 import urllib.request, concurrent.futures
 
 REPO_LIST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "repo_list.txt")
@@ -365,10 +366,10 @@ def main():
         out.setdefault("history", {})
         out.setdefault("install_type", "存储空间")
         out.setdefault("platform", ["x86", "arm"])
-        for k in ("_src", "_src_meta", "_orig", "_branch"):
-            out.pop(k, None)
         out.setdefault("source_repo", src)
+        # 注意：_src/_src_meta/_orig/_branch 保留到去重评分之后，输出前统一清理
         # key 唯一化：同源冲突由 dict 天然消化；跨源重复保留全部条目，key 加 -2/-3 后缀
+        # appname 保留源原始名（不带后缀），后缀只用于 dict key，供去重阶段正确分组
         base = (out.get("appname") or an).lower()
         key = base
         i = 2
@@ -376,30 +377,54 @@ def main():
             key = f"{base}-{i}"
             i += 1
         used_keys.add(key)
-        out["appname"] = key
+        out["appname"] = base
         apps_out[key] = out
         if not out.get("icon_url"):
-            missing_icons.append((key, owner, repo, branch, key))
+            missing_icons.append((base, owner, repo, branch, base))
         if not out.get("size") and dl:
-            missing_sizes.append((key, dl))
+            missing_sizes.append((base, dl))
 
-    # 同名图标继承：从有 icon 的同名同显示名条目复制（补全 fork 源缺失图标）
-    name_icons = {}
-    for k, e in apps_out.items():
-        ic = e.get("icon_url")
-        if ic:
-            base = re.sub(r"-\d+$", "", k)
-            name_icons.setdefault((base, e.get("display_name", "")), ic)
-    inherited = 0
-    for k, e in apps_out.items():
-        if not e.get("icon_url"):
-            base = re.sub(r"-\d+$", "", k)
-            ic = name_icons.get((base, e.get("display_name", "")))
-            if ic:
-                e["icon_url"] = ic
-                inherited += 1
-    if inherited:
-        print(f"同名图标继承补全 {inherited} 个")
+    # 同名同包名去重：保留数据最完整的那个，其他标记为 fork 并保留 _fork_of 溯源
+    # 优先级：官方源(conversun/fnos-apps) > 有 maintainer/distributor/developer 字段 > icon 覆盖 > 源顺序
+    name_groups = defaultdict(list)
+    for key, e in apps_out.items():
+        e.get("_src", "")  # 确保存在
+        name_groups[e.get("appname")].append(key)
+
+    final_out = {}
+    for appname, keys in name_groups.items():
+        if len(keys) == 1:
+            final_out[appname] = apps_out[keys[0]]
+            continue
+        # 评分：官方源(+10) > maintainer(+3) > distributor(+2) > developer(+1) > icon_url(+1)
+        def score(k):
+            e = apps_out[k]
+            s = 0
+            src = e.get("_src", "")
+            if "conversun/fnos-apps" in src:
+                s += 10
+            if e.get("maintainer"):
+                s += 3
+            if e.get("distributor"):
+                s += 2
+            if e.get("developer"):
+                s += 1
+            if e.get("icon_url"):
+                s += 1
+            return s
+        keys.sort(key=score, reverse=True)
+        winner = keys[0]
+        e = dict(apps_out[winner])
+        # 溯源：全部来源仓库列表并入 _src（不修改原始字段值）
+        srcs = [apps_out[k].get("_src", "") for k in keys]
+        e["_src"] = srcs if len(srcs) > 1 else srcs[0]
+        e["_fork_of"] = winner
+        final_out[appname] = e
+        if len(keys) > 1:
+            print(f"  {appname}: {len(keys)} 源 -> {winner} (+{len(keys)-1} 合并)")
+
+    apps_out = final_out
+    print(f"去重后: {len(apps_out)} 唯一应用 (合并 {sum(len(v) for v in name_groups.values())} 条源条目)")
 
     if missing_icons:
         still_missing = [(k, o, r, b, a) for (k, o, r, b, a) in missing_icons if not apps_out[k].get("icon_url")]
@@ -431,6 +456,11 @@ def main():
                     apps_out[k]["size"] = sz
         got = sum(1 for k, _ in missing_sizes if apps_out[k].get("size"))
         print(f"size 探测补全 {got}/{len(missing_sizes)} 个")
+
+    # 输出前统一清理内部字段（_src 为溯源字段保留；_src_meta/_orig/_branch 已用完）
+    for e in apps_out.values():
+        for k in ("_src_meta", "_orig", "_branch"):
+            e.pop(k, None)
 
     with open(OUTPUT, "w", encoding="utf-8") as f:
         json.dump(apps_out, f, ensure_ascii=False, indent=2)
