@@ -495,9 +495,17 @@ def main():
             e.pop(k, None)
         trim_entry(e)
 
+    # 输出：每个应用一行（紧凑格式），控制订阅正文行数（客户端有行数上限）
     with open(OUTPUT, "w", encoding="utf-8") as f:
-        json.dump(apps_out, f, ensure_ascii=False, indent=2)
-    print(f"完成: {len(apps_out)} 个应用 -> {OUTPUT} (FnDepot V2 顶层键式)")
+        f.write("{\n")
+        keys = list(apps_out.keys())
+        for i, k in enumerate(keys):
+            comma = "," if i < len(keys) - 1 else ""
+            f.write(json.dumps(k, ensure_ascii=False) + ": "
+                    + json.dumps(apps_out[k], ensure_ascii=False, separators=(",", ":"))
+                    + comma + "\n")
+        f.write("}\n")
+    print(f"完成: {len(apps_out)} 个应用 -> {OUTPUT} (FnDepot V2 顶层键式, 每应用一行)")
 
 if __name__ == "__main__":
     main()
