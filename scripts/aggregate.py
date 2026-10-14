@@ -495,17 +495,26 @@ def main():
             e.pop(k, None)
         trim_entry(e)
 
-    # 输出：每个应用一行（紧凑格式），控制订阅正文行数（客户端有行数上限）
+    # 输出：FnDepot V2 包装层格式（schema_version + source_info + apps），每个应用一行紧凑输出
+    # 客户端仅识别 V2 三层结构；裸顶层键式会解析 0，务必保持包装层
+    source_info = {
+        "name": "FnUnify",
+        "author": "kitblue",
+        "homepage": "https://github.com/kitblue/FnUnify",
+        "description": f"飞牛 fnOS 第三方应用聚合源：聚合 {len(sources)} 个第三方源、去重后收录 {len(apps_out)} 个应用（已排除官方 conversun/fnos-apps 应用）。",
+    }
     with open(OUTPUT, "w", encoding="utf-8") as f:
-        f.write("{\n")
+        f.write('{"schema_version": 2, "source_info": '
+                + json.dumps(source_info, ensure_ascii=False, separators=(",", ":"))
+                + ', "apps": {\n')
         keys = list(apps_out.keys())
         for i, k in enumerate(keys):
             comma = "," if i < len(keys) - 1 else ""
-            f.write(json.dumps(k, ensure_ascii=False) + ": "
+            f.write(("  " if i == 0 else ", ") + json.dumps(k, ensure_ascii=False) + ": "
                     + json.dumps(apps_out[k], ensure_ascii=False, separators=(",", ":"))
                     + comma + "\n")
-        f.write("}\n")
-    print(f"完成: {len(apps_out)} 个应用 -> {OUTPUT} (FnDepot V2 顶层键式, 每应用一行)")
+        f.write("}}\n")
+    print(f"完成: {len(apps_out)} 个应用 -> {OUTPUT} (FnDepot V2 包装层, 每应用一行)")
 
 if __name__ == "__main__":
     main()
