@@ -1,70 +1,59 @@
-# FnUnify · 飞牛 fnOS 第三方应用聚合源
+# FnUnify — fnOS 第三方应用源订阅聚合
 
-> 添加一个源，发现全部飞牛第三方应用。
+FnUnify 是一个 **FnDepot 源订阅聚合**项目：订阅社区公开的第三方 fnOS 应用源，将各源的全部应用**全量收录**到一份 `fnpack.json`（FnDepot V2 顶层键式规范），供 fnOS 应用商店一键添加使用。
 
-FnUnify 聚合了 **FnDepot 生态（117+ 社区源）** 与 **fnos-apps（官方社区源）**，按应用名去重、保留最新版本，统一输出为 FnDepot V2 规范的 `fnpack.json`，并通过 GitHub Actions 每日自动刷新。
+## 项目性质（源订阅模式）
 
-## 下载与安装
+与"应用聚合源"不同，本项目**不做**以下处理：
 
-**第三方应用商店直接安装**：前往 [FnDepot 仓库 Release 页面](https://github.com/EWEDLCM/FnDepot/releases)，下载 `.fpk` 安装包后通过 fnOS 应用中心「安装应用」导入即可。
+- 不做应用去重合并（同一应用多源收录时各自保留，按源区分）
+- 不改写作者/维护者字段（应用作者以各源原始数据为准，缺失即留空）
+- 不生成间接跳转链接，`download_url` 直接指向各源原始下载地址
 
-**第三方源自动发现**（推荐）：在 fnOS 应用中心「第三方应用商店」→ 添加第三方源，使用以下任一方式添加，即可自动浏览安装 300+ 聚合应用。
+因此不存在"图标缺失靠兜底、作者显示错误、应用数量被去重压缩"等聚合模式固有问题。
 
-### 方式一：JSON 直链（推荐）
+## 数据概况（2026-10-14 生成）
 
-在 fnOS 应用中心「第三方应用商店」→ 添加第三方源，输入以下 JSON 地址：
+| 指标 | 数值 |
+| --- | --- |
+| 订阅源数量 | 152 |
+| 解析成功 | 150 |
+| 全量收录条目 | 1780 |
+| 可安装应用（含下载地址） | 1377 |
+| 图标覆盖 | 97% |
+| size 覆盖 | 82% |
+| arch_diff 覆盖 | 87% |
+
+## 使用方法
+
+在 fnOS 应用商店 → 第三方源 → 添加源，填入：
 
 ```
 https://raw.githubusercontent.com/kitblue/FnUnify/main/fnpack.json
 ```
 
-或使用 jsDelivr CDN（国内访问更快）：
+或使用 jsDelivr CDN：
 
 ```
 https://cdn.jsdelivr.net/gh/kitblue/FnUnify@main/fnpack.json
 ```
 
-### 方式二：仓库地址
+## 文件说明
 
-直接填写仓库地址，应用中心会自动读取根目录的 `fnpack.json`：
+| 文件 | 说明 |
+| --- | --- |
+| `fnpack.json` | FnDepot V2 源订阅聚合产物，FnDepot 客户端直读 |
+| `repo_list.txt` | 订阅源清单（一行一个 `owner/repo`） |
+| `scripts/aggregate.py` | 重新生成脚本：拉取全部源 → 全量收录 → 输出 fnpack.json |
 
-```
-https://github.com/kitblue/FnUnify
-```
+## 重新生成
 
-## 功能特性
-
-- **单源发现**：合并 FnDepot 117 源 + fnos-apps，去重后约 300+ 应用
-- **每日自动刷新**：GitHub Actions 每日 19:00（UTC+8）拉取全部上游源，自动更新 `fnpack.json`
-- **去重策略**：按 appname 去重；fnos-apps（官方维护、持续更新）优先；其余源保留版本号最高者
-- **标准 V2 格式**：兼容 FnDepot V2 规范（键式 fnpack.json，含 arch_diff 多架构下载地址）
-
-## 项目结构
-
-```
-.
-├── fnpack.json            # 聚合产物（FnDepot V2 规范）
-├── repo_list.txt          # 上游源列表（FnDepot ∪ Moo 精选）
-├── scripts/
-│   └── aggregate.py       # 聚合脚本：拉取 → 去重 → 输出
-└── .github/workflows/
-    └── sync.yml           # 每日自动刷新
+```bash
+python scripts/aggregate.py
 ```
 
-## 维护说明
+产物输出到仓库根目录 `fnpack.json`。
 
-- 上游源列表维护在 `repo_list.txt`，新增/移除源直接编辑该文件即可
-- 手动触发聚合：仓库 Actions 页面 → Daily Aggregation → Run workflow
-- 聚合脚本可在本地运行：`python scripts/aggregate.py`
+## 免责声明
 
-## 数据来源
-
-- [conversun/fnos-apps](https://github.com/conversun/fnos-apps) — 官方社区源，175+ 应用
-- [710850609/FnDepot](https://github.com/710850609/FnDepot) — FnDepot 生态源列表
-- [EWEDLCM/FnDepot](https://github.com/EWEDLCM/FnDepot) — FnDepot 社区源，涵盖更多实用工具与效率应用
-- [Blue-Mink/moo](https://github.com/Blue-Mink/moo) — Moo 精选源列表
-- 各社区维护者的 FnDepot 分支仓库
-
-## License
-
-MIT
+所有应用条目均来自社区公开的第三方源，版权与维护归各源作者所有。本仓库仅做聚合与转发，不修改应用本体；如发现侵权内容请联系对应源作者，或在本仓库提 Issue 移除相关源。

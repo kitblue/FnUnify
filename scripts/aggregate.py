@@ -12,8 +12,8 @@ FnUnify 聚合脚本 v3
 import json, re, os, sys, datetime, base64
 import urllib.request, concurrent.futures
 
-REPO_LIST = "repo_list.txt"
-OUTPUT = "fnpack.json"
+REPO_LIST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "repo_list.txt")
+OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "fnpack.json")
 RAW = "https://raw.githubusercontent.com"
 API = "https://api.github.com"
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
@@ -81,14 +81,27 @@ def latest_release_version(entry):
     return max(vers, key=version_key)
 
 def extract_download(entry, owner, repo, branch):
-    """从 releases 提取最新版下载信息 -> (version, download_url, arch_diff)"""
+    """提取下载信息 -> (version, download_url, arch_diff)
+    优先级：download_url 字段 > 条目自带 arch_diff > releases 最新版"""
     lv = latest_release_version(entry)
     ad = None
+    # 条目自带 arch_diff（部分源直接写 arch_diff 而无 releases）
+    own_ad = entry.get("arch_diff")
+    if isinstance(own_ad, dict):
+        ad = {}
+        for arch, pv in own_ad.items():
+            if isinstance(pv, dict) and pv.get("download_url"):
+                ad[arch] = {"download_url": abs_url(pv["download_url"], owner, repo, branch)}
+                if pv.get("sha256"):
+                    ad[arch]["sha256"] = pv["sha256"]
+                if pv.get("size"):
+                    ad[arch]["size"] = pv["size"]
+    # releases 最新版（优先级更高，覆盖自身 arch_diff 中同名架构）
     if lv is not None:
         rel_v = entry["releases"][lv]
         pkg = rel_v.get("packages") if isinstance(rel_v, dict) else None
         if isinstance(pkg, dict):
-            ad = {}
+            ad = ad or {}
             for arch, pv in pkg.items():
                 if isinstance(pv, dict) and pv.get("download_url"):
                     ad[arch] = {"download_url": abs_url(pv["download_url"], owner, repo, branch)}
@@ -109,14 +122,20 @@ def extract_download(entry, owner, repo, branch):
     return (lv or entry.get("version", "")), dl, ad
 
 def normalize_entry(entry, owner, repo, branch, src_meta=None):
+    """源订阅模式：原样保留源字段，不做作者改写/兜底（避免显示错误作者）"""
     e = dict(entry)
     src_meta = src_meta or {}
-    # 开发者信息归一化：author = maintainer > distributor > developer > source_info.author > owner
-    author = (e.get("maintainer") or e.get("distributor") or e.get("developer")
-              or src_meta.get("author") or src_meta.get("distributor") or owner)
-    e["author"] = str(author) if author else owner
+    # 作者：按源字段原样取值；fnos-apps 类源（官方及其 fork）maintainer 实为仓库维护者，
+    # 不等于应用作者，若等于 conversun/源作者则留空（与官方直加一致），避免显示错误作者
+    src_is_fnos_apps = "fnos-apps" in (entry.get("_src") or "").lower()
+    author = (e.get("maintainer") or e.get("distributor") or e.get("developer"))
+    if src_is_fnos_apps and author in ("conversun", src_meta.get("author"), src_meta.get("distributor")):
+        author = ""
+    if not src_is_fnos_apps:
+        author = author or src_meta.get("author") or src_meta.get("distributor")
+    e["author"] = str(author) if author else ""
     e["author_url"] = (e.get("maintainer_url") or e.get("distributor_url")
-                       or e.get("developer_url") or f"https://github.com/{owner}")
+                       or e.get("developer_url") or (f"https://github.com/{owner}" if author else ""))
     e["distributor"] = e.get("distributor") or src_meta.get("name", "")
     e["distributor_url"] = e.get("distributor_url") or src_meta.get("homepage", f"https://github.com/{owner}")
     # 图标：icon_url > icon > logo，相对路径转绝对
@@ -160,7 +179,7 @@ def parse_fnpack(txt, owner, repo, branch):
     out = {}
     if isinstance(raw_apps, dict):
         for k, v in raw_apps.items():
-            if isinstance(v, dict) and ("display_name" in v or "download_url" in v or "releases" in v):
+            if isinstance(v, dict) and ("display_name" in v or "download_url" in v or "releases" in v or "details_url" in v):
                 v["appname"] = v.get("appname", k)
                 out[k.lower()] = v
     elif isinstance(raw_apps, list):
@@ -213,6 +232,28 @@ def load_source(owner_repo):
     txt, br = try_raw(owner, repo, "fnpack.json")
     if txt is not None:
         apps, src_meta = parse_fnpack(txt, owner, repo, br)
+        # 懒加载详情：新版 FnDepot 模板 apps 仅含 details_url，详情在 apps/{app}.json
+        for an, v in list(apps.items()):
+            du = v.get("details_url")
+            if not du or v.get("download_url") or v.get("releases") or v.get("arch_diff"):
+                continue
+            dtxt = fetch_file(owner, repo, du.lstrip("/"), br)
+            if not dtxt:
+                continue
+            try:
+                dj = json.loads(dtxt)
+            except Exception:
+                continue
+            if not isinstance(dj, dict):
+                continue
+            detail = dj.get("app") if isinstance(dj.get("app"), dict) else dj
+            detail = dict(detail)
+            detail.pop("appname", None)
+            detail.pop("app_name", None)
+            detail.setdefault("appname", an)
+            merged = dict(v)
+            merged.update(detail)
+            apps[an] = merged
         for an, v in apps.items():
             v.setdefault("_src", f"{owner}/{repo}")
             v["_src_meta"] = src_meta
@@ -223,12 +264,57 @@ def load_source(owner_repo):
         return parse_apps_json(txt)
     return {}
 
+ICON_CANDIDATES = [
+    lambda an: f"{an}/icon.png",
+    lambda an: f"{an}/ICON.PNG",
+    lambda an: f"{an}/ICON_256.PNG",
+    lambda an: f"{an}/icon_256.png",
+    lambda an: f"{an}/logo.png",
+    lambda an: f"apps/{an}/icon.png",
+    lambda an: f"apps/{an}/ICON.PNG",
+    lambda an: f"apps/{an}/ICON_256.PNG",
+    lambda an: f"assets/icons/{an}.png",
+    lambda an: f"icon/{an}.png",
+    lambda an: f"icons/{an}.png",
+]
+
+def probe_icon(owner, repo, branch, appname):
+    """HEAD 探测常见图标路径，命中即返回 raw 直链；超过 512KB 视为非图标"""
+    base = f"https://raw.githubusercontent.com/{owner}/{repo}/{branch}"
+    for fn in ICON_CANDIDATES:
+        url = f"{base}/{fn(appname)}"
+        try:
+            req = urllib.request.Request(url, method="HEAD")
+            with urllib.request.urlopen(req, timeout=6) as r:
+                if r.status == 200:
+                    cl = r.headers.get("Content-Length")
+                    if cl and int(cl) <= 524288:
+                        return url
+        except Exception:
+            continue
+    return ""
+
+def probe_size(url):
+    """HEAD download_url 取 Content-Length 作为包体积；>=100KB 才采信"""
+    try:
+        req = urllib.request.Request(url, method="HEAD")
+        req.add_header("User-Agent", "FnUnify/1.0")
+        with urllib.request.urlopen(req, timeout=8) as r:
+            cl = r.headers.get("Content-Length")
+            if cl and int(cl) >= 102400:
+                return int(cl)
+    except Exception:
+        pass
+    return None
+
 def main():
     with open(REPO_LIST, encoding="utf-8") as f:
         sources = [l.strip() for l in f if l.strip() and not l.startswith("#")]
-    print(f"聚合 {len(sources)} 个源...")
+    print(f"源订阅模式: 拉取 {len(sources)} 个源...")
 
-    merged = {}
+    # 全量收录：不去重、不按版本择优，保留每个源的全部条目（字段原样）
+    entries = []
+    seen_sources = 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=16) as ex:
         futures = {ex.submit(load_source, s): s for s in sources}
         for f in concurrent.futures.as_completed(futures):
@@ -236,22 +322,20 @@ def main():
                 apps = f.result()
             except Exception:
                 apps = {}
+            if apps:
+                seen_sources += 1
             for an, entry in apps.items():
                 if an in ("source_info", "apps", "moo", "fndepot.source", "fnos-apps-store"):
                     continue
-                if an not in merged:
-                    merged[an] = entry
-                    continue
-                cur = merged[an]
-                if entry.get("_src") == "fnos-apps" and cur.get("_src") != "fnos-apps":
-                    merged[an] = entry
-                elif cur.get("_src") == "fnos-apps" and entry.get("_src") != "fnos-apps":
-                    pass
-                elif version_key(entry.get("version")) > version_key(cur.get("version")):
-                    merged[an] = entry
+                entries.append((an, entry))
+
+    print(f"解析成功 {seen_sources}/{len(sources)} 个源, 全量条目 {len(entries)} 个 (未去重)")
 
     apps_out = {}
-    for an, e in sorted(merged.items()):
+    used_keys = set()
+    missing_icons = []  # (key, owner, repo, branch, appname)
+    missing_sizes = []  # (key, url)
+    for an, e in entries:
         src = e.get("_src", "")
         owner, repo = (src.split("/", 1) + ["", ""])[:2]
         branch = e.get("_branch", "main")
@@ -284,8 +368,69 @@ def main():
         for k in ("_src", "_src_meta", "_orig", "_branch"):
             out.pop(k, None)
         out.setdefault("source_repo", src)
-        key = (out.get("appname") or an).lower()
+        # key 唯一化：同源冲突由 dict 天然消化；跨源重复保留全部条目，key 加 -2/-3 后缀
+        base = (out.get("appname") or an).lower()
+        key = base
+        i = 2
+        while key in used_keys:
+            key = f"{base}-{i}"
+            i += 1
+        used_keys.add(key)
+        out["appname"] = key
         apps_out[key] = out
+        if not out.get("icon_url"):
+            missing_icons.append((key, owner, repo, branch, key))
+        if not out.get("size") and dl:
+            missing_sizes.append((key, dl))
+
+    # 同名图标继承：从有 icon 的同名同显示名条目复制（补全 fork 源缺失图标）
+    name_icons = {}
+    for k, e in apps_out.items():
+        ic = e.get("icon_url")
+        if ic:
+            base = re.sub(r"-\d+$", "", k)
+            name_icons.setdefault((base, e.get("display_name", "")), ic)
+    inherited = 0
+    for k, e in apps_out.items():
+        if not e.get("icon_url"):
+            base = re.sub(r"-\d+$", "", k)
+            ic = name_icons.get((base, e.get("display_name", "")))
+            if ic:
+                e["icon_url"] = ic
+                inherited += 1
+    if inherited:
+        print(f"同名图标继承补全 {inherited} 个")
+
+    if missing_icons:
+        still_missing = [(k, o, r, b, a) for (k, o, r, b, a) in missing_icons if not apps_out[k].get("icon_url")]
+        print(f"探测 {len(still_missing)} 个仍缺失图标的条目...")
+        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as ex:
+            futs = {ex.submit(probe_icon, o, r, b, a): (k, o, r) for k, o, r, b, a in still_missing}
+            for f in concurrent.futures.as_completed(futs):
+                k, o, r = futs[f]
+                try:
+                    url = f.result()
+                except Exception:
+                    url = ""
+                if url:
+                    apps_out[k]["icon_url"] = url
+        got = sum(1 for k, *_ in still_missing if apps_out[k].get("icon_url"))
+        print(f"图标探测补全 {got}/{len(still_missing)} 个")
+
+    if missing_sizes:
+        print(f"探测 {len(missing_sizes)} 个缺失 size 的下载地址...")
+        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as ex:
+            futs = {ex.submit(probe_size, url): k for k, url in missing_sizes}
+            for f in concurrent.futures.as_completed(futs):
+                k = futs[f]
+                try:
+                    sz = f.result()
+                except Exception:
+                    sz = None
+                if sz:
+                    apps_out[k]["size"] = sz
+        got = sum(1 for k, _ in missing_sizes if apps_out[k].get("size"))
+        print(f"size 探测补全 {got}/{len(missing_sizes)} 个")
 
     with open(OUTPUT, "w", encoding="utf-8") as f:
         json.dump(apps_out, f, ensure_ascii=False, indent=2)
