@@ -34,7 +34,7 @@ docsify
 dpanel
 duplicati
 easytier
-embyserver
+emby
 ente
 ezbookkeeping
 feigram
@@ -42,8 +42,9 @@ filebrowser
 fileview
 firefox
 fnmonitor
-fnosoidcbridge
-fntvplus
+fnos-apps-store
+fnos-oidc-bridge
+fntv-plus
 forgejo
 freshrss
 frigate
@@ -104,14 +105,14 @@ netbird
 netdata
 next-ai-draw-io
 nextcloud
+nginx
 nginx-proxy-manager
 nginx-ui
 nginx-web
-nginxserver
 niupic
 node-red
 ntfy
-nvidia-driver-580
+nvidia-driver
 obsidian
 ollama
 ombi
@@ -123,7 +124,7 @@ penpot
 photoprism
 picoclaw
 pihole
-plexmediaserver
+plex
 pocket-id
 prometheus
 prowlarr
