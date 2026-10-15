@@ -4,14 +4,18 @@ FnUnify 聚合脚本 v3
 - 支持三种源格式：fnpack.json 顶层键式(V2)、fnpack.json 包装层({schema_version,source_info,apps})、apps.json(v1)
 - releases 解析：从最新版 releases[ver].packages 提取 download_url / arch_diff / version
 - 相对路径 icon_url/download_url/preview_urls 转 raw 绝对直链
-- 开发者信息归一化：author/author_url 继承 maintainer/distributor/developer/source_info，缺失兜底仓库 owner
+- 开发者信息归一化：author/author_url 继承 maintainer/distributor/developer/source_info，缺失兜底仓库 owner；
+  官方 conversun/fnos-apps 作者留空（避免把仓库维护者当应用作者）；fnos-apps 镜像源(fork)作者从 source_info.author 或镜像 owner 继承
 - 连接优先 API：设置了 GITHUB_TOKEN 时用 GitHub API 拉取（限流宽松），否则回退 raw 直链
 - 去重（源订阅模式）：按 display_name 去重（同一 display_name 仅保留数据最完整的一个），若 display_name 相同且来源不同，额外加 _fork_of 溯源标记。注意：各 fork 源已用 appname 加 -N 后缀区分，按 appname 直接去重会误判，应改用 display_name 或规范化后包名去后缀比对。
 - 重复源检测：同一 owner/repo 在 repo_list 中出现多次时，仅保留第一个出现，其余标记为重复源。
 - 源健康监控：对 repo_list.txt 每个源做 HTTP HEAD/GET 轻量探测（fnpack.json 路径），
-  不可达源在报告 source_health_report.json 中标记 unreachable，并附带 HTTP 状态码/失败原因/检查时间。
+  不可达源在报告 source_health_report.json 中标记 unreachable，并附带 HTTP 状态码/失败原因/检查时间；
+  可达源追加 GET 结构验证（structure_ok），识别 200 但内容非合法应用清单的伪健康源。
 - 元数据质量：输出前统计 display_name/desc/version/download_url/icon_url 等关键字段覆盖率，
-  不完整条目标记 incomplete，报告写入 metadata_quality_report.json。
+  不完整条目标记 incomplete（severity=warning，非阻断），报告写入 metadata_quality_report.json。
+- 去重加权：fnos-apps 类源（官方 conversun/fnos-apps 及其 fork 镜像）统一按 fnos-apps 加权；
+  分组键优先 display_name 规范化，回退 appname；winner 缺图标时组内同名继承。
 - 输出官方 FnDepot V2 格式（schema_version 字符串 "2"、source_info、apps；
   categories 固定 9 类最多 2 个；releases.<version>.packages.<arch> 嵌套结构；
   install_type 归一化 ""/root；run_as 归一化 package/root；is_docker 布尔；size 非负整数）
@@ -245,12 +249,17 @@ def normalize_entry(entry, owner, repo, branch, src_meta=None):
     e = dict(entry)
     src_meta = src_meta or {}
     # 作者：按源字段原样取值；fnos-apps 类源（官方及其 fork）maintainer 实为仓库维护者，
-    # 不等于应用作者，若等于 conversun/源作者则留空（与官方直加一致），避免显示错误作者
+    # 不等于应用作者，若等于 conversun/源作者则留空（与官方直加一致），避免显示错误作者；
+    # 镜像源（非官方 conversun 的 fnos-apps fork）作者从 source_info.author > distributor > 镜像仓库 owner 继承
     src_is_fnos_apps = "fnos-apps" in (entry.get("_src") or "").lower()
+    src_owner = (entry.get("_src") or "").split("/", 1)[0]
     author = (e.get("maintainer") or e.get("distributor") or e.get("developer"))
-    if src_is_fnos_apps and author in ("conversun", src_meta.get("author"), src_meta.get("distributor")):
-        author = ""
-    if not src_is_fnos_apps:
+    if src_is_fnos_apps:
+        if author in ("conversun", src_meta.get("author"), src_meta.get("distributor")):
+            author = ""
+        if not author and src_owner != "conversun":
+            author = src_meta.get("author") or src_meta.get("distributor") or src_owner
+    else:
         author = author or src_meta.get("author") or src_meta.get("distributor")
     e["author"] = str(author) if author else ""
     e["author_url"] = (e.get("maintainer_url") or e.get("distributor_url")
@@ -474,11 +483,13 @@ HEALTH_PATHS = ("fnpack.json", "apps.json")
 def probe_source(owner, repo):
     """轻量探测单个源：HEAD fnpack.json（优先）/ apps.json，失败时回退 GET。
     返回 dict：{owner/repo, reachable, http_status, probe_path, reason, checked_at}
+    HEAD 成功后追加 GET 结构验证（structure_ok / structure_note）：内容须为合法 JSON 且含有效应用清单结构。
     额外附带 GitHub 仓库元数据（pushed_at / archived），失败留空。
     """
     checked_at = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     result = {"owner/repo": f"{owner}/{repo}", "reachable": False,
               "http_status": None, "probe_path": None, "reason": "",
+              "structure_ok": None, "structure_note": "",
               "pushed_at": None, "archived": None, "checked_at": checked_at}
     # 轻量探测：优先 HEAD fnpack.json
     for path in HEALTH_PATHS:
@@ -490,6 +501,26 @@ def probe_source(owner, repo):
                     result["reachable"] = True
                     result["http_status"] = r.status
                     result["probe_path"] = f"{br}/{path}"
+                    # 结构验证：GET 内容必须是合法 JSON 且含有效应用清单结构
+                    txt = _http(f"{RAW}/{owner}/{repo}/{br}/{path}", timeout=12)
+                    if txt is None:
+                        result["structure_ok"] = False
+                        result["structure_note"] = "GET 拉取内容失败"
+                    else:
+                        try:
+                            j = json.loads(txt)
+                            if path == "fnpack.json":
+                                ok = (isinstance(j, dict) and
+                                      (("apps" in j and isinstance(j["apps"], dict))
+                                       or any(isinstance(v, dict) and ("display_name" in v or "download_url" in v or "releases" in v)
+                                              for v in j.values())))
+                            else:  # apps.json
+                                ok = isinstance(j, dict) and isinstance(j.get("apps"), list) and bool(j["apps"])
+                            result["structure_ok"] = ok
+                            result["structure_note"] = "ok" if ok else "结构异常：无法解析为有效应用清单"
+                        except Exception:
+                            result["structure_ok"] = False
+                            result["structure_note"] = "非合法 JSON"
                     break
             except urllib.error.HTTPError as e:
                 result["http_status"] = e.code
@@ -536,6 +567,11 @@ def check_source_health(sources):
             else:
                 report["unreachable"] += 1
     report["sources"].sort(key=lambda x: (x["reachable"], x["owner/repo"]))
+    # 结构异常统计：可达但内容非有效应用清单的源（伪健康源）
+    structure_bad = [r["owner/repo"] for r in report["sources"]
+                     if r["reachable"] and r.get("structure_ok") is False]
+    if structure_bad:
+        print(f"结构异常源 {len(structure_bad)} 个（200 但内容非有效应用清单）: {', '.join(structure_bad[:20])}{' ...' if len(structure_bad) > 20 else ''}")
     try:
         with open(SOURCE_HEALTH, "w", encoding="utf-8") as f:
             json.dump(report, f, ensure_ascii=False, indent=2)
@@ -593,7 +629,7 @@ def metadata_quality_report(apps_out):
                 field_missing[fld] += 1
                 missing.append(fld)
         if missing:
-            incomplete.append({"key": key, "missing": missing})
+            incomplete.append({"key": key, "missing": missing, "severity": "warning"})
         for fld in KEY_FIELDS:
             per_field_stats.setdefault(fld, {"present": 0, "missing": 0})
             if fld not in missing:
@@ -606,6 +642,8 @@ def metadata_quality_report(apps_out):
         "checked_at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "total_apps": total,
         "incomplete_count": len(incomplete),
+        "quality_level": "warning",
+        "note": "缺失关键字段的应用标记为 warning 级别（非阻断）：商店仍可安装，仅详情页字段不完整；author/desc 缺失常见于官方直加与精简 fork 源。",
         "coverage_percent": coverage,
         "incomplete_apps": incomplete,
     }
@@ -633,25 +671,39 @@ def trim_entry(e):
     return e
 
 
+def _norm_dedup_name(s):
+    """去重规范化：小写并去除空白/连字符/下划线/点号，用于 display_name / appname 比对"""
+    return re.sub(r"[\s_.\-]+", "", str(s or "").lower())
+
+def _is_fnos_apps_like(src):
+    """fnos-apps 类源判定：官方 conversun/fnos-apps 及其 fork 镜像统一识别（用于去重加权）"""
+    s = str(src or "").lower()
+    return "fnos-apps" in s or s.endswith("/fn-apps")
+
 def dedup_apps(apps_out):
-    """同名同包名去重：保留数据最完整的那个，其他标记为 fork 并保留 _fork_of 溯源。
-    评分优先级：官方源(conversun/fnos-apps) > 有 maintainer/distributor/developer 字段 > icon 覆盖 > 源顺序
+    """同应用去重：分组键优先 display_name 规范化（兼容 Jellyfin / jellyfin 等写法差异），回退 appname；
+    保留数据最完整的那个，其他标记为 fork 并保留 _fork_of 溯源。
+    评分优先级：fnos-apps 类源(官方与镜像统一加权) > maintainer/distributor/developer 字段 > icon 覆盖 > 源顺序。
+    winner 缺失 icon_url 时从组内其它条目同名继承（上游 > 同名继承 > 探测 > 占位）。
     """
     name_groups = defaultdict(list)
     for key, e in apps_out.items():
-        name_groups[e.get("appname")].append(key)
+        g = _norm_dedup_name(e.get("display_name")) or _norm_dedup_name(e.get("appname"))
+        name_groups[g].append(key)
 
     final_out = {}
-    for appname, keys in name_groups.items():
-        if len(keys) == 1:
-            final_out[appname] = apps_out[keys[0]]
+    for gname, keys in name_groups.items():
+        if not gname:
             continue
-        # 评分：官方源(+10) > maintainer(+3) > distributor(+2) > developer(+1) > icon_url(+1)
+        if len(keys) == 1:
+            final_out[keys[0]] = apps_out[keys[0]]
+            continue
+        # 评分：fnos-apps 类源(+10) > maintainer(+3) > distributor(+2) > developer(+1) > icon_url(+1)
         def score(k):
             e = apps_out[k]
             s = 0
             src = e.get("_src", "")
-            if "conversun/fnos-apps" in src:
+            if _is_fnos_apps_like(src):
                 s += 10
             if e.get("maintainer"):
                 s += 3
@@ -665,19 +717,28 @@ def dedup_apps(apps_out):
         keys.sort(key=score, reverse=True)
         winner = keys[0]
         e = dict(apps_out[winner])
+        # 同名图标继承：winner 缺图标时从组内其它条目补 icon_url
+        if not e.get("icon_url"):
+            for k2 in keys:
+                if k2 == winner:
+                    continue
+                ic = apps_out[k2].get("icon_url")
+                if ic:
+                    e["icon_url"] = ic
+                    break
         # 溯源：全部来源仓库列表并入 _src（不修改原始字段值）
         srcs = [apps_out[k].get("_src", "") for k in keys]
         e["_src"] = srcs if len(srcs) > 1 else srcs[0]
         e["_fork_of"] = winner
-        final_out[appname] = e
+        final_out[e.get("appname") or winner] = e
         if len(keys) > 1:
-            print(f"  {appname}: {len(keys)} 源 -> {winner} (+{len(keys)-1} 合并)")
+            print(f"  {gname}: {len(keys)} 源 -> {winner} (+{len(keys)-1} 合并)")
     return final_out
 
 
 def main():
     with open(REPO_LIST, encoding="utf-8") as f:
-        sources = [l.strip() for l in f if l.strip() and not l.startswith("#")]
+        sources = [l.strip().lstrip("\ufeff") for l in f if l.strip() and not l.startswith("#")]
     official_excludes = load_official_excludes()
     if official_excludes:
         print(f"官方应用排除清单: {len(official_excludes)} 个（fnOS 官方商店自带，不重复收录）")
