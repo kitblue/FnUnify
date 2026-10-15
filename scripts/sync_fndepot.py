@@ -22,12 +22,12 @@ FnUnify 是一个 fnOS 第三方应用源聚合项目，同时维护一个 FnDep
 
 版本策略
 --------
-发版版本 = 上游（Blue-Mink/FnDepot）release tag 中的版本号 **降一位**：
+发版版本 = 上游（Blue-Mink/FnDepot）release tag 中的版本号（跟随上游，不再降位）：
 - 上游 v0.6.6 → 本项目发版 0.6.5（tag=fndepot-v0.6.5，manifest.version=0.6.5，
   fpk=fndepot_unify_v0.6.5.fpk）
 - 上游发 0.6.7 → 本项目发 0.6.6，依此类推。
 
-降一位用于测试客户端升级功能：定制版客户端检查本项目（kitblue/FnUnify）的 release，
+历史曾降一位用于测试客户端升级功能；现改为跟随上游版本号。定制版客户端检查本项目（kitblue/FnUnify）的 release，
 发版版本低于已装版本时即可走升级流程验证。原版不发新版就不重新发版，不随编译次数递增。
 
 参数行为
@@ -359,7 +359,7 @@ def inject_customization(work_dir: Path):
 
 
 def rewrite_manifest_version(work_dir: Path, release_version: str):
-    """将解包目录 manifest 的 version 改写为发版版本（降一位后的版本）。"""
+    """将解包目录 manifest 的 version 改写为发版版本（跟随上游）。"""
     manifest_path = work_dir / "manifest"
     text = manifest_path.read_text(encoding="utf-8")
     new_text = re.sub(r'^version="[^"]*"', f'version="{release_version}"', text,
@@ -489,7 +489,7 @@ def main():
 
     # 4) 无需构建则退出
     if not args.force and not need_build:
-        log(f"本地记录发版版本 {last} 与当前发版版本一致，无需发版（版本降一位策略，不随编译递增）")
+        log(f"本地记录发版版本 {last} 与当前发版版本一致，无需发版（跟随上游策略，不随编译递增）")
         return 0
 
     # 5) 下载 + 解包 + 定制 + 重打包
