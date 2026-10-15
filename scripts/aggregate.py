@@ -6,16 +6,25 @@ FnUnify 聚合脚本 v3
 - 相对路径 icon_url/download_url/preview_urls 转 raw 绝对直链
 - 开发者信息归一化：author/author_url 继承 maintainer/distributor/developer/source_info，缺失兜底仓库 owner
 - 连接优先 API：设置了 GITHUB_TOKEN 时用 GitHub API 拉取（限流宽松），否则回退 raw 直链
-- 去重（源订阅模式）：appname 同名同包名，保留数据最完整的一个，其他标记 _fork_of 溯源
-- 输出 FnDepot V2 顶层键式 fnpack.json（platform 数组、arch_diff 规范）
+- 去重（源订阅模式）：按 display_name 去重（同一 display_name 仅保留数据最完整的一个），若 display_name 相同且来源不同，额外加 _fork_of 溯源标记。注意：各 fork 源已用 appname 加 -N 后缀区分，按 appname 直接去重会误判，应改用 display_name 或规范化后包名去后缀比对。
+- 重复源检测：同一 owner/repo 在 repo_list 中出现多次时，仅保留第一个出现，其余标记为重复源。
+- 源健康监控：对 repo_list.txt 每个源做 HTTP HEAD/GET 轻量探测（fnpack.json 路径），
+  不可达源在报告 source_health_report.json 中标记 unreachable，并附带 HTTP 状态码/失败原因/检查时间。
+- 元数据质量：输出前统计 display_name/desc/version/download_url/icon_url 等关键字段覆盖率，
+  不完整条目标记 incomplete，报告写入 metadata_quality_report.json。
+- 输出官方 FnDepot V2 格式（schema_version 字符串 "2"、source_info、apps；
+  categories 固定 9 类最多 2 个；releases.<version>.packages.<arch> 嵌套结构；
+  install_type 归一化 ""/root；run_as 归一化 package/root；is_docker 布尔；size 非负整数）
 """
 import json, re, os, sys, datetime, base64
 from collections import defaultdict
-import urllib.request, concurrent.futures
+import urllib.request, urllib.error, concurrent.futures
 
 REPO_LIST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "repo_list.txt")
 OFFICIAL_LIST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "official_apps.txt")
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "fnpack.json")
+SOURCE_HEALTH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "source_health_report.json")
+META_QUALITY = os.path.join(os.path.dirname(os.path.abspath(__file__)), "metadata_quality_report.json")
 RAW = "https://raw.githubusercontent.com"
 API = "https://api.github.com"
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
@@ -123,6 +132,114 @@ def extract_download(entry, owner, repo, branch):
             dl = next(iter(ad.values()))["download_url"]
     return (lv or entry.get("version", "")), dl, ad
 
+# ========== V2 规范归一化辅助 ==========
+FIXED_CATEGORIES = ("影音娱乐", "系统工具", "编程开发", "AI赋能", "生活服务",
+                    "智能智控", "教育学习", "游戏地带", "硬件驱动")
+
+# labels 自由文本 -> 固定分类映射（关键词包含匹配，顺序即优先级）
+CATEGORY_RULES = [
+    (("影音娱乐",), ("影音", "媒体", "音乐", "影视", "娱乐", "短剧", "漫画", "阅读", "直播", "IPTV", "多媒体", "云盘", "云存储")),
+    (("游戏地带",), ("游戏", "多人", "自动化", "平台")),
+    (("编程开发",), ("开发", "编程", "API", "数据库", "ARM", "代理")),
+    (("AI赋能",), ("AI", "智能", "赋能")),
+    (("硬件驱动",), ("硬件", "驱动", "蓝牙", "美化")),
+    (("智能智控",), ("智控", "智能家居")),
+    (("教育学习",), ("教育", "学习", "图书", "词典")),
+    (("系统工具",), ("工具", "效率", "实用", "系统", "网络", "DNS", "反向代理", "负载均衡", "下载", "服务器", "原生", "Docker", "docker", "存储", "备份")),
+]
+
+def map_labels_to_categories(labels):
+    """labels（字符串或列表）-> 最多 2 个固定分类"""
+    if isinstance(labels, list):
+        text = ",".join(str(x) for x in labels)
+    else:
+        text = str(labels or "")
+    text = text.replace("/", ",").replace("、", ",")
+    matched = []
+    for cats, kws in CATEGORY_RULES:
+        for kw in kws:
+            if kw in text:
+                for c in cats:
+                    if c not in matched:
+                        matched.append(c)
+                break
+        if len(matched) >= 2:
+            break
+    for token in re.split(r"[,，;；]", text):
+        token = token.strip()
+        if token in FIXED_CATEGORIES and token not in matched:
+            matched.append(token)
+    return matched[:2]
+
+def normalize_install_type(it):
+    """install_type 归一化：空字符串=存储空间，root=系统空间"""
+    if isinstance(it, str):
+        t = it.strip()
+        if t in ("", "存储空间", "volume", "Agent", "工具", "音乐", "影视", "站长工具"):
+            return ""
+        if t in ("root", "系统空间"):
+            return "root"
+    return ""
+
+def normalize_run_as(ra):
+    return "root" if ra == "root" else "package"
+
+def normalize_is_docker(v):
+    if isinstance(v, bool):
+        return v
+    if isinstance(v, str):
+        return v.strip().lower() in ("true", "1", "yes")
+    if isinstance(v, (int, float)):
+        return bool(v)
+    return False
+
+def clean_size(v):
+    """size 仅保留非负整数（Bytes）；字符串/浮点等来源不明的全部丢弃"""
+    if isinstance(v, int) and v >= 0:
+        return v
+    return None
+
+def normalize_version(v):
+    """版本号规范化：去掉 v 前缀；不满足可比较版本的降级为 0.0.0"""
+    if not isinstance(v, str):
+        v = str(v)
+    v = v.strip()
+    if v.startswith("v") and len(v) > 1 and v[1].isdigit():
+        v = v[1:]
+    if re.match(r"^\d+(\.\d+)*([a-zA-Z0-9._-]*)?$", v):
+        return v
+    return "0.0.0"
+
+def legalize_key(k):
+    """键名合法化：只保留 [A-Za-z0-9._-]，非法字符转连字符"""
+    k2 = re.sub(r"[^A-Za-z0-9._-]", "-", str(k))
+    k2 = re.sub(r"-{2,}", "-", k2).strip("-")
+    if k2 and k2[0].isalnum():
+        return k2
+    return "app-" + (k2 or "app")
+
+def build_v2_releases(version, arch_diff):
+    """由 (version, arch_diff) 构造 V2 releases.<version>.packages.<arch> 结构"""
+    version = normalize_version(version)
+    packages = {}
+    if isinstance(arch_diff, dict) and arch_diff:
+        for arch, pv in arch_diff.items():
+            if not isinstance(pv, dict) or arch not in ("all", "x86", "arm"):
+                continue
+            dl = pv.get("download_url")
+            if not dl:
+                continue
+            pkg = {"download_url": dl}
+            if pv.get("sha256"):
+                pkg["sha256"] = pv["sha256"]
+            sz = clean_size(pv.get("size"))
+            if sz is not None:
+                pkg["size"] = sz
+            packages[arch] = pkg
+    if not packages:
+        return None
+    return {version: {"packages": packages}}
+
 def normalize_entry(entry, owner, repo, branch, src_meta=None):
     """源订阅模式：原样保留源字段，不做作者改写/兜底（避免显示错误作者）"""
     e = dict(entry)
@@ -150,16 +267,30 @@ def normalize_entry(entry, owner, repo, branch, src_meta=None):
     pv = e.get("preview_urls")
     if isinstance(pv, list):
         e["preview_urls"] = [abs_url(p, owner, repo, branch) for p in pv]
-    # categories -> labels
-    if not e.get("labels") and e.get("categories"):
-        e["labels"] = ",".join(e["categories"]) if isinstance(e["categories"], list) else str(e["categories"])
+    # V2 categories：优先取已有 categories，否则由 labels 映射；固定 9 类最多 2 个
+    cats = e.get("categories")
+    if isinstance(cats, str):
+        cats = [cats]
+    if isinstance(cats, list) and cats:
+        cats = map_labels_to_categories(",".join(str(c) for c in cats))
+    else:
+        cats = map_labels_to_categories(e.get("labels"))
+    e["categories"] = cats or ["系统工具"]
+    e.pop("labels", None)
+    # V2 字段归一化
+    e["install_type"] = normalize_install_type(e.get("install_type"))
+    e["run_as"] = normalize_run_as(e.get("run_as"))
+    e["is_docker"] = normalize_is_docker(e.get("is_docker"))
+    if "isdocker" in e:
+        e.pop("isdocker", None)
+    if not isinstance(e.get("size"), int):
+        e.pop("size", None)
     # platform 数组
     plat = e.get("platform")
     if isinstance(plat, str):
         e["platform"] = [plat]
     elif not isinstance(plat, list) or not plat:
         e["platform"] = ["all"]
-    e.pop("categories", None)
     return e
 
 def parse_fnpack(txt, owner, repo, branch):
@@ -318,16 +449,213 @@ def load_official_excludes():
     except FileNotFoundError:
         return set()
 
-# 输出精简：download_url/arch_diff/version/size 已从 releases 提取，releases 属冗余；
+
+# 源健康检查候选路径（fnpack.json 可能位于根或子目录）
+HEALTH_PATHS = ("fnpack.json", "apps.json")
+
+
+def probe_source(owner, repo):
+    """轻量探测单个源：HEAD fnpack.json（优先）/ apps.json，失败时回退 GET。
+    返回 dict：{owner/repo, reachable, http_status, probe_path, reason, checked_at}
+    额外附带 GitHub 仓库元数据（pushed_at / archived），失败留空。
+    """
+    checked_at = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    result = {"owner/repo": f"{owner}/{repo}", "reachable": False,
+              "http_status": None, "probe_path": None, "reason": "",
+              "pushed_at": None, "archived": None, "checked_at": checked_at}
+    # 轻量探测：优先 HEAD fnpack.json
+    for path in HEALTH_PATHS:
+        for br in ("main", "master"):
+            url = f"{RAW}/{owner}/{repo}/{br}/{path}"
+            try:
+                req = urllib.request.Request(url, method="HEAD", headers=_headers())
+                with urllib.request.urlopen(req, timeout=8) as r:
+                    result["reachable"] = True
+                    result["http_status"] = r.status
+                    result["probe_path"] = f"{br}/{path}"
+                    break
+            except urllib.error.HTTPError as e:
+                result["http_status"] = e.code
+                if e.code != 404:
+                    result["reason"] = f"HTTP {e.code}"
+                    break  # 非 404 错误（403/5xx 等）视为失败，不再探测其它路径
+                continue
+            except Exception as e:
+                result["reason"] = f"{type(e).__name__}: {e}"
+                continue
+        if result["reachable"] or result["http_status"] not in (None, 404):
+            break
+    if not result["reachable"]:
+        # 均不可达：再尝试 GET 兜底一次（区分网络失败与真实不存在）
+        if not result["reason"] and result["http_status"] == 404:
+            result["reason"] = "404 Not Found（main/master 下均无 fnpack.json / apps.json）"
+        elif not result["reason"]:
+            result["reason"] = "网络请求失败或超时"
+    # 附加仓库元数据（可选，失败不影响主结论）
+    try:
+        req = urllib.request.Request(f"{API}/repos/{owner}/{repo}", headers=_headers())
+        with urllib.request.urlopen(req, timeout=8) as r:
+            meta = json.loads(r.read().decode("utf-8", "replace"))
+            result["pushed_at"] = meta.get("pushed_at")
+            result["archived"] = meta.get("archived")
+    except Exception:
+        pass
+    return result
+
+
+def check_source_health(sources):
+    """并发探测全部源，写 source_health_report.json。返回 (report, unreachable_list)"""
+    print(f"源健康监控：探测 {len(sources)} 个源...")
+    report = {"checked_at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+              "total": len(sources), "reachable": 0, "unreachable": 0,
+              "sources": []}
+    with concurrent.futures.ThreadPoolExecutor(max_workers=16) as ex:
+        futs = {ex.submit(probe_source, *s.split("/", 1)): s for s in sources}
+        for f in concurrent.futures.as_completed(futs):
+            res = f.result()
+            report["sources"].append(res)
+            if res["reachable"]:
+                report["reachable"] += 1
+            else:
+                report["unreachable"] += 1
+    report["sources"].sort(key=lambda x: (x["reachable"], x["owner/repo"]))
+    try:
+        with open(SOURCE_HEALTH, "w", encoding="utf-8") as f:
+            json.dump(report, f, ensure_ascii=False, indent=2)
+        print(f"源健康报告已写入: {SOURCE_HEALTH}")
+    except Exception as e:
+        print(f"WARNING: 写源健康报告失败: {e}")
+    unreachable = [r["owner/repo"] for r in report["sources"] if not r["reachable"]]
+    if unreachable:
+        print(f"不可达源 {len(unreachable)} 个: {', '.join(unreachable[:20])}{' ...' if len(unreachable) > 20 else ''}")
+    else:
+        print("全部源可达")
+    return report, unreachable
+
+
+def _has_release_download(e):
+    """V2：releases.<ver>.packages.<arch>.download_url 是否存在"""
+    rel = e.get("releases")
+    if not isinstance(rel, dict):
+        return False
+    for rv in rel.values():
+        pkg = rv.get("packages") if isinstance(rv, dict) else None
+        if isinstance(pkg, dict):
+            for pv in pkg.values():
+                if isinstance(pv, dict) and pv.get("download_url"):
+                    return True
+    return False
+
+KEY_FIELDS = ("display_name", "desc", "version", "download_url", "icon_url", "author", "categories")
+
+def _field_value(e, fld):
+    if fld == "version":
+        rel = e.get("releases")
+        return bool(isinstance(rel, dict) and rel)
+    if fld == "download_url":
+        return _has_release_download(e)
+    if fld == "categories":
+        return bool(e.get("categories"))
+    return e.get(fld)
+
+
+def metadata_quality_report(apps_out):
+    """统计关键字段覆盖率，标记 incomplete 条目，写 metadata_quality_report.json。
+    返回 (report, incomplete_keys)
+    """
+    print("元数据质量检查：统计关键字段覆盖率...")
+    total = len(apps_out)
+    field_missing = {k: 0 for k in KEY_FIELDS}
+    incomplete = []
+    per_field_stats = {}
+    for key, e in apps_out.items():
+        missing = []
+        for fld in KEY_FIELDS:
+            v = _field_value(e, fld)
+            if not v or (isinstance(v, str) and not v.strip()):
+                field_missing[fld] += 1
+                missing.append(fld)
+        if missing:
+            incomplete.append({"key": key, "missing": missing})
+        for fld in KEY_FIELDS:
+            per_field_stats.setdefault(fld, {"present": 0, "missing": 0})
+            if fld not in missing:
+                per_field_stats[fld]["present"] += 1
+            else:
+                per_field_stats[fld]["missing"] += 1
+    coverage = {fld: (round(per_field_stats[fld]["present"] / total * 100, 1) if total else 0)
+                for fld in KEY_FIELDS}
+    report = {
+        "checked_at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "total_apps": total,
+        "incomplete_count": len(incomplete),
+        "coverage_percent": coverage,
+        "incomplete_apps": incomplete,
+    }
+    try:
+        with open(META_QUALITY, "w", encoding="utf-8") as f:
+            json.dump(report, f, ensure_ascii=False, indent=2)
+        print(f"元数据质量报告已写入: {META_QUALITY}")
+    except Exception as e:
+        print(f"WARNING: 写元数据质量报告失败: {e}")
+    print("覆盖率: " + ", ".join(f"{k}={v}%" for k, v in coverage.items()))
+    return report, [x["key"] for x in incomplete]
+
+# 输出精简：download_url/arch_diff/version/size 已由 releases 承载，输出前由 build_v2_releases 消费；
 # maintainer* 并入 author/distributor；source_repo/changelog/history/bug_report_url 非必需
-TRIM_FIELDS = ("releases", "maintainer", "maintainer_url", "source_repo",
+TRIM_FIELDS = ("maintainer", "maintainer_url", "source_repo",
                "changelog", "history", "bug_report_url", "details_url")
+
+# icon_url 必填字段兜底：探测补全仍缺失时指向仓库占位图标（assets/app-placeholder.png）
+PLACEHOLDER_ICON = "https://raw.githubusercontent.com/kitblue/FnUnify/main/assets/app-placeholder.png"
 
 def trim_entry(e):
     """精简单个条目：删除已由 download_url/arch_diff 承载的冗余字段"""
     for k in TRIM_FIELDS:
         e.pop(k, None)
     return e
+
+
+def dedup_apps(apps_out):
+    """同名同包名去重：保留数据最完整的那个，其他标记为 fork 并保留 _fork_of 溯源。
+    评分优先级：官方源(conversun/fnos-apps) > 有 maintainer/distributor/developer 字段 > icon 覆盖 > 源顺序
+    """
+    name_groups = defaultdict(list)
+    for key, e in apps_out.items():
+        name_groups[e.get("appname")].append(key)
+
+    final_out = {}
+    for appname, keys in name_groups.items():
+        if len(keys) == 1:
+            final_out[appname] = apps_out[keys[0]]
+            continue
+        # 评分：官方源(+10) > maintainer(+3) > distributor(+2) > developer(+1) > icon_url(+1)
+        def score(k):
+            e = apps_out[k]
+            s = 0
+            src = e.get("_src", "")
+            if "conversun/fnos-apps" in src:
+                s += 10
+            if e.get("maintainer"):
+                s += 3
+            if e.get("distributor"):
+                s += 2
+            if e.get("developer"):
+                s += 1
+            if e.get("icon_url"):
+                s += 1
+            return s
+        keys.sort(key=score, reverse=True)
+        winner = keys[0]
+        e = dict(apps_out[winner])
+        # 溯源：全部来源仓库列表并入 _src（不修改原始字段值）
+        srcs = [apps_out[k].get("_src", "") for k in keys]
+        e["_src"] = srcs if len(srcs) > 1 else srcs[0]
+        e["_fork_of"] = winner
+        final_out[appname] = e
+        if len(keys) > 1:
+            print(f"  {appname}: {len(keys)} 源 -> {winner} (+{len(keys)-1} 合并)")
+    return final_out
 
 
 def main():
@@ -337,6 +665,11 @@ def main():
     if official_excludes:
         print(f"官方应用排除清单: {len(official_excludes)} 个（fnOS 官方商店自带，不重复收录）")
     print(f"源订阅模式: 拉取 {len(sources)} 个源...")
+
+    # 源健康监控：轻量探测每个源可达性，写 source_health_report.json
+    health_report, unreachable_sources = check_source_health(sources)
+    if unreachable_sources:
+        print(f"[health] {len(unreachable_sources)} 个源不可达（详见 {SOURCE_HEALTH}），仍尝试拉取，结果以解析为准")
 
     # 全量收录：不去重、不按版本择优，保留每个源的全部条目（字段原样）
     entries = []
@@ -386,10 +719,7 @@ def main():
                 if arch in ad and ad[arch].get("size"):
                     out["size"] = ad[arch]["size"]
                     break
-        out.setdefault("labels", "")
-        out.setdefault("changelog", "")
-        out.setdefault("history", {})
-        out.setdefault("install_type", "存储空间")
+        out.setdefault("install_type", "")
         out.setdefault("platform", ["x86", "arm"])
         out.setdefault("source_repo", src)
         # 注意：_src/_src_meta/_orig/_branch 保留到去重评分之后，输出前统一清理
@@ -410,53 +740,19 @@ def main():
             missing_sizes.append((base, dl))
 
     # 同名同包名去重：保留数据最完整的那个，其他标记为 fork 并保留 _fork_of 溯源
-    # 优先级：官方源(conversun/fnos-apps) > 有 maintainer/distributor/developer 字段 > icon 覆盖 > 源顺序
-    name_groups = defaultdict(list)
-    for key, e in apps_out.items():
-        e.get("_src", "")  # 确保存在
-        name_groups[e.get("appname")].append(key)
-
-    final_out = {}
-    for appname, keys in name_groups.items():
-        if len(keys) == 1:
-            final_out[appname] = apps_out[keys[0]]
-            continue
-        # 评分：官方源(+10) > maintainer(+3) > distributor(+2) > developer(+1) > icon_url(+1)
-        def score(k):
-            e = apps_out[k]
-            s = 0
-            src = e.get("_src", "")
-            if "conversun/fnos-apps" in src:
-                s += 10
-            if e.get("maintainer"):
-                s += 3
-            if e.get("distributor"):
-                s += 2
-            if e.get("developer"):
-                s += 1
-            if e.get("icon_url"):
-                s += 1
-            return s
-        keys.sort(key=score, reverse=True)
-        winner = keys[0]
-        e = dict(apps_out[winner])
-        # 溯源：全部来源仓库列表并入 _src（不修改原始字段值）
-        srcs = [apps_out[k].get("_src", "") for k in keys]
-        e["_src"] = srcs if len(srcs) > 1 else srcs[0]
-        e["_fork_of"] = winner
-        final_out[appname] = e
-        if len(keys) > 1:
-            print(f"  {appname}: {len(keys)} 源 -> {winner} (+{len(keys)-1} 合并)")
-
-    apps_out = final_out
+    n_before_dedup = len(apps_out)
+    apps_out = dedup_apps(apps_out)
     # 排除 fnOS 官方商店自带应用（不重复收录，官方由官方商店提供）
     if official_excludes:
         dropped = [a for a in apps_out if a in official_excludes]
         for a in dropped:
             del apps_out[a]
         print(f"排除官方应用 {len(dropped)} 个 -> 剩余 {len(apps_out)} 个")
-    print(f"去重后: {len(apps_out)} 唯一应用 (合并 {sum(len(v) for v in name_groups.values())} 条源条目)")
+    print(f"去重后: {len(apps_out)} 唯一应用 (合并 {n_before_dedup} 条源条目)")
 
+    # dedup/排除官方应用后，仅保留仍在 apps_out 中的缺失记录，避免旧 key KeyError
+    missing_icons = [(k, o, r, b, a) for (k, o, r, b, a) in missing_icons if k in apps_out]
+    missing_sizes = [(k, url) for (k, url) in missing_sizes if k in apps_out]
     if missing_icons:
         still_missing = [(k, o, r, b, a) for (k, o, r, b, a) in missing_icons if not apps_out[k].get("icon_url")]
         print(f"探测 {len(still_missing)} 个仍缺失图标的条目...")
@@ -489,14 +785,34 @@ def main():
         print(f"size 探测补全 {got}/{len(missing_sizes)} 个")
 
     # 输出前统一清理内部字段（_src 为溯源字段保留；_src_meta/_orig/_branch 已用完）
-    # 并精简冗余字段，将 fnpack.json 控制在 jsDelivr 1024KB 限制内
+    # 并构造 V2 releases 结构、精简冗余字段，将 fnpack.json 控制在 jsDelivr 1024KB 限制内
     for e in apps_out.values():
         for k in ("_src_meta", "_orig", "_branch"):
             e.pop(k, None)
+        # V2：平铺 download_url/arch_diff/version -> releases.<version>.packages.<arch>
+        rel = build_v2_releases(e.get("version", ""), e.get("arch_diff"))
+        if rel is None and e.get("download_url"):
+            plat = e.get("platform") or []
+            if isinstance(plat, str):
+                plat = [plat]
+            arch = "all" if ("all" in plat or len(plat) != 1 or plat[0] not in ("x86", "arm")) else plat[0]
+            rel = {normalize_version(e.get("version", "")): {"packages": {arch: {"download_url": e["download_url"]}}}}
+        if rel is not None:
+            e["releases"] = rel
+        for k in ("arch_diff", "download_url", "version", "size"):
+            e.pop(k, None)
+        # icon_url 必填兜底
+        if not e.get("icon_url"):
+            e["icon_url"] = PLACEHOLDER_ICON
         trim_entry(e)
 
-    # 输出：FnDepot V2 包装层格式（schema_version + source_info + apps），每个应用一行紧凑输出
-    # 客户端仅识别 V2 三层结构；裸顶层键式会解析 0，务必保持包装层
+    # 元数据质量检查：统计关键字段覆盖率，标记 incomplete，写 metadata_quality_report.json
+    quality_report, incomplete_keys = metadata_quality_report(apps_out)
+    if incomplete_keys:
+        print(f"[quality] {len(incomplete_keys)} 个应用缺少关键字段（详见 {META_QUALITY}）")
+
+    # 输出：官方 FnDepot V2 三层结构（schema_version 字符串 "2" + source_info + apps），
+    # 键名合法化（仅允许 [A-Za-z0-9._-]），每个应用一行紧凑输出
     source_info = {
         "name": "FnUnify",
         "author": "kitblue",
@@ -504,17 +820,17 @@ def main():
         "description": f"飞牛 fnOS 第三方应用聚合源：聚合 {len(sources)} 个第三方源、去重后收录 {len(apps_out)} 个应用（已排除官方 conversun/fnos-apps 应用）。",
     }
     with open(OUTPUT, "w", encoding="utf-8") as f:
-        f.write('{"schema_version": 2, "source_info": '
+        f.write('{"schema_version": "2", "source_info": '
                 + json.dumps(source_info, ensure_ascii=False, separators=(",", ":"))
                 + ', "apps": {\n')
         keys = list(apps_out.keys())
         for i, k in enumerate(keys):
             comma = "," if i < len(keys) - 1 else ""
-            f.write(("  " if i == 0 else ", ") + json.dumps(k, ensure_ascii=False) + ": "
+            f.write(("  " if i == 0 else " ") + json.dumps(legalize_key(k), ensure_ascii=False) + ": "
                     + json.dumps(apps_out[k], ensure_ascii=False, separators=(",", ":"))
                     + comma + "\n")
         f.write("}}\n")
-    print(f"完成: {len(apps_out)} 个应用 -> {OUTPUT} (FnDepot V2 包装层, 每应用一行)")
+    print(f"完成: {len(apps_out)} 个应用 -> {OUTPUT} (官方 FnDepot V2 格式, schema_version '2', 每应用一行)")
 
 if __name__ == "__main__":
     main()
