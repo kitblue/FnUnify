@@ -1,0 +1,20 @@
+{
+  "_comment": "FnUnify 应用→GitHub 真实项目映射表（轻量级补充）。key=归一化 appname（小写、去 -N 后缀）；value=owner/repo。developer/publisher 缺失时据此抓取 GitHub 项目作者补全。",
+  "alist": "AlistGo/alist",
+  "adguard": "AdguardTeam/AdGuardHome",
+  "clouddrive": "cloudnas/CloudDrive2",
+  "embyserver": "MediaBrowser/Emby",
+  "filebrowser": "filebrowser/filebrowser",
+  "gotify": "gotify/server",
+  "homebox": "sysadminsmedia/homebox",
+  "homepage": "gethomepage/homepage",
+  "navidrome": "navidrome/navidrome",
+  "photoprism": "photoprism/photoprism",
+  "syncthing": "syncthing/syncthing",
+  "transmission": "transmission/transmission",
+  "verysync": "verysync/verysync",
+  "phpmyadmin": "phpmyadmin/phpmyadmin",
+  "mariadb12": "MariaDB/server",
+  "reader": "hectorqin/reader",
+  "new-api": "Calcium-Ion/new-api"
+}
