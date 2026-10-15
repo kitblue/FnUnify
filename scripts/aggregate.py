@@ -255,8 +255,17 @@ def normalize_entry(entry, owner, repo, branch, src_meta=None):
     e["author"] = str(author) if author else ""
     e["author_url"] = (e.get("maintainer_url") or e.get("distributor_url")
                        or e.get("developer_url") or (f"https://github.com/{owner}" if author else ""))
+    # 客户端详情页"开发者/发布者"行分别读取 developer / publisher 字段（缺失则显示"未知开发者/未知发布者"）。
+    # developer 兜底为归一化作者值（真实作者）；publisher 只保留源原始值，
+    # 不兜底为源名/分销商（聚合源中"源名≠发布者"，前面几版即此行为，避免把源名或 kitblue 误显示为发布者）。
+    e["developer"] = e.get("developer") or str(author) if author else e.get("developer", "")
+    if not e.get("developer"):
+        e["developer"] = ""
+    e["publisher"] = e.get("publisher", "")
     e["distributor"] = e.get("distributor") or src_meta.get("name", "")
     e["distributor_url"] = e.get("distributor_url") or src_meta.get("homepage", f"https://github.com/{owner}")
+    if not e.get("publisher_url"):
+        e["publisher_url"] = e.get("distributor_url") or ""
     # 图标：icon_url > icon > logo，相对路径转绝对
     icon = e.get("icon_url") or e.get("icon") or e.get("logo")
     if icon:
@@ -342,7 +351,7 @@ def parse_apps_json(txt):
             "labels": a.get("category", ""),
             "platform": a.get("platforms", ["x86", "arm"]),
             "icon_url": a.get("icon_url", ""),
-            "_src": "fnos-apps",
+            "_src": "conversun/fnos-apps",
             "_orig": a,
         }
         tag = a.get("release_tag", "")
@@ -395,6 +404,14 @@ def load_source(owner_repo):
     txt, br = try_raw(owner, repo, "apps.json")
     if txt is not None:
         return parse_apps_json(txt)
+    txt, br = try_raw(owner, repo, "moo.json")
+    if txt is not None:
+        apps, src_meta = parse_fnpack(txt, owner, repo, br)
+        for an, v in apps.items():
+            v.setdefault("_src", f"{owner}/{repo}")
+            v["_src_meta"] = src_meta
+            v["_branch"] = br
+        return apps
     return {}
 
 ICON_CANDIDATES = [
@@ -684,7 +701,7 @@ def main():
             if apps:
                 seen_sources += 1
             for an, entry in apps.items():
-                if an in ("source_info", "apps", "moo", "fndepot.source", "fnos-apps-store"):
+                if an in ("source_info", "apps", "fndepot.source"):
                     continue
                 entries.append((an, entry))
 
@@ -743,11 +760,15 @@ def main():
     n_before_dedup = len(apps_out)
     apps_out = dedup_apps(apps_out)
     # 排除 fnOS 官方商店自带应用（不重复收录，官方由官方商店提供）
-    if official_excludes:
+    # 兼容旧行为：默认排除；设置环境变量 FnUnify_INCLUDE_OFFICIAL=1 时收录官方（conversun/fnos-apps）
+    include_official = os.environ.get("FnUnify_INCLUDE_OFFICIAL", "").strip().lower() in ("1", "true", "yes")
+    if official_excludes and not include_official:
         dropped = [a for a in apps_out if a in official_excludes]
         for a in dropped:
             del apps_out[a]
         print(f"排除官方应用 {len(dropped)} 个 -> 剩余 {len(apps_out)} 个")
+    else:
+        print(f"官方应用排除已跳过 ({'收录官方 conversun/fnos-apps' if include_official else '无排除清单'})")
     print(f"去重后: {len(apps_out)} 唯一应用 (合并 {n_before_dedup} 条源条目)")
 
     # dedup/排除官方应用后，仅保留仍在 apps_out 中的缺失记录，避免旧 key KeyError
@@ -801,6 +822,9 @@ def main():
             e["releases"] = rel
         for k in ("arch_diff", "download_url", "version", "size"):
             e.pop(k, None)
+        # service_port 必须是字符串（FnDepot 客户端校验要求），数字一律转字符串
+        if "service_port" in e and not isinstance(e["service_port"], str):
+            e["service_port"] = str(e["service_port"])
         # icon_url 必填兜底
         if not e.get("icon_url"):
             e["icon_url"] = PLACEHOLDER_ICON
@@ -817,7 +841,7 @@ def main():
         "name": "FnUnify",
         "author": "kitblue",
         "homepage": "https://github.com/kitblue/FnUnify",
-        "description": f"飞牛 fnOS 第三方应用聚合源：聚合 {len(sources)} 个第三方源、去重后收录 {len(apps_out)} 个应用（已排除官方 conversun/fnos-apps 应用）。",
+        "description": f"飞牛 fnOS 第三方应用聚合源：聚合 {len(sources)} 个第三方源、去重后收录 {len(apps_out)} 个应用（含官方 conversun/fnos-apps 源收录）。",
     }
     with open(OUTPUT, "w", encoding="utf-8") as f:
         f.write('{"schema_version": "2", "source_info": '
