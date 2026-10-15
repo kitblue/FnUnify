@@ -1,0 +1,40 @@
+name: Update Official Apps List
+
+on:
+  schedule:
+    - cron: '30 1 * * *'  # 每日 09:30 北京时间 (01:30 UTC)，早于聚合任务，聚合时使用最新排除清单
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-official-apps:
+    name: 同步官方应用清单 official_apps.txt
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 设置 Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 拉取官方清单并生成 official_apps.txt
+        run: python scripts/update_official_apps.py
+
+      - name: 比对并推送
+        run: |
+          if git diff --quiet official_apps.txt; then
+            echo "::notice::official_apps.txt 无变化，跳过推送"
+          else
+            git add official_apps.txt
+            git config user.name "FnUnify CI"
+            git config user.email "ci@fnunify.kitblue"
+            git commit -m "chore: sync official apps list from conversun/fnos-apps [skip ci]"
+            git push origin HEAD:main
+            echo "::notice::official_apps.txt 已更新并推送"
+          fi
