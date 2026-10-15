@@ -1,4 +1,4 @@
-0999we/FnDepot
+﻿0999we/FnDepot
 18926922221-lab/FnDepot
 33205q/FnDepot
 33205q/FnDepot-
@@ -134,7 +134,6 @@ zj249234448/FnDepot
 zuohaill/FnDepot
 zyp1690/FnDepot
 zzdx713/FnDepot
-# ---- 单项目源（2026-10-14 补充）----
 KITblue/fantune
 ASH-C776/FnDepot
 BearHero520/FnDepot
@@ -150,3 +149,4 @@ xfengyin/FnDepot
 yunchui/fnos-source
 RONGLINC93/FnDepot
 mayishidai/FnDepot
+conversun/fnos-apps
