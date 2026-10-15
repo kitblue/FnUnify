@@ -1,0 +1,153 @@
+name: FnUnify CI/CD
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # 生成 fnpack.json: 每日 11:00 北京时间 (03:00 UTC)
+    - cron: '0 7 * * *'  # 构建定制版: 每日 15:00 北京时间 (07:00 UTC)
+  push:
+    branches: [main]
+    paths:
+      - 'fnpack.json'
+      - 'repo_list.txt'
+      - 'README.md'
+      - 'scripts/aggregate.py'
+      - 'scripts/github_projects.json'
+      - 'scripts/sync_fndepot.py'
+      - 'scripts/source_quality_check.py'
+      - 'scripts/test_aggregate.py'
+      - 'scripts/update_official_apps.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+  issues: write
+
+jobs:
+  generate:
+    name: 聚合生成 fnpack.json
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 设置 Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 运行 aggregate.py 聚合源
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "开始聚合 152 个有效第三方源（repo_list.txt 共 152 行）..."
+          python scripts/aggregate.py
+          echo "聚合完成，fnpack.json 已更新"
+
+      - name: 比对 fnpack.json 及配套文件并推送
+        run: |
+          CHANGED=""
+          for f in fnpack.json scripts/aggregate.py scripts/github_projects.json repo_list.txt README.md CHANGELOG.md; do
+            if ! git diff --quiet "$f"; then
+              echo "::notice::$f 有变更"
+              CHANGED="$CHANGED $f"
+            fi
+          done
+          if [ -z "$CHANGED" ]; then
+            echo "::notice::聚合产物无变化，跳过推送"
+          else
+            git add fnpack.json scripts/aggregate.py scripts/github_projects.json repo_list.txt README.md CHANGELOG.md
+            git config user.name "FnUnify CI"
+            git config user.email "ci@fnunify.kitblue"
+            git commit -m "ci: regenerate fnpack.json [skip ci]"
+            git push origin HEAD:main
+            echo "::notice::聚合产物已变更并推送:$CHANGED"
+          fi
+
+      - name: 失败通知（创建 Issue）
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set +e
+          LOG_SUMMARY=""
+          if command -v gh >/dev/null 2>&1; then
+            LOG_SUMMARY=$(gh run view --log-failed 2>/dev/null | grep -iE "error|exception|traceback|failed|失败|不可达|unreachable" | tail -20 | head -c 4000)
+          fi
+          python3 - "$LOG_SUMMARY" <<'PY'
+          import sys, datetime
+          summary = sys.argv[1]
+          date = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
+          body = [
+              f"## CI 失败通知 - {date}",
+              "",
+              f"- Job: `generate`（聚合生成 fnpack.json）",
+              f"- 运行: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+              f"- 触发: ${{ github.event_name }}",
+              "",
+              "### 失败日志摘要（含 Error/Traceback 行）",
+              "",
+              "```",
+              summary if summary else "（无法获取日志摘要，请查看 Actions 运行详情）",
+              "```",
+          ]
+          title = f"[CI失败] {date} generate job 聚合失败"
+          open("/tmp/issue_body.md", "w", encoding="utf-8").write("\n".join(body))
+          open("/tmp/issue_title.txt", "w", encoding="utf-8").write(title)
+          PY
+          gh issue create --title "$(cat /tmp/issue_title.txt)" --body-file /tmp/issue_body.md || true
+
+  build:
+    name: 构建 FnDepot 定制版
+    needs: generate
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 设置 Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 构建并发布 FnDepot 定制版
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+        run: python scripts/sync_fndepot.py --publish
+
+      - name: 失败通知（创建 Issue）
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set +e
+          LOG_SUMMARY=""
+          if command -v gh >/dev/null 2>&1; then
+            LOG_SUMMARY=$(gh run view --log-failed 2>/dev/null | grep -iE "error|exception|traceback|failed|失败" | tail -20 | head -c 4000)
+          fi
+          python3 - "$LOG_SUMMARY" <<'PY'
+          import sys, datetime
+          summary = sys.argv[1]
+          date = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
+          body = [
+              f"## CI 失败通知 - {date}",
+              "",
+              f"- Job: `build`（构建 FnDepot 定制版）",
+              f"- 运行: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+              f"- 触发: ${{ github.event_name }}",
+              "",
+              "### 失败日志摘要（含 Error/Traceback 行）",
+              "",
+              "```",
+              summary if summary else "（无法获取日志摘要，请查看 Actions 运行详情）",
+              "```",
+          ]
+          open("/tmp/issue_body.md", "w", encoding="utf-8").write("\n".join(body))
+          PY
+          gh issue create --title "[CI失败] ${date} build job 定制版构建失败" --body-file /tmp/issue_body.md || true
