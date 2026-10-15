@@ -253,65 +253,33 @@ except Exception:
     _gh_projects = {}
 _gh_cache = {}
 
-def gh_repo_info(repo_spec):
-    """GitHub 仓库信息（轻量级）：取 repo owner 作为项目开发者。进程内缓存，失败静默。"""
-    if repo_spec in _gh_cache:
-        return _gh_cache[repo_spec]
-    parts = repo_spec.strip().strip("/").split("/")
-    info = None
-    if len(parts) == 2:
-        j = _http(f"{API}/repos/{parts[0]}/{parts[1]}")
-        if j:
-            try:
-                jj = json.loads(j)
-                if isinstance(jj, dict) and isinstance(jj.get("owner"), dict):
-                    info = {
-                        "developer": jj["owner"].get("login", ""),
-                        "url": jj.get("html_url") or f"https://github.com/{parts[0]}/{parts[1]}",
-                    }
-            except Exception:
-                info = None
-    _gh_cache[repo_spec] = info
-    return info
-
-def _gh_repo_from_download(e):
-    """从 download_url 解析 GitHub 仓库 spec（github.com / raw.githubusercontent.com）。"""
-    dl = e.get("download_url") or ""
-    m = re.search(r"https://github\.com/([^/\s]+)/([^/\s]+)", dl)
-    if m:
-        return f"{m.group(1)}/{m.group(2)}"
-    m = re.search(r"https://raw\.githubusercontent\.com/([^/\s]+)/([^/\s]+)", dl)
-    if m:
-        return f"{m.group(1)}/{m.group(2)}"
+def _gh_owner_from_download(e):
+    """从条目字段中提取 GitHub owner 字符串（不经过 API 查询）。
+    字段优先级：homepage > download_url > readme_url。
+    返回 owner 字符串，若无法解析则返回 None。"""
+    for fld in ("homepage", "download_url", "readme_url"):
+        v = e.get(fld)
+        if not isinstance(v, str) or not v:
+            continue
+        m = re.search(r"https://github\.com/([^/\s]+)/([^/\s]+)", v)
+        if m:
+            return m.group(1)
+        m = re.search(r"https://raw\.githubusercontent\.com/([^/\s]+)/([^/\s]+)", v)
+        if m:
+            return m.group(1)
     return None
 
+
 def fill_from_github_project(e, owner, repo):
-    """真实开发者优先：download_url 自动解析出的 GitHub 项目为第一来源，
-    github_projects.json 映射表仅作兜底（download_url 解析失败或指向源仓库时）。
-    源搜集者（源仓库 owner/源名）不是应用开发者，绝不作为 developer/publisher 写入。"""
-    if e.get("developer") and e.get("publisher"):
-        return  # 两者齐备无需补全
-    spec = _gh_repo_from_download(e)
-    src_spec = f"{owner}/{repo}".lower()
-    info = None
-    if spec and spec.lower() != src_spec:
-        info = gh_repo_info(spec)
-    if not info:
-        key = re.sub(r"-(\d+)$", "", ((e.get("appname") or "").strip().lower()))
-        spec2 = _gh_projects.get(key)
-        if spec2:
-            info = gh_repo_info(spec2)
-    if not info:
+    """publisher 兜底：从条目字段（homepage/download_url/readme_url）提取 GitHub owner 字符串，
+    直接作为 publisher 填充。不经过 API 查询，无需 PAT，快速高效。
+    源有 publisher 原始值时保留，缺失才兜底；源搜集者（源仓库 owner）不是发布者，绝不写入。"""
+    if e.get("publisher"):
         return
-    dev = info["developer"]
-    if not e.get("developer"):
-        e["developer"] = dev
-    if not e.get("publisher"):
-        e["publisher"] = dev
-    if not e.get("developer_url"):
-        e["developer_url"] = info["url"]
-    if not e.get("publisher_url"):
-        e["publisher_url"] = info["url"]
+    src_owner = (owner or "").lower()
+    dl_owner = _gh_owner_from_download(e)
+    if dl_owner and dl_owner.lower() != src_owner:
+        e["publisher"] = dl_owner
 
 def normalize_entry(entry, owner, repo, branch, src_meta=None):
     """源订阅模式：原样保留源字段，不做作者改写/兜底（避免显示错误作者）"""
