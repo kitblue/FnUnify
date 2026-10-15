@@ -103,7 +103,7 @@ SEED_MARKER = "seed_fnunify.sh"
 # 设计要点：
 # - 幂等：以 sources.url 唯一约束为依托，重复运行不产生重复记录
 # - 只增不删：远程 fnpack 中不存在的本地外部源（用户手动添加）一律保留
-# - 双后端：优先 python3（JSON 解析可靠），降级 sqlite3 + python3 提取 URL 列表
+# - 单后端：python3 直连 sqlite3 写入（fnOS 内置 python3）
 SEED_SCRIPT = r"""#!/bin/bash
 # FnUnify 源预置脚本（定制版，随 fpk 安装/升级时由 common 调用）
 # 功能：将 FnUnify 聚合源（fnpack.json 直链）幂等写入 ${TRIM_PKGVAR}/fndepot.db
@@ -403,7 +403,7 @@ def publish_release(tok: str, version: str, fpk_path: Path,
     body = (
         f"FnDepot 定制版 v{version}\n\n"
         f"- 上游版本：{UPSTREAM_REPO} v{upstream_version or version}\n"
-        f"- 发版版本：v{version}（= 上游版本降一位，用于测试客户端升级功能）\n"
+        f"- 发版版本：v{version}（跟随上游 {UPSTREAM_REPO} 版本号，不再降位）\n"
         f"- 客户端检查更新：本仓库（{PUBLISH_REPO}）release\n"
         f"- 内置 FnUnify 订阅源（安装/升级时自动写入，打开即用）\n"
         f"- fpk sha256: {sha256_hex(fpk_path)}\n\n"
