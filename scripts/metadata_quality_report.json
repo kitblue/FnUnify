@@ -1,0 +1,166 @@
+{
+  "checked_at": "2026-10-15 15:22:25",
+  "total_apps": 326,
+  "incomplete_count": 25,
+  "coverage_percent": {
+    "display_name": 100.0,
+    "desc": 100.0,
+    "version": 100.0,
+    "download_url": 100.0,
+    "icon_url": 100.0,
+    "author": 92.3,
+    "categories": 100.0
+  },
+  "incomplete_apps": [
+    {
+      "key": "dbland",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "easytier-eui",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "小松鼠",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "fn-aic8800",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "fn-broadcom-sta",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "fn-fnos-aarch64",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "fn-monitor",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "fn-ntfs3",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "fn-scrutiny-collector",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "fn-sshd-config",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "fn-yt6801",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "r1toolbox",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "pipebridge",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "nodejs_v22-arm",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "duanju",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "iptv-api",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "nas-music",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "kerkerker",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "php-epg",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "php-runtime",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "fnosoidcbridge",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "fntvplus",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "nginxserver",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "nvidia-driver-580",
+      "missing": [
+        "author"
+      ]
+    },
+    {
+      "key": "plexmediaserver",
+      "missing": [
+        "author"
+      ]
+    }
+  ]
+}

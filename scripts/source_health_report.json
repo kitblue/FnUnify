@@ -1,0 +1,1518 @@
+{
+  "checked_at": "2026-10-15 15:22:09",
+  "total": 151,
+  "reachable": 149,
+  "unreachable": 2,
+  "sources": [
+    {
+      "owner/repo": "Blue-Mink/moo",
+      "reachable": false,
+      "http_status": 404,
+      "probe_path": null,
+      "reason": "404 Not Found（main/master 下均无 fnpack.json / apps.json）",
+      "pushed_at": "2026-10-15T05:52:17Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:09"
+    },
+    {
+      "owner/repo": "kci-lnk/fn-knock-turborepo",
+      "reachable": false,
+      "http_status": 404,
+      "probe_path": null,
+      "reason": "404 Not Found（main/master 下均无 fnpack.json / apps.json）",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "0999we/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-06-30T15:01:06Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:09"
+    },
+    {
+      "owner/repo": "18926922221-lab/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-08-21T13:43:16Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:09"
+    },
+    {
+      "owner/repo": "33205q/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-06-19T20:29:19Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:09"
+    },
+    {
+      "owner/repo": "33205q/FnDepot-",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-06-20T16:55:10Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:09"
+    },
+    {
+      "owner/repo": "710850609/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-10-14T22:17:59Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:09"
+    },
+    {
+      "owner/repo": "ASH-C776/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "AstideLabs/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-05-08T14:48:08Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:09"
+    },
+    {
+      "owner/repo": "BearHero520/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "Blue-Mink/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-10-15T04:25:03Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:09"
+    },
+    {
+      "owner/repo": "Brian099/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-09-22T07:48:11Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:09"
+    },
+    {
+      "owner/repo": "Chordi0124/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-06-16T13:47:34Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:09"
+    },
+    {
+      "owner/repo": "DavidAugust03/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-01-25T03:38:04Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:09"
+    },
+    {
+      "owner/repo": "DinDing1/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-07-24T02:17:51Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:09"
+    },
+    {
+      "owner/repo": "DongShull/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2025-12-01T04:02:35Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:09"
+    },
+    {
+      "owner/repo": "EWEDLCM/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-10-14T20:04:58Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:09"
+    },
+    {
+      "owner/repo": "FBI998/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-07-11T10:18:15Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:09"
+    },
+    {
+      "owner/repo": "Gao-Yimeng/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-01-25T03:38:04Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:09"
+    },
+    {
+      "owner/repo": "Geeeeeker/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-04-23T14:09:18Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "Haorran/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-06-17T15:30:31Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "JackLu2025/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-02-26T11:48:28Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "Jasonworkharder/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-03-02T16:15:34Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "JaxSupero/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "KITblue/fantune",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "KKKK987/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2025-12-21T16:26:29Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "Kasbuky-sudo/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "LI1223081906/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-08-22T20:51:12Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "LingYu91/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-05-22T20:04:17Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "Mike-hd123/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-10-15T08:43:36Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "MuLinForest/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-06-07T09:26:46Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "P-s-moon/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-01-25T03:38:04Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "PlayWithAndyJin/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-04-09T10:19:58Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "RONGLINC93/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "master/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "RROrg/fn-apps",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-10-14T16:21:11Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "Ranlove999/FnDepot-",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-06-19T09:58:01Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "SaucdX233/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-08-19T16:15:53Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "Soley911/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-04-28T14:10:04Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "TG8848/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-06-24T14:41:14Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "Tanboyboy/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-04-06T16:30:20Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "Wyf841015/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-10-10T12:01:06Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "X520qq/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-07-21T22:50:31Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "YuFaVision/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-04-15T14:16:23Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "ZJB518/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2025-12-09T09:48:34Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "ZhangZsky/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-09-30T14:30:21Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "aaatechx/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-01-25T03:38:04Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "aeson70/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-07-01T23:21:56Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "ahtian928/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2025-12-01T04:02:35Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "ahyxwyf/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-05-08T14:48:08Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "ai2ku/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-01-22T03:54:54Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:10"
+    },
+    {
+      "owner/repo": "ap01082/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-05-08T14:48:08Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "atm080203/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-05-08T14:48:08Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "avicii0129ccc-creator/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-07-13T08:36:11Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "baoss/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-05-04T02:50:16Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "boater-man/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-03-15T16:47:44Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "ccrabit/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "ccyo-fang/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-09-16T06:24:43Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "cmbya/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-10-15T06:16:38Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "cometzhang/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-05-08T14:48:08Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "ctllo-bit/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-09-29T00:08:40Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "dahe6688/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-03-02T16:15:34Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "damadingding/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-05-22T05:54:57Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "dandin189/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-05-08T14:48:08Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "dysfwhq/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-05-01T11:17:20Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "frankluise5220/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "fyzhu/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-08-21T08:57:42Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "ganx2024/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2025-12-12T06:14:33Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "harbiu317/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": "2026-04-30T09:52:39Z",
+      "archived": false,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "hbestm/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "hepp995/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "hexianhui/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "hhxs2025/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "hhz522/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "htnanako/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "huqingyun890/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "hzs-sama/moekoe-fnos",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "ifsherlock/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "iherwo/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "illiteracyzx/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "jiaaom/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "jiangjun-wangu/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "jiankujidu/Store",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "jianzhichu/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "jiayile/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "kalisgp-cmyk/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "killing4316/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "leo334455/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "lgdobo/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:11"
+    },
+    {
+      "owner/repo": "liguang111888/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "lisi009216/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "ljy147300/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "lsp696/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "luodaoyi/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "lxc763092/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "lyh141214/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "mac1256/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "magiccode1412/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "mah1618/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "maxsusu/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "mayishidai/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "meimolihan/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "miyugo/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "moxyis/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "mrduuuuu/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "mynono33/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "nanhai31/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "narrator-z/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "nx5888/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "personal82555/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "pj521/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "qianyianyi/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "qilin-zhu/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "qilin-zhu/LitePan-fpk",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "rabbitHK/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "ray5378/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "renlixing87/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "roc0838/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "roc0838/FnDepot1",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "rockchild2332/fnos-apps-fndepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "seesky100825/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "seesky100825/FnDepot1",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "shuangji66/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "slepoh/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "snltty/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "stonexp/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "sushazhi/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "tingwensuojian/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "tzi-shue/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "tzi-shue/FnDepot-1",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "upchr/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "w5456448820/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "weifang11233/-FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "wildfun/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "wy77888/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "wzj939/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "xfengyin/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "xianyu110/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "xiaolaji0123/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "xiaosheng123/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "xiaoya208/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "xiaoyufei22222/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "yaya918/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "ylgyyy/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "youdeiptv/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "yousili520/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "yuexps/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "yunchui/fnos-source",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "zj249234448/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:12"
+    },
+    {
+      "owner/repo": "zuohaill/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "zyp1690/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    },
+    {
+      "owner/repo": "zzdx713/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-15 15:22:13"
+    }
+  ]
+}
