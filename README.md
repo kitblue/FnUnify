@@ -1,124 +1,202 @@
-# FnUnify — fnOS 第三方应用源订阅聚合
+---
+AIGC:
+    Label: "1"
+    ContentProducer: 001191440300708461136T1XGW3
+    ProduceID: 257c07a97525093c65a112a601161c42_4c075419c84211f1b5a6525400393706
+    ReservedCode1: V+gWOOg/xoT6pfZ6zTzEdvG8axG0IU2QIwA1SsAhwvsyTm5IeMK103ex+HK5QOY0+aYnlGyMKLj7g+gKXbNjlH2UL9xN7zhXUMsadh7/Yl8gst5rs0vY/XcAMdz5PmHmJRYTeaPPruV49bUo5KgQn42Rjf0u2MHp7B1+j3vPO+2a54BGkHduBDrE6mI=
+    ContentPropagator: 001191440300708461136T1XGW3
+    PropagateID: 257c07a97525093c65a112a601161c42_4c075419c84211f1b5a6525400393706
+    ReservedCode2: V+gWOOg/xoT6pfZ6zTzEdvG8axG0IU2QIwA1SsAhwvsyTm5IeMK103ex+HK5QOY0+aYnlGyMKLj7g+gKXbNjlH2UL9xN7zhXUMsadh7/Yl8gst5rs0vY/XcAMdz5PmHmJRYTeaPPruV49bUo5KgQn42Rjf0u2MHp7B1+j3vPO+2a54BGkHduBDrE6mI=
+---
 
-FnUnify 是一个 **FnDepot 源订阅聚合**项目：订阅社区公开的第三方 fnOS 应用源，将各源的全部应用**全量收录**到一份 `fnpack.json`（FnDepot V2 顶层键式规范），供 fnOS 应用商店一键添加使用。
 
-## 项目性质（源订阅聚合）
 
-FnUnify 是**源订阅聚合**：订阅社区公开的第三方 fnOS 应用源，将各源应用**全量收录**后按规则去重，产出一份 `fnpack.json`（FnDepot V2 顶层键式规范），供第三方应用商店（如 FnDepot）作为**源订阅**添加使用。
+# FnUnify
 
-本项目遵循以下原则：
+> 面向飞牛 fnOS 的第三方应用聚合源与定制版应用商店仓库。一条命令、一次安装，即可在一个入口浏览并安装来自 151 个第三方源的 320 个应用。
 
-- **仅收录社区第三方源**：官方 conversun/fnos-apps 仓库的应用不收录（聚合时排除官方应用 174 个）
-- **同应用多源去重**：对同一应用的多源条目按 display_name/规范化包名比对去重，合并 152 个源约 1205 条源条目后收录 320 个应用
-- **不改写作者/维护者字段**：应用作者以各源原始数据为准，缺失即留空
-- **不生成间接跳转链接**：`download_url` 直接指向各源原始下载地址
+## 这是什么
 
-## 原版 FnDepot 的限制与适配
+FnUnify 由两部分组成：
 
-**使用场景**：本聚合源面向第三方应用商店（如 FnDepot），作为**源订阅**添加使用。
+1. **聚合源（数据层）**：维护一份 `repo_list.txt` 第三方源清单，通过每日定时任务抓取各源的 `fnpack.json`，去重、校验、归一化后合并为一份符合 FnDepot 外部应用源 V2 规范的 `fnpack.json` 聚合源清单。
+2. **定制版商店（应用层）**：基于开源 FnDepot 客户端定制构建的 `fndepot` 应用包，安装到 fnOS 后自动把聚合源预置进本地应用商店数据库，让"新增源、再等待同步"的流程变成开箱即用。
 
-原版 FnDepot（EWEDLCM/FnDepot）存在以下解析限制，无法直接加载本聚合源：
+上游项目为 [Blue-Mink/FnDepot](https://github.com/Blue-Mink/FnDepot)，本项目在其基础上做源预置与发版管理；源格式规范参考 [EWEDLCM/FnDepot](https://github.com/EWEDLCM/FnDepot) 的"外部应用源 V2 编写说明"，发布仓库为本项目 [kitblue/FnUnify](https://github.com/kitblue/FnUnify)。
 
-| 限制项 | 原版表现 | 本项目适配 |
-| --- | --- | --- |
-| **源大小上限** | fnpack.json 超过 1024KB 时客户端拒绝解析 | 按规则去重后收录 320 个应用，fnpack.json 控制在合理大小 |
-| **源行数上限** | 源文件行数过多时解析失败 | 采用每应用一行的紧凑格式（322 行），远低于客户端解析上限 |
-| **schema_version 校验** | 原版只认 schema_version=1 格式 | 本项目使用 schema_version=2 包装层（兼容 V1/V2），定制版已解除此限制 |
-| **来源校验** | 原版要求源名匹配特定模式 | 使用 GitHub raw/jsDelivr 直链方式规避 |
+## 主要能力
 
-> **适配结论**：原版商店的解析限制使其**无法直接**使用本聚合源；安装定制版 `fndepot_unify`（内置 FnUnify 源并解除解析限制）后，添加源即可正常使用。
+- **大规模聚合**：聚合 151 个第三方源，去重后收录 320 个应用（官方 [conversun/fnos-apps](https://github.com/conversun/fnos-apps) 应用已排除）。
+- **格式兼容**：聚合脚本同时支持 FnDepot V1（无 `schema_version`，根节点直接是应用映射）、V2（`{schema_version, source_info, apps}` 三层结构）及个别上游的 `apps.json` 包装层，统一归一化为 V2 输出。
+- **去重与溯源**：按应用显示名去重并保留数据最完整的一条；同名不同源的条目附加 `_fork_of` 溯源标记，便于追查来源。
+- **质量保障**：自动做源可达性探测（`source_health_report.json`）与元数据字段覆盖率检查（`metadata_quality_report.json`），不可达或不完整的源会被标记出来。
+- **CDN 直链**：`cdn_mirror.py` 可把 `download_url` 转换为 CDN 镜像直链，缓解 GitHub 下载不稳定问题。
+- **安装即就绪**：定制版 `fpk` 安装/升级时，`seed_fnunify.sh` 会从本项目拉取最新聚合源并幂等写入本地商店数据库，用户手动添加的源不会被删除。
+- **全自动发布**：GitHub Actions 每日自动重新聚合、比对、构建并发布定制版；上游发新版本时自动生成提醒 Issue。
 
-## 使用方法
+## 聚合源格式（fnpack.json · FnDepot V2）
 
-在 fnOS 应用商店 → 第三方源 → 添加源，填入：
+本项目发布物 `fnpack.json` 严格遵循 [EWEDLCM/FnDepot 外部应用源 V2 编写说明](https://github.com/EWEDLCM/FnDepot/blob/main/README.md)，客户端需为支持 V2 的版本（v0.0.7 以上）。
 
+### 顶层结构
+
+```json
+{
+  "schema_version": "2",
+  "source_info": { "name": "...", "author": "...", "homepage": "...", "description": "..." },
+  "apps": { "<appname>": { ... } }
+}
 ```
-https://raw.githubusercontent.com/kitblue/FnUnify/main/fnpack.json
+
+| 字段 | 类型 | 要求 |
+|---|---|---|
+| `schema_version` | 字符串 | 必须精确为 `"2"`，不接受数字 2、`"2.0"`、`"2.1"` 等写法 |
+| `source_info.name` / `source_info.author` | 字符串 | 必填，源显示名称与维护者 |
+| `apps` | 对象 | 键名必须与 FPK manifest 的 `appname` 一致；仅允许字母、数字、点、下划线、短横线，且以字母或数字开头 |
+
+### 应用必填字段
+
+| 字段 | 类型 | 要求 |
+|---|---|---|
+| `display_name` | 字符串 | 应用显示名称 |
+| `desc` | 字符串 | 应用简介，支持 HTML（客户端会清理危险内容） |
+| `platform` | 数组 | 只允许 `all`、`x86`、`arm` |
+| `categories` | 数组 | 固定分类，1~2 个，第一项为主分类 |
+| `icon_url` | URL | 应用图标；缺失时本项目以 `assets/app-placeholder.png` 占位兜底 |
+| `run_as` | 字符串 | 只允许 `package` 或 `root` |
+| `install_type` | 字符串 | 空字符串=存储空间，`root`=系统空间 |
+| `is_docker` | 布尔 | 是否为 Docker 应用 |
+| `releases` | 对象 | 版本集合，至少一个可用版本 |
+
+可选字段：`preview_urls`（最多 8 张）、`readme_url`、`bug_report_url`、`details_url`（拆分详情模式）、`maintainer`、`distributor`、`service_port`、`i18n`。
+
+固定分类（不可自创）：`影音娱乐`、`系统工具`、`编程开发`、`AI赋能`、`生活服务`、`智能智控`、`教育学习`、`游戏地带`、`硬件驱动`。
+
+### releases / packages 与架构回退
+
+```json
+"releases": {
+  "1.2.3": {
+    "packages": {
+      "all": { "download_url": "...", "size": 123456, "sha256": "..." },
+      "x86": { "download_url": "...", "size": 123456, "sha256": "..." }
+    }
+  }
+}
 ```
 
-或使用 jsDelivr CDN：
+- 版本键为可比较的版本号（推荐 SemVer），不能用 `latest` 或日期文字。
+- 安装包架构键只允许 `all`、`x86`、`arm`。
+- 选择顺序：`packages.[当前架构]` → `packages.all`；`download_url` 必须存在于最终选中的分支。
+- 字段合并顺序：应用级 → 版本级 → `packages.all` → `packages.[当前架构]`。
+- `size` 为非负整数（Bytes），`sha256` 为 64 位十六进制（存在时客户端强制校验）。
 
-```
-https://cdn.jsdelivr.net/gh/kitblue/FnUnify@main/fnpack.json
-```
+### 客户端限制（发布前自查）
 
-## 定制版 FnDepot 客户端（fndepot_unify）
+| 项 | 上限 |
+|---|---|
+| 主源 JSON | 约 2MB（本项目当前约 480KB） |
+| 单源应用数 | 最多 5000（本项目当前 320） |
+| 单应用版本数 | 最多 100 |
+| 预览图 | 最多读取 8 张 |
+| 详情 JSON | 约 512KB（拆分模式） |
 
-`fndepot_unify` 是 FnDepot 客户端（v0.4.6）的定制版，**不修改前端 JS 与后端二进制**，而是通过 fpk 安装/升级钩子在 **cmd 脚本层**注入源订阅：把 FnUnify 订阅源**幂等写入客户端本地数据库**（`${TRIM_PKGVAR}/fndepot.db` 的 sources 表），由客户端原生逻辑接管同步/解析/去重，安装后打开即用、无需手动添加源。
+### i18n 与拆分详情
 
-定制点：
-- 新增 `cmd/seed_fnunify.sh`：以 python3（优先）/ sqlite3 幂等插入 FnUnify 源记录（URL 唯一约束防重）
-- `cmd/common`：install_callback / upgrade_callback 在 rebuild-persistent-data 之后调用 seed 脚本
+- `i18n` 可出现在 `source_info`、应用、版本、安装包四层；可本地化字段为 `name/description`、`display_name/desc`、`changelog`。
+- 回退顺序：精确语言 → 同语系 → `en-US` → `zh-CN` → 基础字段；基础字段仍然必须填写。
+- 应用较多时可使用 `details_url` 拆分：主源只存索引与 `details_updated_at`，详情文件 `app_name` 必须与 `apps` 键名完全一致。
 
-版本策略：版本号跟随原项目（当前 0.4.6），不随编译递增；原版发布新版本后，
-由 `scripts/sync_fndepot.py` 自动完成「下载原版 fpk → 注入定制 → 重打包 → 发布」。
+## 开始使用
 
-发布：https://github.com/kitblue/FnUnify/releases/tag/fndepot-v0.4.6
-安装包：`fndepot_unify_v0.4.6.fpk`（appname 保持 `fndepot`，可覆盖安装原版）
+### 方式一：安装定制版商店（推荐）
 
-## 文件说明
+1. 从本仓库 [Releases](https://github.com/kitblue/FnUnify/releases) 下载最新的 `fndepot_unify_*.fpk` 安装包。
+2. 在飞牛 fnOS 应用中心以"手动安装"方式上传该 `fpk` 完成安装。
+3. 打开应用，等待首次源同步完成（安装钩子会自动预置聚合源），即可浏览全部应用。
 
-| 文件 | 说明 |
-| --- | --- |
-| `fnpack.json` | FnDepot V2 源订阅聚合产物，FnDepot 客户端直读 |
-| `repo_list.txt` | 订阅源清单（一行一个 `owner/repo`） |
-| `scripts/aggregate.py` | 重新生成脚本：拉取全部源 → 全量收录 → 源健康检查 → 元数据质量统计 → 去重 → 输出 fnpack.json |
-| `scripts/sync_fndepot.py` | 定制版自动发版流水线：检查原版版本 → 下载 → 定制（DB 预置） → 重打包 → 发布 |
-| `scripts/source_quality_check.py` | 源质量评估：基于健康报告与聚合结果输出 Markdown 报告（保留/降级/移除建议） |
-| `scripts/test_aggregate.py` | 聚合脚本单元测试（unittest，无第三方依赖） |
-| `fndepot_unify/` | FnDepot 客户端解包副本（含定制脚本） |
-| `fndepot_unify_v0.4.6.fpk` | 定制版安装包：安装/升级时自动内置 FnUnify 源 |
+### 方式二：手动添加聚合源
 
-## 健康监控与质量报告
+适用于已经在使用支持 V2 的 FnDepot 客户端（v0.0.7 以上）的用户：
 
-聚合流程内置三类可观测报告，全部输出到 `scripts/` 目录，供人工巡检或 CI 消费：
+1. 在 FnDepot 客户端中新增第三方源：
+   - 源地址：`https://raw.githubusercontent.com/kitblue/FnUnify/main/fnpack.json`
+2. 触发一次源同步，客户端即可加载聚合源中的应用。
 
-| 报告文件 | 生成时机 | 内容 |
-| --- | --- | --- |
-| `scripts/source_health_report.json` | `aggregate.py` 每次运行 | 每个源的可达性探测结果：状态（ok/unreachable）、HTTP 状态码、失败原因、检查时间 |
-| `scripts/metadata_quality_report.json` | `aggregate.py` 每次运行 | 关键字段（display_name/desc/version/download_url/icon_url/author）覆盖率、缺失字段明细 |
-| `scripts/source_quality_report.md` | 手动运行 `source_quality_check.py` | 源质量分级与处理建议（保留/降级/移除），只建议不自动修改 `repo_list.txt` |
+> 注意：旧版客户端（v0.0.6 及以下）无法解析 V2 格式，若手动添加源后无法加载，请升级客户端或改用方式一安装定制版。
 
-### 使用方式
+### 验证源是否可用
 
 ```bash
-# 生成聚合产物 + 源健康报告 + 元数据质量报告（三合一）
-python scripts/aggregate.py
-
-# 基于最新健康报告生成源质量评估 Markdown
-python scripts/source_quality_check.py
+curl -s https://raw.githubusercontent.com/kitblue/FnUnify/main/fnpack.json | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['schema_version'], d['source_info']['name'], len(d['apps']))"
 ```
 
-### CI 集成
+## 文件与目录速览
 
-- `.github/workflows/fnunify-ci.yml`：`generate` / `build` 两个 job 失败时自动创建 GitHub Issue（标题含日期与 job 名，正文附失败日志摘要）
-- `.github/workflows/check-upstream.yml`：每日 14:00（北京时间）检查 EWEDLCM/FnDepot 最新 release 版本，与 `scripts/sync_state.json` 记录的原版版本比对，发现新版本时创建 Issue 提醒触发定制版构建
+| 路径 | 作用 |
+|---|---|
+| `repo_list.txt` | 第三方源清单，一行一个 `owner/repo`，共 151 个有效源 |
+| `official_apps.txt` | 官方应用排除清单，共 174 个，聚合时跳过 |
+| `fnpack.json` | 聚合产物（FnDepot V2 格式），最终交付给客户端加载的源清单 |
+| `assets/app-placeholder.png` | 图标缺失时的占位图（`icon_url` 兜底） |
+| `scripts/aggregate.py` | 聚合主脚本：抓取、解析、去重、归一化、输出 V2 `fnpack.json` |
+| `scripts/transform_to_v2.py` | 一次性/增量转换器：将 V1 平铺结构清洗为 V2 规范结构 |
+| `scripts/sync_fndepot.py` | 定制版同步/构建/发布脚本：查上游版本、降一位发版、打包发布 |
+| `scripts/source_quality_check.py` | 源质量与元数据完整性检查 |
+| `scripts/cdn_mirror.py` | CDN 直链镜像工具 |
+| `scripts/test_aggregate.py` | 聚合逻辑单元测试 |
+| `scripts/sync_state.json` | 同步状态记录（上游版本、本地发版版本、构建时间） |
+| `scripts/source_health_report.json` | 源可达性探测报告（CI 生成） |
+| `scripts/metadata_quality_report.json` | 元数据质量报告（CI 生成） |
+| `build_work/src/manifest` | 定制版应用包描述文件（版本、维护者、平台等） |
+| `build_work/src/cmd/seed_fnunify.sh` | 安装/升级钩子：预置聚合源到本地商店数据库（兼容 V2 `releases` 与 V1 `download_url`） |
+| `build_work/src/cmd/` | 定制版生命周期回调（安装、升级、卸载、配置等） |
+| `build_work/src/i18n/` | 多语言文案（zh-CN / zh-TW / en-US / ja-JP / ru-RU） |
+| `.github/workflows/fnunify-ci.yml` | 每日聚合 + 构建 + 发布流水线 |
+| `.github/workflows/check-upstream.yml` | 每日上游版本检查与提醒流水线 |
+| `dedup_strategy.md` | 应用去重策略说明 |
+| `CONTRIBUTING.md` | 贡献指南 |
 
-### 定制版版本追踪
+## 自动构建与版本管理
 
-```bash
-# 检查上游是否发布新版本（CI 友好输出，返回码 0=无需构建 / 2=有待构建）
-python scripts/sync_fndepot.py --check-only
-```
+### 每日流水线（`fnunify-ci.yml`）
 
-输出形如 `CHECK_ONLY upstream=0.4.6 local=0.4.6 need_build=no published_at=...`，可由 CI 直接解析。
+| 时间（北京时间） | 任务 |
+|---|---|
+| 11:00 | 运行 `aggregate.py` 重新聚合全部源，`fnpack.json` 有变化时自动提交推送 |
+| 15:00 | 运行 `sync_fndepot.py --publish`，检测到上游新版本时构建定制版并发布 |
 
-### 自动化测试
+推送 `fnpack.json`、聚合/发布脚本等关键文件时也会触发流水线；`main` 分支外的改动不受影响，也可在 Actions 页面手动触发。
 
-```bash
-python scripts/test_aggregate.py -v
-```
+### 上游检查（`check-upstream.yml`）
 
-覆盖：V1/V2 源解析、同名多源去重评分、元数据完整性检查、fnpack.json 输出结构校验（schema_version=2、apps 键结构）。
+每日 14:00（北京时间）检查上游 [Blue-Mink/FnDepot](https://github.com/Blue-Mink/FnDepot) 是否发布新版本，有则自动创建提醒 Issue，包含上游版本号、对应发版版本与结论。
 
-## 重新生成
+### 发版策略：上游降一位
 
-```bash
-python scripts/aggregate.py
-```
+定制版采用"上游版本 - 1"的发版策略：
 
-产物输出到仓库根目录 `fnpack.json`。
+- 脚本将 `UPSTREAM_REPO` 指向上游原版仓库（自动查最新 release），将 `PUBLISH_REPO` 指向本项目仓库（客户端检查更新的目标）。
+- 发布版本号由 `decrement_version()` 计算：仅对语义化版本最后一段减一，末段为 0 时向前一段借位并回退为 9（如 `0.6.6 → 0.6.5`、`0.6.0 → 0.5.9`）。
+- 打包前将 `manifest` 的 `version` 改写为降一位后的版本号，`fpk` 文件名与 GitHub tag 同步（如 `fndepot_unify_v0.6.5.fpk`、`fndepot-v0.6.5`）。
+- 若同名 release 已存在，先删除旧资产与 release 再重新创建，保证幂等发布。
+
+这样做的目的：客户端检查更新时总能拿到比上游低一档的版本，便于验证升级路径；上游发布新版本后，本项目 CI 会在一到两个工作日内自动跟进发版。
+
+## 注意事项
+
+- **客户端版本兼容**：聚合源为 FnDepot V2 格式，需要客户端 v0.0.7 以上；旧版（v0.0.6 及以下）无法解析 V2，请升级客户端或安装定制版。
+- **只增不删**：`seed_fnunify.sh` 同步时仅新增/更新聚合源中的应用，绝不删除用户在本地手动添加的源。
+- **版本号含义**：仓库内 `fndepot_unify_v*.fpk` 为本地构建产物，当前正式发版以 `sync_state.json` 中 `last_version` 及 [Releases](https://github.com/kitblue/FnUnify/releases) 页面为准（当前发版 `fndepot_unify_v0.6.5.fpk`，tag `fndepot-v0.6.5`）。
+- **去重范围**：聚合按应用显示名去重，同名不同源的条目以 `_fork_of` 标记保留来源，不会因去重丢失可用版本。
+- **CI 失败通知**：聚合或构建任一环节失败，CI 会自动创建 `[CI失败]` 前缀的 Issue 便于追踪。
+
+## 贡献
+
+欢迎通过 Pull Request 补充新的第三方源（追加到 `repo_list.txt`）、修复聚合逻辑或改进文档。参与前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md) 与 [dedup_strategy.md](dedup_strategy.md)。
 
 ## 免责声明
 
-所有应用条目均来自社区公开的第三方源，版权与维护归各源作者所有。本仓库仅做聚合与转发，不修改应用本体；如发现侵权内容请联系对应源作者，或在本仓库提 Issue 移除相关源。
+本项目仅聚合第三方来源的应用元数据，所有应用版权归各自作者所有。聚合行为不修改任何上游代码，安装与使用第三方应用产生的风险由用户自行承担。
+*（内容由AI生成，仅供参考）*
+*（内容由AI生成，仅供参考）*
