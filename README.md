@@ -13,7 +13,7 @@ AIGC:
 
 # FnUnify
 
-> 面向飞牛 fnOS 的第三方应用聚合源与定制版应用商店仓库。一条命令、一次安装，即可在一个入口浏览并安装来自 152 个第三方源的 497 个应用。
+> 面向飞牛 fnOS 的第三方应用聚合源与定制版应用商店仓库。一条命令、一次安装，即可在一个入口浏览并安装来自 152 个第三方源的 474 个应用。
 
 ## 这是什么
 
@@ -26,7 +26,7 @@ FnUnify 由两部分组成：
 
 ## 主要能力
 
-- **大规模聚合**：聚合 152 个第三方源（含官方 [conversun/fnos-apps](https://github.com/conversun/fnos-apps)），去重后收录 497 个应用；fnOS 官方商店自带的 175 个应用仍由官方商店提供，不重复收录。
+- **大规模聚合**：聚合 152 个第三方源，去重后收录 474 个应用（含官方 [conversun/fnos-apps](https://github.com/conversun/fnos-apps) 源收录）。
 - **格式兼容**：聚合脚本同时支持 FnDepot V1（无 `schema_version`，根节点直接是应用映射）、V2（`{schema_version, source_info, apps}` 三层结构）及个别上游的 `apps.json` 包装层，统一归一化为 V2 输出。
 - **去重与溯源**：按应用显示名去重并保留数据最完整的一条；同名不同源的条目附加 `_fork_of` 溯源标记，便于追查来源。
 - **质量保障**：自动做源可达性探测（`source_health_report.json`）与元数据字段覆盖率检查（`metadata_quality_report.json`），不可达或不完整的源会被标记出来。
@@ -95,8 +95,8 @@ FnUnify 由两部分组成：
 
 | 项 | 上限 |
 |---|---|
-| 主源 JSON | 约 2MB（本项目当前约 584KB） |
-| 单源应用数 | 最多 5000（本项目当前 497） |
+| 主源 JSON | 约 2MB（本项目当前约 480KB） |
+| 单源应用数 | 最多 5000（本项目当前 474） |
 | 单应用版本数 | 最多 100 |
 | 预览图 | 最多读取 8 张 |
 | 详情 JSON | 约 512KB（拆分模式） |
@@ -135,8 +135,8 @@ curl -s https://raw.githubusercontent.com/kitblue/FnUnify/main/fnpack.json | pyt
 
 | 路径 | 作用 |
 |---|---|
-| `repo_list.txt` | 第三方源清单，一行一个 `owner/repo`，共 151 行；连同官方源共聚合 152 个源 |
-| `official_apps.txt` | 官方应用排除清单，共 175 个，聚合时跳过 |
+| `repo_list.txt` | 第三方源清单，一行一个 `owner/repo`，共 152 个有效源 |
+| `official_apps.txt` | 官方应用排除清单，共 174 个，聚合时跳过 |
 | `fnpack.json` | 聚合产物（FnDepot V2 格式），最终交付给客户端加载的源清单 |
 | `assets/app-placeholder.png` | 图标缺失时的占位图（`icon_url` 兜底） |
 | `scripts/aggregate.py` | 聚合主脚本：抓取、解析、去重、归一化、输出 V2 `fnpack.json` |
@@ -172,11 +172,22 @@ curl -s https://raw.githubusercontent.com/kitblue/FnUnify/main/fnpack.json | pyt
 
 每日 14:00（北京时间）检查上游 [Blue-Mink/FnDepot](https://github.com/Blue-Mink/FnDepot) 是否发布新版本，有则自动创建提醒 Issue，包含上游版本号、对应发版版本与结论。
 
+### 发版策略：上游降一位
+
+定制版采用"上游版本 - 1"的发版策略：
+
+- 脚本将 `UPSTREAM_REPO` 指向上游原版仓库（自动查最新 release），将 `PUBLISH_REPO` 指向本项目仓库（客户端检查更新的目标）。
+- 发布版本号由 `decrement_version()` 计算：仅对语义化版本最后一段减一，末段为 0 时向前一段借位并回退为 9（如 `0.6.6 → 0.6.5`、`0.6.0 → 0.5.9`）。
+- 打包前将 `manifest` 的 `version` 改写为降一位后的版本号，`fpk` 文件名与 GitHub tag 同步（如 `fndepot_unify_v0.6.5.fpk`、`fndepot-v0.6.5`）。
+- 若同名 release 已存在，先删除旧资产与 release 再重新创建，保证幂等发布。
+
+这样做的目的：客户端检查更新时总能拿到比上游低一档的版本，便于验证升级路径；上游发布新版本后，本项目 CI 会在一到两个工作日内自动跟进发版。
+
 ## 注意事项
 
 - **客户端版本兼容**：聚合源为 FnDepot V2 格式，需要客户端 v0.0.7 以上；旧版（v0.0.6 及以下）无法解析 V2，请升级客户端或安装定制版。
 - **只增不删**：`seed_fnunify.sh` 同步时仅新增/更新聚合源中的应用，绝不删除用户在本地手动添加的源。
-- **版本号含义**：仓库内 `fndepot_unify_v*.fpk` 为本地构建产物，当前正式发版以 `sync_state.json` 中 `last_version` 及 [Releases](https://github.com/kitblue/FnUnify/releases) 页面为准（当前发版 `fndepot_unify_v0.6.6.fpk`，tag `fndepot-v0.6.6`）。
+- **版本号含义**：仓库内 `fndepot_unify_v*.fpk` 为本地构建产物，当前正式发版以 `sync_state.json` 中 `last_version` 及 [Releases](https://github.com/kitblue/FnUnify/releases) 页面为准（当前发版 `fndepot_unify_v0.6.5.fpk`，tag `fndepot-v0.6.5`）。
 - **去重范围**：聚合按应用显示名去重，同名不同源的条目以 `_fork_of` 标记保留来源，不会因去重丢失可用版本。
 - **CI 失败通知**：聚合或构建任一环节失败，CI 会自动创建 `[CI失败]` 前缀的 Issue 便于追踪。
 
