@@ -244,6 +244,75 @@ def build_v2_releases(version, arch_diff):
         return None
     return {version: {"packages": packages}}
 
+GITHUB_PROJECTS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "github_projects.json")
+_gh_projects = {}
+try:
+    with open(GITHUB_PROJECTS_FILE, "r", encoding="utf-8") as f:
+        _gh_projects = {str(k).lower(): v for k, v in json.load(f).items() if not str(k).startswith("_")}
+except Exception:
+    _gh_projects = {}
+_gh_cache = {}
+
+def gh_repo_info(repo_spec):
+    """GitHub 仓库信息（轻量级）：取 repo owner 作为项目开发者。进程内缓存，失败静默。"""
+    if repo_spec in _gh_cache:
+        return _gh_cache[repo_spec]
+    parts = repo_spec.strip().strip("/").split("/")
+    info = None
+    if len(parts) == 2:
+        j = _http(f"{API}/repos/{parts[0]}/{parts[1]}")
+        if j:
+            try:
+                jj = json.loads(j)
+                if isinstance(jj, dict) and isinstance(jj.get("owner"), dict):
+                    info = {
+                        "developer": jj["owner"].get("login", ""),
+                        "url": jj.get("html_url") or f"https://github.com/{parts[0]}/{parts[1]}",
+                    }
+            except Exception:
+                info = None
+    _gh_cache[repo_spec] = info
+    return info
+
+def _gh_repo_from_download(e):
+    """从 download_url 解析 GitHub 仓库 spec（github.com / raw.githubusercontent.com）。"""
+    dl = e.get("download_url") or ""
+    m = re.search(r"https://github\.com/([^/\s]+)/([^/\s]+)", dl)
+    if m:
+        return f"{m.group(1)}/{m.group(2)}"
+    m = re.search(r"https://raw\.githubusercontent\.com/([^/\s]+)/([^/\s]+)", dl)
+    if m:
+        return f"{m.group(1)}/{m.group(2)}"
+    return None
+
+def fill_from_github_project(e, owner, repo):
+    """真实开发者优先：download_url 自动解析出的 GitHub 项目为第一来源，
+    github_projects.json 映射表仅作兜底（download_url 解析失败或指向源仓库时）。
+    源搜集者（源仓库 owner/源名）不是应用开发者，绝不作为 developer/publisher 写入。"""
+    if e.get("developer") and e.get("publisher"):
+        return  # 两者齐备无需补全
+    spec = _gh_repo_from_download(e)
+    src_spec = f"{owner}/{repo}".lower()
+    info = None
+    if spec and spec.lower() != src_spec:
+        info = gh_repo_info(spec)
+    if not info:
+        key = re.sub(r"-(\d+)$", "", ((e.get("appname") or "").strip().lower()))
+        spec2 = _gh_projects.get(key)
+        if spec2:
+            info = gh_repo_info(spec2)
+    if not info:
+        return
+    dev = info["developer"]
+    if not e.get("developer"):
+        e["developer"] = dev
+    if not e.get("publisher"):
+        e["publisher"] = dev
+    if not e.get("developer_url"):
+        e["developer_url"] = info["url"]
+    if not e.get("publisher_url"):
+        e["publisher_url"] = info["url"]
+
 def normalize_entry(entry, owner, repo, branch, src_meta=None):
     """源订阅模式：原样保留源字段，不做作者改写/兜底（避免显示错误作者）"""
     e = dict(entry)
@@ -267,10 +336,15 @@ def normalize_entry(entry, owner, repo, branch, src_meta=None):
     # 客户端详情页"开发者/发布者"行分别读取 developer / publisher 字段（缺失则显示"未知开发者/未知发布者"）。
     # developer 兜底为归一化作者值（真实作者）；publisher 只保留源原始值，
     # 不兜底为源名/分销商（聚合源中"源名≠发布者"，前面几版即此行为，避免把源名或 kitblue 误显示为发布者）。
-    e["developer"] = e.get("developer") or str(author) if author else e.get("developer", "")
-    if not e.get("developer"):
-        e["developer"] = ""
-    e["publisher"] = e.get("publisher", "")
+    # developer / publisher：不做数据兜底，源条目有原始值才保留，没有就留空
+    # （客户端对应显示"未知开发者/未知发布者"）。严禁用源名/分销商/归一化作者乱填，
+    # 乱填会导致字段与离线安装包元数据不一致，进而被客户端识别为不同应用。
+    e["developer"] = (e.get("developer") or "").strip()
+    e["publisher"] = (e.get("publisher") or "").strip()
+    # GitHub 项目补全（轻量级兜底）：developer/publisher 缺失时，先尝试从 download_url
+    # 自动解析真实 GitHub 项目抓取开发者；解析失败/指向源仓库再查映射表。
+    # 源搜集者（源仓库 owner/源名）不是应用开发者，严禁写入 developer/publisher。
+    fill_from_github_project(e, owner, repo)
     e["distributor"] = e.get("distributor") or src_meta.get("name", "")
     e["distributor_url"] = e.get("distributor_url") or src_meta.get("homepage", f"https://github.com/{owner}")
     if not e.get("publisher_url"):
@@ -685,6 +759,7 @@ def dedup_apps(apps_out):
     保留数据最完整的那个，其他标记为 fork 并保留 _fork_of 溯源。
     评分优先级：fnos-apps 类源(官方与镜像统一加权) > maintainer/distributor/developer 字段 > icon 覆盖 > 源顺序。
     winner 缺失 icon_url 时从组内其它条目同名继承（上游 > 同名继承 > 探测 > 占位）。
+    winner appname 统一标准化：组内优先选不带数字后缀的版本，消除 fancontrolserver/fancontrolserver-2 等跨源不一致问题。
     """
     name_groups = defaultdict(list)
     for key, e in apps_out.items():
@@ -726,6 +801,26 @@ def dedup_apps(apps_out):
                 if ic:
                     e["icon_url"] = ic
                     break
+        # appname 标准化：组内优先选不带 -N 后缀的版本，消除跨源不一致
+        all_appnames = [apps_out[k2].get("appname") or k2 for k2 in keys]
+        # 去掉 -N 后缀
+        def _strip_num_suffix(name):
+            m = re.match(r'^(.+)-\d+$', name)
+            return m.group(1) if m else name
+        canonical_names = [_strip_num_suffix(n) for n in all_appnames]
+        # 优先选 canonical（去掉后缀后）且最短的
+        canonical_set = set(canonical_names)
+        if len(canonical_set) == 1:
+            # 所有条目规范化后相同，直接用
+            best_name = canonical_names[0]
+        else:
+            # 部分带后缀部分不带，选不带后缀的（canonical_set 中不带后缀的）
+            non_suffix_names = [n for n in canonical_names if n == all_appnames[canonical_names.index(n)]]
+            if non_suffix_names:
+                best_name = min(non_suffix_names, key=len)
+            else:
+                best_name = canonical_names[0]
+        e["appname"] = best_name
         # 溯源：全部来源仓库列表并入 _src（不修改原始字段值）
         srcs = [apps_out[k].get("_src", "") for k in keys]
         e["_src"] = srcs if len(srcs) > 1 else srcs[0]
@@ -801,21 +896,22 @@ def main():
         out.setdefault("platform", ["x86", "arm"])
         out.setdefault("source_repo", src)
         # 注意：_src/_src_meta/_orig/_branch 保留到去重评分之后，输出前统一清理
-        # key 唯一化：同源冲突由 dict 天然消化；跨源重复保留全部条目，key 加 -2/-3 后缀
-        # appname 保留源原始名（不带后缀），后缀只用于 dict key，供去重阶段正确分组
-        base = (out.get("appname") or an).lower()
-        key = base
-        i = 2
-        while key in used_keys:
-            key = f"{base}-{i}"
-            i += 1
-        used_keys.add(key)
-        out["appname"] = base
+        # key 唯一化：先标准化 appname（去掉 -N 后缀），再判断是否重复
+        # 同源冲突由 dict 天然消化；跨源重复：标准化后相同则共享 key，不同则各保留原始 appname
+        raw_appname = (out.get("appname") or an).lower()
+        canonical = re.sub(r'-(\d+)$', '', raw_appname)  # 去掉末尾的 -N 后缀
+        if canonical in used_keys:
+            # 标准化后已存在，直接用原始 appname 覆盖（带后缀的版本让路）
+            key = canonical
+        else:
+            key = raw_appname
+            used_keys.add(key)
+        out["appname"] = raw_appname
         apps_out[key] = out
         if not out.get("icon_url"):
-            missing_icons.append((base, owner, repo, branch, base))
+            missing_icons.append((key, owner, repo, branch, raw_appname))
         if not out.get("size") and dl:
-            missing_sizes.append((base, dl))
+            missing_sizes.append((key, dl))
 
     # 同名同包名去重：保留数据最完整的那个，其他标记为 fork 并保留 _fork_of 溯源
     n_before_dedup = len(apps_out)
