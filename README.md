@@ -63,14 +63,14 @@ FnUnify 由两部分组成：
 | `platform` | 数组 | 只允许 `all`、`x86`、`arm` |
 | `categories` | 数组 | 固定分类，1~2 个，第一项为主分类 |
 | `icon_url` | URL | 应用图标；缺失时本项目以 `assets/app-placeholder.png` 占位兜底 |
-| `run_as` | 字符串 | 只允许 `package` 或 `root` |
+| `run_as` | 字符串 | 只允许 `package` 或 `service`（`root` 视为非法，聚合时统一映射为 `service`） |
 | `install_type` | 字符串 | 空字符串=存储空间，`root`=系统空间 |
 | `is_docker` | 布尔 | 是否为 Docker 应用 |
 | `releases` | 对象 | 版本集合，至少一个可用版本 |
 
 可选字段：`preview_urls`（最多 8 张）、`readme_url`、`bug_report_url`、`details_url`（拆分详情模式）、`maintainer`、`distributor`、`service_port`、`i18n`。
 
-固定分类（不可自创）：`影音娱乐`、`系统工具`、`编程开发`、`AI赋能`、`生活服务`、`智能智控`、`教育学习`、`游戏地带`、`硬件驱动`。
+固定分类（不可自创）：`系统工具`、`文件系统`、`网络服务`、`开发工具`、`实用工具`、`媒体工具`、`安全工具`、`数据库`、`其他`。历史源中的旧分类（`编程开发`、`游戏地带`、`影音娱乐`、`生活服务`、`AI赋能`、`硬件驱动`、`智能智控`、`教育学习`）在聚合时统一映射到上述合法分类。
 
 ### releases / packages 与架构回退
 
