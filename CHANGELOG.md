@@ -1,3 +1,3 @@
-## 2026-10-16 聚合更新
-- 应用总数: 295 -> 295
-- 应用集合无变化（仅字段/版本更新）
+## 2026-10-17 聚合更新
+- 应用总数: 347 -> 370
+- 新增 23: agnes-ai-studio, appliance-compositor, dev-hub, douyin_sparkflow, dsh, fnmonitorpro, fygo-cinema, lemon-music, miair-plus, mmh, numa, pipebridge, r1toolbox, reminder, reverse-proxy, ronglinc93widget, student-management-system, t6-control, t6-drivers, t6-panel ...
