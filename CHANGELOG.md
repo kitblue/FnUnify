@@ -1,3 +1,4 @@
-## 2026-10-17 聚合更新
-- 应用总数: 166 -> 195
-- 新增 29: code-server, fn-advancedsettings, fn-appdownload, fn-appsettings, fn-audioplayer, fn-bluetooth, fn-chromium-desktop, fn-execute, fn-fail2ban, fn-grafana-alloy, fn-guacamole, fn-influxdb, fn-installer, fn-kodi, fn-linux-station, fn-open-vm-tools, fn-p2s, fn-qemu-ga, fn-scheduler, fn-scrutiny ...
+## 2026-10-16 聚合更新
+- 应用总数: 195 -> 195
+- 新增 1: hermes-agent
+- 移除 1: hermes-studio
