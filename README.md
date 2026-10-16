@@ -10,10 +10,9 @@ AIGC:
 ---
 
 
-
 # FnUnify
 
-> 面向飞牛 fnOS 的第三方应用聚合源与定制版应用商店仓库。一条命令、一次安装，即可在一个入口浏览并安装来自 177 个第三方源的 327 个应用（默认排除 fnOS 官方商店已收录应用，不重复收录）。
+> 面向飞牛 fnOS 的第三方应用聚合源与定制版应用商店仓库。聚合 12 个第三方源（含自有子源 kitblue/fnthird），去重后收录 154 个应用（默认排除 fnOS 官方商店已收录应用，不重复收录）。
 
 ## 这是什么
 
@@ -24,12 +23,36 @@ FnUnify 由两部分组成：
 
 上游项目为 [Blue-Mink/FnDepot](https://github.com/Blue-Mink/FnDepot)，本项目在其基础上做源预置与发版管理；源格式规范参考 [EWEDLCM/FnDepot](https://github.com/EWEDLCM/FnDepot) 的"外部应用源 V2 编写说明"，发布仓库为本项目 [kitblue/FnUnify](https://github.com/kitblue/FnUnify)。
 
+## 聚合源清单（repo_list.txt · 12 个）
+
+| 源 | 类型 | 说明 |
+|---|---|---|
+| `shuangji66/FnDepot` | 第三方聚合 | 优质聚合源 |
+| `bekafka/FnDepot` | 第三方聚合 | 优质聚合源 |
+| `rockchild2332/fnos-apps-fndepot` | 第三方聚合 | 优质聚合源 |
+| `RROrg/fn-apps` | 第三方聚合 | 优质聚合源 |
+| `Brian099/FnDepot` | 第三方聚合 | 优质聚合源 |
+| `yuexps/FnDepot` | 第三方聚合 | 优质聚合源 |
+| `cmbya/FnDepot` | 第三方聚合 | 优质聚合源 |
+| `magiccode1412/FnDepot` | 第三方聚合 | 优质聚合源 |
+| `Kasbuky-sudo/FnDepot` | 第三方聚合 | 优质聚合源 |
+| `Hxido-RXM/FnDepot` | 第三方聚合 | 优质聚合源 |
+| `conversun/fnos-apps` | 官方源 | fnOS 官方第三方应用源（官方商店未收录应用） |
+| `kitblue/fnthird` | 自有子源 | 详见下文"fnthird 子源" |
+
+## fnthird 子源
+
+[kitblue/fnthird](https://github.com/kitblue/fnthird) 是 FnUnify 的自有子源，负责收录**有 manifest 但缺 fnpack 条目的上游原生应用**，以及**独立应用条目**（如 FanTune）。它既可直接作为 FnDepot V2 源被第三方商店收录，也作为 `repo_list.txt` 的一员进入 FnUnify 聚合：
+
+- **FanTune（fancontrolserver）**：原 KITblue/fantune 仓库的完整应用条目（releases、sha256、预览图等）已收录进 fnthird 索引（条目 `_src` 保留 `KITblue/fantune` 溯源），fantune 仓库本体不转移；聚合层经 fnthird 承接收录，无独立 KITblue/fantune 来源。
+- 除 FanTune 外，聚合源不包含任何 kitblue 相关独立源。
+
 ## 主要能力
 
-- **大规模聚合**：聚合 177 个第三方源，默认排除 fnOS 官方商店已收录应用（按 appname / display_name 规范化双通道比对，202 个）后去重收录 327 个应用；设置 `FnUnify_INCLUDE_OFFICIAL=1` 可额外收录官方 [conversun/fnos-apps](https://github.com/conversun/fnos-apps) 源（474 个）。
+- **大规模聚合**：聚合 12 个第三方源（11 个第三方优质源/官方源 + 自有子源 `kitblue/fnthird`），默认排除 fnOS 官方商店已收录应用（官方排除清单 181 个，运行时按 appname / display_name 规范化双通道比对共排除 205 个）后去重收录 **154** 个应用。
 - **格式兼容**：聚合脚本同时支持 FnDepot V1（无 `schema_version`，根节点直接是应用映射）、V2（`{schema_version, source_info, apps}` 三层结构）及个别上游的 `apps.json` 包装层，统一归一化为 V2 输出。
-- **去重与溯源**：按应用显示名去重并保留数据最完整的一条；同名不同源的条目附加 `_fork_of` 溯源标记，便于追查来源。
-- **防清洗与防覆盖**：`keep_sources.txt` 列出保留源（如 `KITblue/fantune`），每日不可达自动清洗豁免、同名跨源覆盖强制优先、去重评分加权，防止自有应用被清洗或顶替。
+- **去重与溯源**：按应用显示名去重并保留数据最完整的一条；同名不同源的条目以 `_fork_of` 溯源标记、`_src` 多来源数组保留来源，便于追查。
+- **独立应用承接**：原 keep_sources 防清洗/防覆盖机制已废弃；自有应用（如 FanTune）的保护改由 fnthird 子源收录承接，聚合时通过子源条目进入去重池。
 - **官方不重复**：默认排除 fnOS 官方商店已收录应用（appname 精确 / 规范化 / display_name 三通道 + 官方镜像源兜底），第三方源不重复收录官方商店应用。
 - **质量保障**：自动做源可达性探测（`source_health_report.json`）与元数据字段覆盖率检查（`metadata_quality_report.json`），不可达或不完整的源会被标记出来。
 - **CDN 直链**：`cdn_mirror.py` 可把 `download_url` 转换为 CDN 镜像直链，缓解 GitHub 下载不稳定问题。
@@ -97,8 +120,8 @@ FnUnify 由两部分组成：
 
 | 项 | 上限 |
 |---|---|
-| 主源 JSON | 约 2MB（本项目当前约 480KB） |
-| 单源应用数 | 最多 5000（本项目当前 474） |
+| 主源 JSON | 约 2MB（本项目当前约 151KB） |
+| 单源应用数 | 最多 5000（本项目当前 154） |
 | 单应用版本数 | 最多 100 |
 | 预览图 | 最多读取 8 张 |
 | 详情 JSON | 约 512KB（拆分模式） |
@@ -137,8 +160,8 @@ curl -s https://raw.githubusercontent.com/kitblue/FnUnify/main/fnpack.json | pyt
 
 | 路径 | 作用 |
 |---|---|
-| `repo_list.txt` | 第三方源清单，一行一个 `owner/repo`，共 152 个有效源 |
-| `official_apps.txt` | 官方应用排除清单，共 174 个，聚合时跳过 |
+| `repo_list.txt` | 第三方源清单，一行一个 `owner/repo`，共 12 个有效源 |
+| `official_apps.txt` | 官方应用排除清单，共 175 个，聚合时跳过 |
 | `fnpack.json` | 聚合产物（FnDepot V2 格式），最终交付给客户端加载的源清单 |
 | `assets/app-placeholder.png` | 图标缺失时的占位图（`icon_url` 兜底） |
 | `scripts/aggregate.py` | 聚合主脚本：抓取、解析、去重、归一化、输出 V2 `fnpack.json` |
