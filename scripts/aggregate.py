@@ -908,10 +908,10 @@ PRUNE_EXEMPT = {"Blue-Mink/moo", "kci-lnk/fn-knock-turborepo"}
 # 覆盖 11 个优质聚合源 + conversun/fnos-apps 官方源；自有子源 kitblue/fnthird 仍按自有逻辑处理。
 # （KITblue/fantune 已不再作为独立源收录，其条目经 fnthird 承接。）
 DIRECT_SOURCES = {
-    "shuangji66/FnDepot", "bekafka/FnDepot", "rockchild2332/fnos-apps-fndepot",
+    "shuangji66/FnDepot", "rockchild2332/fnos-apps-fndepot",
     "RROrg/fn-apps", "Brian099/FnDepot", "yuexps/FnDepot", "cmbya/FnDepot",
     "magiccode1412/FnDepot", "Kasbuky-sudo/FnDepot", "Hxido-RXM/FnDepot",
-    "conversun/fnos-apps", "EWEDLCM/FnDepot",
+    "conversun/fnos-apps", "EWEDLCM/FnDepot", "tnnevol/fn-os-apps",
 }
 
 def prune_unreachable_sources(sources, unreachable_sources):
