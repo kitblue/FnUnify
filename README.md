@@ -13,7 +13,7 @@ AIGC:
 
 # FnUnify
 
-> 面向飞牛 fnOS 的第三方应用聚合源与定制版应用商店仓库。一条命令、一次安装，即可在一个入口浏览并安装来自 152 个第三方源的 474 个应用。
+> 面向飞牛 fnOS 的第三方应用聚合源与定制版应用商店仓库。一条命令、一次安装，即可在一个入口浏览并安装来自 177 个第三方源的 327 个应用（默认排除 fnOS 官方商店已收录应用，不重复收录）。
 
 ## 这是什么
 
@@ -26,9 +26,11 @@ FnUnify 由两部分组成：
 
 ## 主要能力
 
-- **大规模聚合**：聚合 152 个第三方源，去重后收录 474 个应用（含官方 [conversun/fnos-apps](https://github.com/conversun/fnos-apps) 源收录）。
+- **大规模聚合**：聚合 177 个第三方源，默认排除 fnOS 官方商店已收录应用（按 appname / display_name 规范化双通道比对，202 个）后去重收录 327 个应用；设置 `FnUnify_INCLUDE_OFFICIAL=1` 可额外收录官方 [conversun/fnos-apps](https://github.com/conversun/fnos-apps) 源（474 个）。
 - **格式兼容**：聚合脚本同时支持 FnDepot V1（无 `schema_version`，根节点直接是应用映射）、V2（`{schema_version, source_info, apps}` 三层结构）及个别上游的 `apps.json` 包装层，统一归一化为 V2 输出。
 - **去重与溯源**：按应用显示名去重并保留数据最完整的一条；同名不同源的条目附加 `_fork_of` 溯源标记，便于追查来源。
+- **防清洗与防覆盖**：`keep_sources.txt` 列出保留源（如 `KITblue/fantune`），每日不可达自动清洗豁免、同名跨源覆盖强制优先、去重评分加权，防止自有应用被清洗或顶替。
+- **官方不重复**：默认排除 fnOS 官方商店已收录应用（appname 精确 / 规范化 / display_name 三通道 + 官方镜像源兜底），第三方源不重复收录官方商店应用。
 - **质量保障**：自动做源可达性探测（`source_health_report.json`）与元数据字段覆盖率检查（`metadata_quality_report.json`），不可达或不完整的源会被标记出来。
 - **CDN 直链**：`cdn_mirror.py` 可把 `download_url` 转换为 CDN 镜像直链，缓解 GitHub 下载不稳定问题。
 - **安装即就绪**：定制版 `fpk` 安装/升级时，`seed_fnunify.sh` 会从本项目拉取最新聚合源并幂等写入本地商店数据库，用户手动添加的源不会被删除。
