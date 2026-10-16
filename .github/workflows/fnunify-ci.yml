@@ -13,8 +13,6 @@ on:
       - 'scripts/aggregate.py'
       - 'scripts/github_projects.json'
       - 'scripts/sync_fndepot.py'
-      - 'scripts/source_quality_check.py'
-      - 'scripts/test_aggregate.py'
       - 'scripts/update_official_apps.py'
   workflow_dispatch:
 
