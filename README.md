@@ -1,6 +1,6 @@
 # FnUnify
 
-面向飞牛 fnOS 的第三方应用聚合源与定制版应用商店。聚合 13 个第三方源（含自有子源 kitblue/fnthird），去重后收录 **295** 个应用（默认排除 fnOS 官方商店已收录应用）。
+面向飞牛 fnOS 的第三方应用聚合源与定制版应用商店。聚合 16 个第三方源（含自有子源 kitblue/fnthird），去重后收录 **370** 个应用（默认排除 fnOS 官方商店已收录应用）。
 
 ## 这是什么
 
@@ -22,13 +22,13 @@
 - 源地址：`https://raw.githubusercontent.com/kitblue/FnUnify/main/fnpack.json`
 - 触发一次源同步即可加载。
 
-## 聚合源清单（repo_list.txt · 13 个）
+## 聚合源清单（repo_list.txt · 16 个）
 
-`shuangji66/FnDepot`、`rockchild2332/fnos-apps-fndepot`、`RROrg/fn-apps`、`Brian099/FnDepot`、`yuexps/FnDepot`、`cmbya/FnDepot`、`magiccode1412/FnDepot`、`Kasbuky-sudo/FnDepot`、`Hxido-RXM/FnDepot`、`conversun/fnos-apps`（官方源）、`EWEDLCM/FnDepot`、`kitblue/fnthird`（自有子源）、`tnnevol/fn-os-apps`。
+`shuangji66/FnDepot`、`RROrg/fn-apps`、`Brian099/FnDepot`、`yuexps/FnDepot`、`cmbya/FnDepot`、`magiccode1412/FnDepot`、`Kasbuky-sudo/FnDepot`、`conversun/fnos-apps`（官方源）、`EWEDLCM/FnDepot`、`kitblue/fnthird`（自有子源）、`tnnevol/fn-os-apps`、`hbestm/FnDepot`、`jiankujidu/Store`、`IMGZCQ/FnDepot`、`MisiteQ/FnDepot`、`moxyis/FnDepot`。
 
 ## 主要能力
 
-- **大规模聚合**：13 个源统一归一化为 FnDepot V2 格式（兼容 V1 与 `apps.json` 包装层）。
+- **大规模聚合**：16 个源统一归一化为 FnDepot V2 格式（兼容 V1 与 `apps.json` 包装层）。
 - **去重与溯源**：按应用显示名去重并保留数据最完整条目，同名不同源以 `_fork_of` 标记、`_src` 保留多来源。
 - **官方不重复**：默认排除 fnOS 官方商店已收录应用。
 - **独立应用承接**：FanTune 与 Blue-Mink/FnDepot 独立应用等经自有子源 fnthird 收录。
