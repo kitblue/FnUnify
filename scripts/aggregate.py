@@ -18,7 +18,8 @@ FnUnify 聚合脚本 v3
   分组键优先 display_name 规范化，回退 appname；winner 缺图标时组内同名继承。
 - 输出官方 FnDepot V2 格式（schema_version 字符串 "2"、source_info、apps；
   categories 固定 9 类最多 2 个；releases.<version>.packages.<arch> 嵌套结构；
-  install_type 归一化 ""/root；run_as 归一化 package/root；is_docker 布尔；size 非负整数）
+  install_type 归一化 ""/root；run_as 归一化 package/service（root 视为非法，统一映射为 service）；
+  is_docker 布尔；size 非负整数；categories 非法旧分类映射到合法 9 类（见 LEGACY_CATEGORY_MAP））
 """
 import json, re, os, sys, datetime, base64, hashlib, time
 from collections import defaultdict
@@ -199,8 +200,32 @@ def extract_download(entry, owner, repo, branch):
     return (lv or entry.get("version", "")), dl, ad
 
 # ========== V2 规范归一化辅助 ==========
+# V2 合法分类（FnDepot 客户端 CategoriesView 认可的 9 类）
+VALID_CATEGORIES = ("系统工具", "文件系统", "网络服务", "开发工具", "实用工具",
+                    "媒体工具", "安全工具", "数据库", "其他")
+# 历史源使用的旧分类体系 -> V2 合法 9 类映射（输出前统一转换）
+LEGACY_CATEGORY_MAP = {
+    "编程开发": "开发工具",
+    "游戏地带": "其他",
+    "影音娱乐": "媒体工具",
+    "生活服务": "实用工具",
+    "AI赋能": "开发工具",
+    "硬件驱动": "系统工具",
+    "智能智控": "系统工具",
+    "教育学习": "其他",
+}
 FIXED_CATEGORIES = ("影音娱乐", "系统工具", "编程开发", "AI赋能", "生活服务",
                     "智能智控", "教育学习", "游戏地带", "硬件驱动")
+
+def legalize_categories(cats):
+    """categories 列表 -> V2 合法 9 类：旧分类经 LEGACY_CATEGORY_MAP 映射，
+    非合法值丢弃，去重保序。"""
+    out = []
+    for c in cats or []:
+        c2 = LEGACY_CATEGORY_MAP.get(c, c)
+        if c2 in VALID_CATEGORIES and c2 not in out:
+            out.append(c2)
+    return out
 
 # labels 自由文本 -> 固定分类映射（关键词包含匹配，顺序即优先级）
 CATEGORY_RULES = [
@@ -248,7 +273,11 @@ def normalize_install_type(it):
     return ""
 
 def normalize_run_as(ra):
-    return "root" if ra == "root" else "package"
+    """run_as 归一化：root 为 V2 非法值（64 位环境不认可），统一映射为 service；
+    其余按 package 处理。"""
+    if ra == "root":
+        return "service"
+    return "package"
 
 def normalize_is_docker(v):
     if isinstance(v, bool):
@@ -459,8 +488,9 @@ def normalize_entry(entry, owner, repo, branch, src_meta=None):
     fill_from_github_project(e, owner, repo)
     e["distributor"] = (e.get("distributor") or "").strip()
     e["distributor_url"] = e.get("distributor_url") or ""
+    # publisher_url 兜底：优先 distributor_url，缺失时用 developer_url（详情页链接可点击）
     if not e.get("publisher_url"):
-        e["publisher_url"] = e.get("distributor_url") or ""
+        e["publisher_url"] = e.get("distributor_url") or e.get("developer_url") or ""
     # 图标：icon_url > icon > logo，相对路径转绝对
     icon = e.get("icon_url") or e.get("icon") or e.get("logo")
     if icon:
@@ -471,7 +501,7 @@ def normalize_entry(entry, owner, repo, branch, src_meta=None):
     pv = e.get("preview_urls")
     if isinstance(pv, list):
         e["preview_urls"] = [abs_url(p, owner, repo, branch) for p in pv]
-    # V2 categories：优先取已有 categories，否则由 labels 映射；固定 9 类最多 2 个
+    # V2 categories：优先取已有 categories，否则由 labels 映射；统一映射为 V2 合法 9 类，最多 2 个
     cats = e.get("categories")
     if isinstance(cats, str):
         cats = [cats]
@@ -479,7 +509,7 @@ def normalize_entry(entry, owner, repo, branch, src_meta=None):
         cats = map_labels_to_categories(",".join(str(c) for c in cats))
     else:
         cats = map_labels_to_categories(e.get("labels"))
-    e["categories"] = cats or ["系统工具"]
+    e["categories"] = legalize_categories(cats) or ["系统工具"]
     e.pop("labels", None)
     # V2 字段归一化
     e["install_type"] = normalize_install_type(e.get("install_type"))
@@ -1204,6 +1234,10 @@ def main():
     for e in apps_out.values():
         for k in ("_src_meta", "_orig", "_branch"):
             e.pop(k, None)
+        # publisher_url 最终兜底：所有 developer_url 补全（normalize_entry / 二次 fill /
+        # dedup 后映射表兜底）均已完成后执行；优先 distributor_url，缺失用 developer_url
+        if not e.get("publisher_url"):
+            e["publisher_url"] = e.get("distributor_url") or e.get("developer_url") or ""
         # V2：平铺 download_url/arch_diff/version -> releases.<version>.packages.<arch>
         rel = build_v2_releases(e.get("version", ""), e.get("arch_diff"))
         if rel is None and e.get("download_url"):
