@@ -1,6 +1,6 @@
 # FnUnify
 
-面向飞牛 fnOS 的第三方应用聚合源与定制版应用商店。聚合 13 个第三方源（含自有子源 kitblue/fnthird），去重后收录 **195** 个应用（默认排除 fnOS 官方商店已收录应用）。
+面向飞牛 fnOS 的第三方应用聚合源与定制版应用商店。聚合 13 个第三方源（含自有子源 kitblue/fnthird），去重后收录 **295** 个应用（默认排除 fnOS 官方商店已收录应用）。
 
 ## 这是什么
 
@@ -24,7 +24,7 @@
 
 ## 聚合源清单（repo_list.txt · 13 个）
 
-`shuangji66/FnDepot`、`bekafka/FnDepot`、`rockchild2332/fnos-apps-fndepot`、`RROrg/fn-apps`、`Brian099/FnDepot`、`yuexps/FnDepot`、`cmbya/FnDepot`、`magiccode1412/FnDepot`、`Kasbuky-sudo/FnDepot`、`Hxido-RXM/FnDepot`、`conversun/fnos-apps`（官方源）、`EWEDLCM/FnDepot`、`kitblue/fnthird`（自有子源）。
+`shuangji66/FnDepot`、`rockchild2332/fnos-apps-fndepot`、`RROrg/fn-apps`、`Brian099/FnDepot`、`yuexps/FnDepot`、`cmbya/FnDepot`、`magiccode1412/FnDepot`、`Kasbuky-sudo/FnDepot`、`Hxido-RXM/FnDepot`、`conversun/fnos-apps`（官方源）、`EWEDLCM/FnDepot`、`kitblue/fnthird`（自有子源）、`tnnevol/fn-os-apps`。
 
 ## 主要能力
 
