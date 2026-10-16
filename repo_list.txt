@@ -1,5 +1,4 @@
 shuangji66/FnDepot
-bekafka/FnDepot
 rockchild2332/fnos-apps-fndepot
 RROrg/fn-apps
 Brian099/FnDepot
@@ -11,3 +10,4 @@ Hxido-RXM/FnDepot
 conversun/fnos-apps
 kitblue/fnthird
 EWEDLCM/FnDepot
+tnnevol/fn-os-apps
