@@ -905,13 +905,13 @@ PRUNE_EXEMPT = {"Blue-Mink/moo", "kci-lnk/fn-knock-turborepo"}
 # 直引源模式（原样保留）：以下源引入的 app 条目完全保留上游原始信息，
 # 跳过 normalize_entry 的全部信息改写（developer/publisher 兜底、author/distributor 继承、
 # display_name/desc/categories 归一化等），且不强制改写 _src/_upstream 溯源。
-# 覆盖 10 个优质聚合源 + conversun/fnos-apps 官方源；自有子源 kitblue/fnthird 仍按自有逻辑处理。
+# 覆盖 11 个优质聚合源 + conversun/fnos-apps 官方源；自有子源 kitblue/fnthird 仍按自有逻辑处理。
 # （KITblue/fantune 已不再作为独立源收录，其条目经 fnthird 承接。）
 DIRECT_SOURCES = {
     "shuangji66/FnDepot", "bekafka/FnDepot", "rockchild2332/fnos-apps-fndepot",
     "RROrg/fn-apps", "Brian099/FnDepot", "yuexps/FnDepot", "cmbya/FnDepot",
     "magiccode1412/FnDepot", "Kasbuky-sudo/FnDepot", "Hxido-RXM/FnDepot",
-    "conversun/fnos-apps",
+    "conversun/fnos-apps", "EWEDLCM/FnDepot",
 }
 
 def prune_unreachable_sources(sources, unreachable_sources):
@@ -1064,18 +1064,24 @@ def _strip_num_suffix(name):
 
 def _is_fnos_apps_like(src):
     """fnos-apps 类源判定：官方 conversun/fnos-apps 及其 fork 镜像统一识别（用于去重加权）。
+    仅当仓库名恰为 'fnos-apps'（官方仓库或 fork 保留原名）时判定为官方镜像；
+    RROrg/fn-apps、rockchild2332/fnos-apps-fndepot 等派生名不算官方镜像，避免整源误排除。
     排除 kitblue/fnthird：它是 FnUnify 自己的原生 manifest 子源，非官方镜像。"""
+    def _check(p):
+        p = str(p or "").lower()
+        if p in ("kitblue/fnthird", "fnthird"):
+            return False
+        if "/" not in p:
+            return False
+        return p.split("/", 1)[1] == "fnos-apps"
     if isinstance(src, (list, tuple, set)):
         parts = [str(x or "").lower() for x in src]
         # 子源豁免：列表里仅含 kitblue 子源 + 普通第三方源时不算官方镜像
         others = [p for p in parts if p not in ("kitblue/fnthird", "fnthird")]
         if not others:
             return False
-        return any("fnos-apps" in p or p.endswith("/fn-apps") for p in others)
-    s = str(src or "").lower()
-    if s in ("kitblue/fnthird", "fnthird"):
-        return False
-    return "fnos-apps" in s or s.endswith("/fn-apps")
+        return any(_check(p) for p in others)
+    return _check(src)
 
 def dedup_apps(apps_out):
     """同应用去重：分组键优先 display_name 规范化（兼容 Jellyfin / jellyfin 等写法差异），
@@ -1248,6 +1254,17 @@ def main():
         if is_direct:
             # 直引源模式：完全原样保留上游条目，跳过 normalize_entry 全部信息改写
             out = dict(e)
+            # 个别直引源（如 EWEDLCM/FnDepot）条目 URL 使用相对路径 ./xx/...，
+            # 输出前按本源绝对化，保证 icon/readme/preview 可被商店客户端解析（仅路径转换，不改信息）
+            for _fld in ("icon_url", "readme_url"):
+                _v = out.get(_fld)
+                if isinstance(_v, str) and _v and not _v.startswith(("http://", "https://")):
+                    out[_fld] = abs_url(_v, owner, repo, branch)
+            _pv = out.get("preview_urls")
+            if isinstance(_pv, list):
+                out["preview_urls"] = [abs_url(u, owner, repo, branch)
+                                       if isinstance(u, str) and u and not u.startswith(("http://", "https://")) else u
+                                       for u in _pv]
         else:
             out = normalize_entry(e, owner, repo, branch, src_meta)
         v, dl, ad = extract_download(out, owner, repo, branch)
