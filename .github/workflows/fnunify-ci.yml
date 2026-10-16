@@ -40,7 +40,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "开始聚合 12 个有效第三方源（repo_list.txt 共 12 行）..."
+          echo "开始聚合 13 个有效第三方源（repo_list.txt 共 13 行）..."
           python scripts/aggregate.py
           echo "聚合完成，fnpack.json 已更新"
 
