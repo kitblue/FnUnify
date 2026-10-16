@@ -176,3 +176,4 @@ smartartian/FnDepot
 ByronChen7/FnDepot
 FNOSP/FnDepot
 zhu-longjun/FnDepot
+kitblue/fnos-apps-manifests
