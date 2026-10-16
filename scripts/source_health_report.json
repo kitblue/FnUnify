@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-10-15 15:22:09",
-  "total": 151,
-  "reachable": 149,
+  "checked_at": "2026-10-16 15:02:07",
+  "total": 179,
+  "reachable": 177,
   "unreachable": 2,
   "sources": [
     {
@@ -10,9 +10,11 @@
       "http_status": 404,
       "probe_path": null,
       "reason": "404 Not Found（main/master 下均无 fnpack.json / apps.json）",
-      "pushed_at": "2026-10-15T05:52:17Z",
+      "structure_ok": null,
+      "structure_note": "",
+      "pushed_at": "2026-10-16T13:39:05Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:09"
+      "checked_at": "2026-10-16 15:02:07"
     },
     {
       "owner/repo": "kci-lnk/fn-knock-turborepo",
@@ -20,9 +22,11 @@
       "http_status": 404,
       "probe_path": null,
       "reason": "404 Not Found（main/master 下均无 fnpack.json / apps.json）",
+      "structure_ok": null,
+      "structure_note": "",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "0999we/FnDepot",
@@ -30,9 +34,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-06-30T15:01:06Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:09"
+      "checked_at": "2026-10-16 15:02:07"
+    },
+    {
+      "owner/repo": "12hgl/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "18926922221-lab/FnDepot",
@@ -40,9 +58,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-08-21T13:43:16Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:09"
+      "checked_at": "2026-10-16 15:02:07"
     },
     {
       "owner/repo": "33205q/FnDepot",
@@ -50,9 +70,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-06-19T20:29:19Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:09"
+      "checked_at": "2026-10-16 15:02:07"
     },
     {
       "owner/repo": "33205q/FnDepot-",
@@ -60,9 +82,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-06-20T16:55:10Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:09"
+      "checked_at": "2026-10-16 15:02:07"
     },
     {
       "owner/repo": "710850609/FnDepot",
@@ -70,9 +94,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
-      "pushed_at": "2026-10-14T22:17:59Z",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": "2026-10-16T08:51:23Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:09"
+      "checked_at": "2026-10-16 15:02:07"
     },
     {
       "owner/repo": "ASH-C776/FnDepot",
@@ -80,9 +106,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "AstideLabs/FnDepot",
@@ -90,9 +118,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-05-08T14:48:08Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:09"
+      "checked_at": "2026-10-16 15:02:07"
     },
     {
       "owner/repo": "BearHero520/FnDepot",
@@ -100,9 +130,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "Blue-Mink/FnDepot",
@@ -110,9 +142,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
-      "pushed_at": "2026-10-15T04:25:03Z",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": "2026-10-16T13:35:38Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:09"
+      "checked_at": "2026-10-16 15:02:07"
     },
     {
       "owner/repo": "Brian099/FnDepot",
@@ -120,9 +154,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-09-22T07:48:11Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:09"
+      "checked_at": "2026-10-16 15:02:07"
+    },
+    {
+      "owner/repo": "ByronChen7/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "Chordi0124/FnDepot",
@@ -130,9 +178,35 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-06-16T13:47:34Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:09"
+      "checked_at": "2026-10-16 15:02:07"
+    },
+    {
+      "owner/repo": "DPanel-dev/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
+    },
+    {
+      "owner/repo": "DYXIAOMA/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "DavidAugust03/FnDepot",
@@ -140,9 +214,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-01-25T03:38:04Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:09"
+      "checked_at": "2026-10-16 15:02:07"
+    },
+    {
+      "owner/repo": "Digit-Space2021/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "DinDing1/FnDepot",
@@ -150,9 +238,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-07-24T02:17:51Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:09"
+      "checked_at": "2026-10-16 15:02:07"
     },
     {
       "owner/repo": "DongShull/FnDepot",
@@ -160,9 +250,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2025-12-01T04:02:35Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:09"
+      "checked_at": "2026-10-16 15:02:07"
     },
     {
       "owner/repo": "EWEDLCM/FnDepot",
@@ -170,9 +262,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
-      "pushed_at": "2026-10-14T20:04:58Z",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": "2026-10-15T19:48:33Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:09"
+      "checked_at": "2026-10-16 15:02:07"
+    },
+    {
+      "owner/repo": "EzFavorites/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "FBI998/FnDepot",
@@ -180,9 +286,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-07-11T10:18:15Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:09"
+      "checked_at": "2026-10-16 15:02:07"
+    },
+    {
+      "owner/repo": "FNOSP/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "Gao-Yimeng/FnDepot",
@@ -190,9 +310,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-01-25T03:38:04Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:09"
+      "checked_at": "2026-10-16 15:02:07"
     },
     {
       "owner/repo": "Geeeeeker/FnDepot",
@@ -200,9 +322,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-04-23T14:09:18Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:07"
     },
     {
       "owner/repo": "Haorran/FnDepot",
@@ -210,9 +334,35 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-06-17T15:30:31Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:07"
+    },
+    {
+      "owner/repo": "Hxido-RXM/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
+    },
+    {
+      "owner/repo": "IMGZCQ/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "JackLu2025/FnDepot",
@@ -220,9 +370,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-02-26T11:48:28Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "Jasonworkharder/FnDepot",
@@ -230,9 +382,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-03-02T16:15:34Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "JaxSupero/FnDepot",
@@ -240,9 +394,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "KITblue/fantune",
@@ -250,9 +406,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "KKKK987/FnDepot",
@@ -260,9 +418,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2025-12-21T16:26:29Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "Kasbuky-sudo/FnDepot",
@@ -270,9 +430,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "LI1223081906/FnDepot",
@@ -280,9 +442,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-08-22T20:51:12Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "LingYu91/FnDepot",
@@ -290,9 +454,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-05-22T20:04:17Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
+    },
+    {
+      "owner/repo": "LiuLiuxc/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "Mike-hd123/FnDepot",
@@ -300,9 +478,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-10-15T08:43:36Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
+    },
+    {
+      "owner/repo": "MisiteQ/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "MuLinForest/FnDepot",
@@ -310,9 +502,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-06-07T09:26:46Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "P-s-moon/FnDepot",
@@ -320,9 +514,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-01-25T03:38:04Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "PlayWithAndyJin/FnDepot",
@@ -330,9 +526,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-04-09T10:19:58Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "RONGLINC93/FnDepot",
@@ -340,9 +538,11 @@
       "http_status": 200,
       "probe_path": "master/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "RROrg/fn-apps",
@@ -350,9 +550,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-10-14T16:21:11Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "Ranlove999/FnDepot-",
@@ -360,9 +562,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-06-19T09:58:01Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "SaucdX233/FnDepot",
@@ -370,9 +574,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-08-19T16:15:53Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "Soley911/FnDepot",
@@ -380,9 +586,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-04-28T14:10:04Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
+    },
+    {
+      "owner/repo": "Stranger10086/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "TG8848/FnDepot",
@@ -390,9 +610,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-06-24T14:41:14Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "Tanboyboy/FnDepot",
@@ -400,9 +622,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-04-06T16:30:20Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "Wyf841015/FnDepot",
@@ -410,9 +634,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-10-10T12:01:06Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "X520qq/FnDepot",
@@ -420,9 +646,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-07-21T22:50:31Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "YuFaVision/FnDepot",
@@ -430,9 +658,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-04-15T14:16:23Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "ZJB518/FnDepot",
@@ -440,9 +670,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2025-12-09T09:48:34Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "ZhangZsky/FnDepot",
@@ -450,9 +682,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
-      "pushed_at": "2026-09-30T14:30:21Z",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": "2026-10-15T17:15:54Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "aaatechx/FnDepot",
@@ -460,9 +694,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-01-25T03:38:04Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "aeson70/FnDepot",
@@ -470,9 +706,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-07-01T23:21:56Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "ahtian928/FnDepot",
@@ -480,9 +718,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2025-12-01T04:02:35Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "ahyxwyf/FnDepot",
@@ -490,9 +730,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-05-08T14:48:08Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "ai2ku/FnDepot",
@@ -500,9 +742,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-01-22T03:54:54Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:10"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "ap01082/FnDepot",
@@ -510,9 +754,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-05-08T14:48:08Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "atm080203/FnDepot",
@@ -520,9 +766,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-05-08T14:48:08Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "avicii0129ccc-creator/FnDepot",
@@ -530,9 +778,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-07-13T08:36:11Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:08"
     },
     {
       "owner/repo": "baoss/FnDepot",
@@ -540,9 +790,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-05-04T02:50:16Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
+    },
+    {
+      "owner/repo": "bekafka/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "boater-man/FnDepot",
@@ -550,9 +814,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-03-15T16:47:44Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "ccrabit/FnDepot",
@@ -560,9 +826,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "ccyo-fang/FnDepot",
@@ -570,9 +838,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-09-16T06:24:43Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
+    },
+    {
+      "owner/repo": "cliii-one/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "cmbya/FnDepot",
@@ -580,9 +862,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
-      "pushed_at": "2026-10-15T06:16:38Z",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": "2026-10-16T14:41:28Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "cometzhang/FnDepot",
@@ -590,9 +874,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-05-08T14:48:08Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
+    },
+    {
+      "owner/repo": "conversun/fnos-apps",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/apps.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "ctllo-bit/FnDepot",
@@ -600,9 +898,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-09-29T00:08:40Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "dahe6688/FnDepot",
@@ -610,9 +910,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-03-02T16:15:34Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "damadingding/FnDepot",
@@ -620,9 +922,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-05-22T05:54:57Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "dandin189/FnDepot",
@@ -630,9 +934,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-05-08T14:48:08Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "dysfwhq/FnDepot",
@@ -640,9 +946,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-05-01T11:17:20Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "frankluise5220/FnDepot",
@@ -650,9 +958,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "fyzhu/FnDepot",
@@ -660,9 +970,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-08-21T08:57:42Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "ganx2024/FnDepot",
@@ -670,9 +982,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2025-12-12T06:14:33Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "harbiu317/FnDepot",
@@ -680,9 +994,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": "2026-04-30T09:52:39Z",
       "archived": false,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "hbestm/FnDepot",
@@ -690,9 +1006,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "hepp995/FnDepot",
@@ -700,9 +1018,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "hexianhui/FnDepot",
@@ -710,9 +1030,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "hhxs2025/FnDepot",
@@ -720,9 +1042,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
-      "pushed_at": null,
-      "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": "2026-10-09T20:41:41Z",
+      "archived": false,
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "hhz522/FnDepot",
@@ -730,9 +1054,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "htnanako/FnDepot",
@@ -740,9 +1066,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "huqingyun890/FnDepot",
@@ -750,9 +1078,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "hzs-sama/moekoe-fnos",
@@ -760,9 +1090,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "ifsherlock/FnDepot",
@@ -770,9 +1102,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "iherwo/FnDepot",
@@ -780,9 +1114,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "illiteracyzx/FnDepot",
@@ -790,9 +1126,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "jiaaom/FnDepot",
@@ -800,9 +1138,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "jiangjun-wangu/FnDepot",
@@ -810,9 +1150,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "jiankujidu/Store",
@@ -820,9 +1162,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "jianzhichu/FnDepot",
@@ -830,9 +1174,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "jiayile/FnDepot",
@@ -840,9 +1186,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "kalisgp-cmyk/FnDepot",
@@ -850,9 +1198,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
     },
     {
       "owner/repo": "killing4316/FnDepot",
@@ -860,9 +1210,35 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:09"
+    },
+    {
+      "owner/repo": "kitblue/fnos-apps-manifests",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:11"
+    },
+    {
+      "owner/repo": "kitblue/fnos-apps-manifests",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "leo334455/FnDepot",
@@ -870,9 +1246,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "lgdobo/FnDepot",
@@ -880,9 +1258,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:11"
+      "checked_at": "2026-10-16 15:02:10"
+    },
+    {
+      "owner/repo": "lianhua/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "liguang111888/FnDepot",
@@ -890,9 +1282,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "lisi009216/FnDepot",
@@ -900,9 +1294,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
+    },
+    {
+      "owner/repo": "liwei9745/fnos-apps",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/apps.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "ljy147300/FnDepot",
@@ -910,9 +1318,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "lsp696/FnDepot",
@@ -920,9 +1330,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "luodaoyi/FnDepot",
@@ -930,9 +1342,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "lxc763092/FnDepot",
@@ -940,9 +1354,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "lyh141214/FnDepot",
@@ -950,9 +1366,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "mac1256/FnDepot",
@@ -960,9 +1378,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "magiccode1412/FnDepot",
@@ -970,9 +1390,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "mah1618/FnDepot",
@@ -980,9 +1402,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "maxsusu/FnDepot",
@@ -990,9 +1414,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "mayishidai/FnDepot",
@@ -1000,9 +1426,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "meimolihan/FnDepot",
@@ -1010,9 +1438,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "miyugo/FnDepot",
@@ -1020,9 +1450,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "moxyis/FnDepot",
@@ -1030,9 +1462,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "mrduuuuu/FnDepot",
@@ -1040,9 +1474,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "mynono33/FnDepot",
@@ -1050,9 +1486,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "nanhai31/FnDepot",
@@ -1060,9 +1498,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "narrator-z/FnDepot",
@@ -1070,9 +1510,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "nx5888/FnDepot",
@@ -1080,9 +1522,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "personal82555/FnDepot",
@@ -1090,9 +1534,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "pj521/FnDepot",
@@ -1100,9 +1546,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "qianyianyi/FnDepot",
@@ -1110,9 +1558,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "qilin-zhu/FnDepot",
@@ -1120,9 +1570,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "qilin-zhu/LitePan-fpk",
@@ -1130,9 +1582,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "rabbitHK/FnDepot",
@@ -1140,9 +1594,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "ray5378/FnDepot",
@@ -1150,9 +1606,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "renlixing87/FnDepot",
@@ -1160,9 +1618,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "roc0838/FnDepot",
@@ -1170,9 +1630,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "roc0838/FnDepot1",
@@ -1180,9 +1642,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "rockchild2332/fnos-apps-fndepot",
@@ -1190,9 +1654,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "seesky100825/FnDepot",
@@ -1200,9 +1666,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "seesky100825/FnDepot1",
@@ -1210,9 +1678,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
     },
     {
       "owner/repo": "shuangji66/FnDepot",
@@ -1220,9 +1690,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
+    },
+    {
+      "owner/repo": "shupian35/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "slepoh/FnDepot",
@@ -1230,9 +1714,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:10"
+    },
+    {
+      "owner/repo": "smartartian/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "master/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "snltty/FnDepot",
@@ -1240,9 +1738,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "stonexp/FnDepot",
@@ -1250,9 +1750,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "sushazhi/FnDepot",
@@ -1260,9 +1762,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
+    },
+    {
+      "owner/repo": "tfgzs/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "tingwensuojian/FnDepot",
@@ -1270,9 +1786,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "tzi-shue/FnDepot",
@@ -1280,9 +1798,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "tzi-shue/FnDepot-1",
@@ -1290,9 +1810,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "upchr/FnDepot",
@@ -1300,9 +1822,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "w5456448820/FnDepot",
@@ -1310,9 +1834,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
+    },
+    {
+      "owner/repo": "wanjianmojun/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "weifang11233/-FnDepot",
@@ -1320,9 +1858,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "wildfun/FnDepot",
@@ -1330,9 +1870,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "wy77888/FnDepot",
@@ -1340,9 +1882,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "wzj939/FnDepot",
@@ -1350,9 +1894,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
+    },
+    {
+      "owner/repo": "x1027966382/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "xfengyin/FnDepot",
@@ -1360,9 +1918,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "xianyu110/FnDepot",
@@ -1370,9 +1930,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "xiaolaji0123/FnDepot",
@@ -1380,9 +1942,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "xiaosheng123/FnDepot",
@@ -1390,9 +1954,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "xiaoya208/FnDepot",
@@ -1400,9 +1966,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "xiaoyufei22222/FnDepot",
@@ -1410,9 +1978,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
+    },
+    {
+      "owner/repo": "xnkyn/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "yaya918/FnDepot",
@@ -1420,9 +2002,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "ylgyyy/FnDepot",
@@ -1430,9 +2014,23 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
+    },
+    {
+      "owner/repo": "yoqie/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "youdeiptv/FnDepot",
@@ -1440,9 +2038,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "yousili520/FnDepot",
@@ -1450,9 +2050,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "yuexps/FnDepot",
@@ -1460,9 +2062,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "yunchui/fnos-source",
@@ -1470,9 +2074,35 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:12"
+    },
+    {
+      "owner/repo": "zhixinfang/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": false,
+      "structure_note": "非合法 JSON",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
+    },
+    {
+      "owner/repo": "zhu-longjun/FnDepot",
+      "reachable": true,
+      "http_status": 200,
+      "probe_path": "main/fnpack.json",
+      "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
+      "pushed_at": null,
+      "archived": null,
+      "checked_at": "2026-10-16 15:02:12"
     },
     {
       "owner/repo": "zj249234448/FnDepot",
@@ -1480,9 +2110,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:12"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "zuohaill/FnDepot",
@@ -1490,9 +2122,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "zyp1690/FnDepot",
@@ -1500,9 +2134,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:11"
     },
     {
       "owner/repo": "zzdx713/FnDepot",
@@ -1510,9 +2146,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
+      "structure_ok": true,
+      "structure_note": "ok",
       "pushed_at": null,
       "archived": null,
-      "checked_at": "2026-10-15 15:22:13"
+      "checked_at": "2026-10-16 15:02:11"
     }
   ]
 }

@@ -1,166 +1,214 @@
 {
-  "checked_at": "2026-10-15 15:22:25",
-  "total_apps": 326,
-  "incomplete_count": 25,
+  "checked_at": "2026-10-16 15:02:27",
+  "total_apps": 350,
+  "incomplete_count": 28,
+  "quality_level": "warning",
+  "note": "缺失关键字段的应用标记为 warning 级别（非阻断）：商店仍可安装，仅详情页字段不完整；author/desc 缺失常见于官方直加与精简 fork 源。",
   "coverage_percent": {
     "display_name": 100.0,
     "desc": 100.0,
     "version": 100.0,
     "download_url": 100.0,
     "icon_url": 100.0,
-    "author": 92.3,
+    "author": 92.0,
     "categories": 100.0
   },
   "incomplete_apps": [
     {
+      "key": "taosync",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
       "key": "dbland",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "easytier-eui",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "小松鼠",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-chromium-desktop",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-fail2ban",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-grafana-alloy",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-kodi",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-open-vm-tools",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-qemu-ga",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-scheduler",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-virtualhereserver",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
     },
     {
       "key": "fn-aic8800",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "fn-broadcom-sta",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "fn-fnos-aarch64",
       "missing": [
         "author"
-      ]
-    },
-    {
-      "key": "fn-monitor",
-      "missing": [
-        "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "fn-ntfs3",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "fn-scrutiny-collector",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "fn-sshd-config",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "fn-yt6801",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "r1toolbox",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "pipebridge",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "nodejs_v22-arm",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "duanju",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "iptv-api",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "nas-music",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "kerkerker",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "php-epg",
       "missing": [
         "author"
-      ]
+      ],
+      "severity": "warning"
     },
     {
       "key": "php-runtime",
       "missing": [
         "author"
-      ]
-    },
-    {
-      "key": "fnosoidcbridge",
-      "missing": [
-        "author"
-      ]
-    },
-    {
-      "key": "fntvplus",
-      "missing": [
-        "author"
-      ]
-    },
-    {
-      "key": "nginxserver",
-      "missing": [
-        "author"
-      ]
-    },
-    {
-      "key": "nvidia-driver-580",
-      "missing": [
-        "author"
-      ]
-    },
-    {
-      "key": "plexmediaserver",
-      "missing": [
-        "author"
-      ]
+      ],
+      "severity": "warning"
     }
   ]
 }
