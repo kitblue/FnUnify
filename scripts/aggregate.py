@@ -119,9 +119,19 @@ def fetch_file(owner, repo, path, branch):
             except Exception:
                 pass
     if txt is None:
-        txt = _http(url)
-    _mem_cache[cache_key] = txt or ""
-    _disk_cache_set(url, txt or "")
+        for _ in range(2):
+            txt = _http(url)
+            if txt:
+                break
+    if txt is None:
+        # 直连 GitHub 超时/被墙时回退 gh-proxy 代理（国内网络场景）
+        for _ in range(2):
+            txt = _http(f"https://gh-proxy.com/{url}")
+            if txt:
+                break
+    if txt:
+        _mem_cache[cache_key] = txt
+        _disk_cache_set(url, txt)
     return txt
 
 def try_raw(owner, repo, path, branches=("main", "master")):
@@ -589,8 +599,8 @@ def parse_fnpack(txt, owner, repo, branch):
                 out[str(a["appname"]).lower()] = a
     return out, src_meta
 
-def parse_apps_json(txt):
-    """fnos-apps apps.json v1 -> {appname: entry}"""
+def parse_apps_json(txt, src="conversun/fnos-apps"):
+    """fnos-apps apps.json v1 -> {appname: entry}；src 为所属源（fork 传 fork 仓库，官方默认 conversun）"""
     try:
         data = json.loads(txt)
     except Exception:
@@ -610,7 +620,7 @@ def parse_apps_json(txt):
             "labels": a.get("category", ""),
             "platform": a.get("platforms", ["x86", "arm"]),
             "icon_url": a.get("icon_url", ""),
-            "_src": "conversun/fnos-apps",
+            "_src": src,
             "_orig": a,
         }
         tag = a.get("release_tag", "")
@@ -656,18 +666,39 @@ def load_source(owner_repo):
             merged.update(detail)
             apps[an] = merged
         for an, v in apps.items():
-            v.setdefault("_src", f"{owner}/{repo}")
+            if f"{owner}/{repo}" in DIRECT_SOURCES:
+                # 直引源：保持上游原始 _src/_upstream 溯源不变，不做强制改写；无 _src 时补本源归属
+                v["_direct"] = True
+                if not v.get("_src"):
+                    v["_src"] = f"{owner}/{repo}"
+            else:
+                # _src 强制为本源仓库；manifest 中自带的真上游溯源（如子源条目）挪到 _upstream 保留
+                if v.get("_src") and str(v["_src"]) != f"{owner}/{repo}":
+                    v["_upstream"] = v["_src"]
+                v["_src"] = f"{owner}/{repo}"
             v["_src_meta"] = src_meta
             v["_branch"] = br
         return apps
     txt, br = try_raw(owner, repo, "apps.json")
     if txt is not None:
-        return parse_apps_json(txt)
+        apps = parse_apps_json(txt, f"{owner}/{repo}")
+        if f"{owner}/{repo}" in DIRECT_SOURCES:
+            for an, v in apps.items():
+                v["_direct"] = True
+                v["_branch"] = br
+        return apps
     txt, br = try_raw(owner, repo, "moo.json")
     if txt is not None:
         apps, src_meta = parse_fnpack(txt, owner, repo, br)
         for an, v in apps.items():
-            v.setdefault("_src", f"{owner}/{repo}")
+            if f"{owner}/{repo}" in DIRECT_SOURCES:
+                v["_direct"] = True
+                if not v.get("_src"):
+                    v["_src"] = f"{owner}/{repo}"
+            else:
+                if v.get("_src") and str(v["_src"]) != f"{owner}/{repo}":
+                    v["_upstream"] = v["_src"]
+                v["_src"] = f"{owner}/{repo}"
             v["_src_meta"] = src_meta
             v["_branch"] = br
         return apps
@@ -888,10 +919,21 @@ PRUNE_THRESHOLD = 3  # 连续不可达天数阈值，达到后自动剔除
 PRUNE_EXEMPT = {"Blue-Mink/moo", "kci-lnk/fn-knock-turborepo", "KITblue/fantune"}
 # 防清洗/防覆盖保留源（keep_sources.txt）：不可达豁免 + 同名强制优先 + 去重加权。
 # keep_sources.txt 可随时增删；默认与内置 PRUNE_EXEMPT / FAVORED_SOURCES 合并。
-KEEP_SOURCES = load_keep_sources() | {"KITblue/fantune"}
+KEEP_SOURCES = load_keep_sources() | {"KITblue/fantune", "kitblue/fnthird"}
 PRUNE_EXEMPT = PRUNE_EXEMPT | KEEP_SOURCES
 # 同名冲突优先级源：与其它源 appname 撞名时，优先保留本源的条目（后源覆盖先源场景下不被普通源顶掉）
 FAVORED_SOURCES = KEEP_SOURCES | {"KITblue/fantune"}
+# 直引源模式（原样保留）：以下源引入的 app 条目完全保留上游原始信息，
+# 跳过 normalize_entry 的全部信息改写（developer/publisher 兜底、author/distributor 继承、
+# display_name/desc/categories 归一化等），且不强制改写 _src/_upstream 溯源。
+# 覆盖 10 个优质聚合源（repo_list 保留的 13 源中除自有源 kitblue/fnthird、KITblue/fantune 外）
+# + conversun/fnos-apps 官方源；fnthird / fantune 仍按自有逻辑处理。
+DIRECT_SOURCES = {
+    "shuangji66/FnDepot", "bekafka/FnDepot", "rockchild2332/fnos-apps-fndepot",
+    "RROrg/fn-apps", "Brian099/FnDepot", "yuexps/FnDepot", "cmbya/FnDepot",
+    "magiccode1412/FnDepot", "Kasbuky-sudo/FnDepot", "Hxido-RXM/FnDepot",
+    "conversun/fnos-apps",
+}
 
 def prune_unreachable_sources(sources, unreachable_sources):
     """不可达源自动剔除（#7）：维护连续失败计数状态文件，
@@ -1042,8 +1084,18 @@ def _strip_num_suffix(name):
     return m.group(1) if m else name
 
 def _is_fnos_apps_like(src):
-    """fnos-apps 类源判定：官方 conversun/fnos-apps 及其 fork 镜像统一识别（用于去重加权）"""
+    """fnos-apps 类源判定：官方 conversun/fnos-apps 及其 fork 镜像统一识别（用于去重加权）。
+    排除 kitblue/fnthird：它是 FnUnify 自己的原生 manifest 子源，非官方镜像。"""
+    if isinstance(src, (list, tuple, set)):
+        parts = [str(x or "").lower() for x in src]
+        # 子源豁免：列表里仅含 kitblue 子源 + 普通第三方源时不算官方镜像
+        others = [p for p in parts if p not in ("kitblue/fnthird", "fnthird")]
+        if not others:
+            return False
+        return any("fnos-apps" in p or p.endswith("/fn-apps") for p in others)
     s = str(src or "").lower()
+    if s in ("kitblue/fnthird", "fnthird"):
+        return False
     return "fnos-apps" in s or s.endswith("/fn-apps")
 
 def dedup_apps(apps_out):
@@ -1117,7 +1169,8 @@ def dedup_apps(apps_out):
         winner = keys[0]
         e = dict(apps_out[winner])
         # 同名图标继承：winner 缺图标时从组内其它条目补 icon_url
-        if not e.get("icon_url"):
+        # 直引源条目跳过继承，保持上游原始信息完全不变
+        if not e.get("icon_url") and not e.get("_direct"):
             for k2 in keys:
                 if k2 == winner:
                     continue
@@ -1190,6 +1243,19 @@ def main():
                     continue
                 entries.append((an, entry))
 
+    # 自家子源兜底：并发拉取可能因 GitHub 限流/抖动漏掉 kitblue/fnthird，
+    # 漏了会导致独立应用（hermes-studio/qwenpaw/deepseek.harness 等）被转发源低质条目顶掉。
+    # 顺序重拉一次，保证子源条目一定进入去重池（KEEP_SOURCES +100 权重下必然胜出）。
+    if not any((e.get("_src") or "").startswith("kitblue/fnthird") for _, e in entries):
+        print("[fallback] kitblue/fnthird 未收录，顺序重拉兜底...")
+        fb = load_source("kitblue/fnthird")
+        print(f"  [fallback] 重拉得到 {len(fb) if fb else 0} 条")
+        if fb:
+            for an, entry in fb.items():
+                if an in ("source_info", "apps", "fndepot.source"):
+                    continue
+                entries.append((an, entry))
+
     print(f"解析成功 {seen_sources}/{len(sources)} 个源, 全量条目 {len(entries)} 个 (未去重)")
 
     apps_out = {}
@@ -1201,14 +1267,20 @@ def main():
         owner, repo = (src.split("/", 1) + ["", ""])[:2]
         branch = e.get("_branch", "main")
         src_meta = e.get("_src_meta", {})
-        out = normalize_entry(e, owner, repo, branch, src_meta)
+        is_direct = bool(e.get("_direct"))
+        if is_direct:
+            # 直引源模式：完全原样保留上游条目，跳过 normalize_entry 全部信息改写
+            out = dict(e)
+        else:
+            out = normalize_entry(e, owner, repo, branch, src_meta)
         v, dl, ad = extract_download(out, owner, repo, branch)
         if not dl:
             continue  # 无可下载地址 -> 过滤
         out["version"] = v or out.get("version", "")
         out["download_url"] = dl
-        # 二次补全：此时 download_url 已绝对化，字段级提取命中率更高
-        fill_from_github_project(out, owner, repo, extra_urls=[dl] if dl else None, appname=an)
+        if not is_direct:
+            # 二次补全：此时 download_url 已绝对化，字段级提取命中率更高（仅非直引源）
+            fill_from_github_project(out, owner, repo, extra_urls=[dl] if dl else None, appname=an)
         if ad:
             out["arch_diff"] = ad
         elif isinstance(out.get("arch_diff"), dict):
@@ -1249,9 +1321,9 @@ def main():
             # cur_src 是优先源且 src 是普通源：保留优先源
         else:
             apps_out[key] = out
-        if not out.get("icon_url"):
+        if not is_direct and not out.get("icon_url"):
             missing_icons.append((key, owner, repo, branch, raw_appname))
-        if not out.get("size") and dl:
+        if not is_direct and not out.get("size") and dl:
             missing_sizes.append((key, dl))
 
     # 同名同包名去重：保留数据最完整的那个，其他标记为 fork 并保留 _fork_of 溯源
@@ -1259,7 +1331,10 @@ def main():
     apps_out = dedup_apps(apps_out)
     # 去重后映射表兜底：winner 可能来自 appname 与映射表键不一致的源条目（如 adguardhome vs adguard），
     # 按最终 key/appname 再查一次 github_projects.json 补全 developer/publisher（#9）
+    # 直引源条目跳过该兜底，保持上游原始信息完全不变。
     for k, e in apps_out.items():
+        if e.get("_direct"):
+            continue
         if e.get("developer") or e.get("publisher"):
             continue
         m_key = _strip_num_suffix(str(k).lower())
@@ -1338,15 +1413,16 @@ def main():
         got = sum(1 for k, _ in missing_sizes if apps_out[k].get("size"))
         print(f"size 探测补全 {got}/{len(missing_sizes)} 个")
 
-    # 输出前统一清理内部字段（_src 为溯源字段保留；_src_meta/_orig/_branch 已用完）
+    # 输出前统一清理内部字段（_src 为溯源字段保留；_src_meta/_orig/_branch/_direct 已用完）
     # 并构造 V2 releases 结构、精简冗余字段，将 fnpack.json 控制在 jsDelivr 1024KB 限制内
     for e in apps_out.values():
-        for k in ("_src_meta", "_orig", "_branch"):
-            e.pop(k, None)
         # publisher_url 最终兜底：所有 developer_url 补全（normalize_entry / 二次 fill /
         # dedup 后映射表兜底）均已完成后执行；优先 distributor_url，缺失用 developer_url
-        if not e.get("publisher_url"):
+        # 直引源条目跳过此兜底，保持上游原始信息完全不变
+        if not e.get("_direct") and not e.get("publisher_url"):
             e["publisher_url"] = e.get("distributor_url") or e.get("developer_url") or ""
+        for k in ("_src_meta", "_orig", "_branch", "_direct"):
+            e.pop(k, None)
         # V2：平铺 download_url/arch_diff/version -> releases.<version>.packages.<arch>
         rel = build_v2_releases(e.get("version", ""), e.get("arch_diff"))
         if rel is None and e.get("download_url"):
