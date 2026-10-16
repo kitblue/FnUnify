@@ -10,3 +10,4 @@ Kasbuky-sudo/FnDepot
 Hxido-RXM/FnDepot
 conversun/fnos-apps
 kitblue/fnthird
+EWEDLCM/FnDepot
