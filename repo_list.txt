@@ -135,6 +135,7 @@ zuohaill/FnDepot
 zyp1690/FnDepot
 zzdx713/FnDepot
 KITblue/fantune
+kitblue/fnos-apps-manifests
 ASH-C776/FnDepot
 BearHero520/FnDepot
 JaxSupero/FnDepot
