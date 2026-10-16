@@ -27,6 +27,7 @@ import urllib.request, urllib.error, concurrent.futures
 
 REPO_LIST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "repo_list.txt")
 OFFICIAL_LIST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "official_apps.txt")
+KEEP_LIST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "keep_sources.txt")
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "fnpack.json")
 SOURCE_HEALTH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "source_health_report.json")
 META_QUALITY = os.path.join(os.path.dirname(os.path.abspath(__file__)), "metadata_quality_report.json")
@@ -683,11 +684,57 @@ def probe_size(url):
     return None
 
 def load_official_excludes():
-    """读取官方应用商店排除清单（conversun/fnos-apps 的 appname，小写归一化）"""
+    """读取官方应用商店排除清单（conversun/fnos-apps）。
+
+    返回 dict：
+      names        官方 appname 集合（小写）
+      names_norm   appname 规范化集合（去空白/连字符/下划线/点号）
+      displays     display_name 规范化集合（在线拉 conversun/fnos-apps apps.json 补充；
+                   拉取失败时回退为空集，仅按 appname 通道排除）
+    """
     try:
         with open(OFFICIAL_LIST, encoding="utf-8") as f:
-            names = [l.strip().lower() for l in f if l.strip() and not l.startswith("#")]
-        return set(names)
+            names = {l.strip().lower() for l in f if l.strip() and not l.startswith("#")}
+    except FileNotFoundError:
+        names = set()
+    displays = set()
+    try:
+        txt = _http("https://raw.githubusercontent.com/conversun/fnos-apps/main/apps.json", timeout=15)
+        j = json.loads(txt)
+        apps = j["apps"] if isinstance(j, dict) and "apps" in j else j
+        if isinstance(apps, list):
+            for a in apps:
+                an = (a.get("appname") or "").lower()
+                if an:
+                    names.add(an)
+                dn = (a.get("display_name") or a.get("name") or "")
+                if dn:
+                    displays.add(_norm_dedup_name(dn))
+        elif isinstance(apps, dict):
+            for k, a in apps.items():
+                an = str(k).lower()
+                names.add(an)
+                if isinstance(a, dict):
+                    dn = (a.get("display_name") or a.get("name") or "")
+                    if dn:
+                        displays.add(_norm_dedup_name(dn))
+    except Exception:
+        pass
+    return {"names": names, "names_norm": {_norm_dedup_name(x) for x in names},
+            "displays": displays}
+
+
+def load_keep_sources():
+    """读取防清洗/防覆盖保留源清单（keep_sources.txt，每行 owner/repo，小写归一化）。
+
+    保留源在三种场景下获得硬保护：
+    1. 每日不可达自动清洗（PRUNE）豁免；
+    2. 同名跨源覆盖时强制优先（等价 FAVORED_SOURCES 且更靠前）；
+    3. 去重评分大幅加权，防止被数据更全的其他源反超。
+    """
+    try:
+        with open(KEEP_LIST, encoding="utf-8") as f:
+            return {l.strip().lower() for l in f if l.strip() and not l.startswith("#")}
     except FileNotFoundError:
         return set()
 
@@ -805,7 +852,13 @@ def check_source_health(sources):
 HEALTH_STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "source_health_state.json")
 PRUNE_THRESHOLD = 3  # 连续不可达天数阈值，达到后自动剔除
 # 用户决策：以下源即使长期不可达也保留在 repo_list.txt（不移除、不剔除）
-PRUNE_EXEMPT = {"Blue-Mink/moo", "kci-lnk/fn-knock-turborepo"}
+PRUNE_EXEMPT = {"Blue-Mink/moo", "kci-lnk/fn-knock-turborepo", "KITblue/fantune"}
+# 防清洗/防覆盖保留源（keep_sources.txt）：不可达豁免 + 同名强制优先 + 去重加权。
+# keep_sources.txt 可随时增删；默认与内置 PRUNE_EXEMPT / FAVORED_SOURCES 合并。
+KEEP_SOURCES = load_keep_sources() | {"KITblue/fantune"}
+PRUNE_EXEMPT = PRUNE_EXEMPT | KEEP_SOURCES
+# 同名冲突优先级源：与其它源 appname 撞名时，优先保留本源的条目（后源覆盖先源场景下不被普通源顶掉）
+FAVORED_SOURCES = KEEP_SOURCES | {"KITblue/fantune"}
 
 def prune_unreachable_sources(sources, unreachable_sources):
     """不可达源自动剔除（#7）：维护连续失败计数状态文件，
@@ -1009,11 +1062,13 @@ def dedup_apps(apps_out):
             k0 = keys[0]
             final_out[apps_out[k0].get("appname") or k0] = apps_out[k0]
             continue
-        # 评分：fnos-apps 类源(+10) > maintainer(+3) > distributor(+2) > developer(+1) > icon_url(+1)
+        # 评分：keep 保留源(+100 强制胜出) > fnos-apps 类源(+10) > maintainer(+3) > distributor(+2) > developer(+1) > icon_url(+1)
         def score(k):
             e = apps_out[k]
             s = 0
             src = e.get("_src", "")
+            if str(src).lower() in KEEP_SOURCES:
+                s += 100
             if _is_fnos_apps_like(src):
                 s += 10
             if e.get("maintainer"):
@@ -1067,8 +1122,8 @@ def main():
     with open(REPO_LIST, encoding="utf-8") as f:
         sources = [l.strip().lstrip("\ufeff") for l in f if l.strip() and not l.startswith("#")]
     official_excludes = load_official_excludes()
-    if official_excludes:
-        print(f"官方应用排除清单: {len(official_excludes)} 个（fnOS 官方商店自带，不重复收录）")
+    if official_excludes.get("names"):
+        print(f"官方应用排除清单: {len(official_excludes['names'])} 个（fnOS 官方商店自带，不重复收录）")
     print(f"源订阅模式: 拉取 {len(sources)} 个源...")
 
     # 源健康监控：轻量探测每个源可达性，写 source_health_report.json
@@ -1150,7 +1205,17 @@ def main():
             key = raw_appname
             used_keys.add(key)
         out["appname"] = raw_appname
-        apps_out[key] = out
+        if key in apps_out:
+            cur_src = apps_out[key].get("_src", "")
+            if src in FAVORED_SOURCES and cur_src not in FAVORED_SOURCES:
+                apps_out[key] = out  # 优先源覆盖普通源（fantune 同名撞车时保自己）
+            elif src in FAVORED_SOURCES and cur_src in FAVORED_SOURCES:
+                apps_out[key] = out  # 同为优先源，后写覆盖
+            elif cur_src not in FAVORED_SOURCES:
+                apps_out[key] = out  # 普通源对普通源维持原后写覆盖
+            # cur_src 是优先源且 src 是普通源：保留优先源
+        else:
+            apps_out[key] = out
         if not out.get("icon_url"):
             missing_icons.append((key, owner, repo, branch, raw_appname))
         if not out.get("size") and dl:
@@ -1186,8 +1251,19 @@ def main():
     # 排除 fnOS 官方商店自带应用（不重复收录，官方由官方商店提供）
     # 兼容旧行为：默认排除；设置环境变量 FnUnify_INCLUDE_OFFICIAL=1 时收录官方（conversun/fnos-apps）
     include_official = os.environ.get("FnUnify_INCLUDE_OFFICIAL", "").strip().lower() in ("1", "true", "yes")
-    if official_excludes and not include_official:
-        dropped = [a for a in apps_out if a in official_excludes]
+    if official_excludes.get("names") and not include_official:
+        off_names = official_excludes["names"]
+        off_names_norm = official_excludes["names_norm"]
+        off_displays = official_excludes["displays"]
+        dropped = []
+        for a in list(apps_out.keys()):
+            e = apps_out[a]
+            hit = (a in off_names
+                   or _norm_dedup_name(a) in off_names_norm
+                   or _norm_dedup_name(e.get("display_name")) in off_displays
+                   or _is_fnos_apps_like(e.get("_src", "")))
+            if hit:
+                dropped.append(a)
         for a in dropped:
             del apps_out[a]
         print(f"排除官方应用 {len(dropped)} 个 -> 剩余 {len(apps_out)} 个")
