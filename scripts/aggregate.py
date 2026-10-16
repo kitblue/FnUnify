@@ -905,13 +905,17 @@ PRUNE_EXEMPT = {"Blue-Mink/moo", "kci-lnk/fn-knock-turborepo"}
 # 直引源模式（原样保留）：以下源引入的 app 条目完全保留上游原始信息，
 # 跳过 normalize_entry 的全部信息改写（developer/publisher 兜底、author/distributor 继承、
 # display_name/desc/categories 归一化等），且不强制改写 _src/_upstream 溯源。
-# 覆盖 11 个优质聚合源 + conversun/fnos-apps 官方源；自有子源 kitblue/fnthird 仍按自有逻辑处理。
+# 覆盖 14 个优质聚合源 + conversun/fnos-apps 官方源；自有子源 kitblue/fnthird 仍按自有逻辑处理。
 # （KITblue/fantune 已不再作为独立源收录，其条目经 fnthird 承接。）
+# 2026-10-17 清理：移除零贡献直引源 rockchild2332/fnos-apps-fndepot、Hxido-RXM/FnDepot。
+# 2026-10-17 扩充：新增 hbestm/FnDepot、jiankujidu/Store、IMGZCQ/FnDepot、MisiteQ/FnDepot、moxyis/FnDepot。
 DIRECT_SOURCES = {
-    "shuangji66/FnDepot", "rockchild2332/fnos-apps-fndepot",
+    "shuangji66/FnDepot",
     "RROrg/fn-apps", "Brian099/FnDepot", "yuexps/FnDepot", "cmbya/FnDepot",
-    "magiccode1412/FnDepot", "Kasbuky-sudo/FnDepot", "Hxido-RXM/FnDepot",
+    "magiccode1412/FnDepot", "Kasbuky-sudo/FnDepot",
     "conversun/fnos-apps", "EWEDLCM/FnDepot", "tnnevol/fn-os-apps",
+    "hbestm/FnDepot", "jiankujidu/Store", "IMGZCQ/FnDepot",
+    "MisiteQ/FnDepot", "moxyis/FnDepot",
 }
 
 def prune_unreachable_sources(sources, unreachable_sources):
