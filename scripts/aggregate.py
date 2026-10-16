@@ -27,7 +27,6 @@ import urllib.request, urllib.error, concurrent.futures
 
 REPO_LIST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "repo_list.txt")
 OFFICIAL_LIST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "official_apps.txt")
-KEEP_LIST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "keep_sources.txt")
 OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "fnpack.json")
 SOURCE_HEALTH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "source_health_report.json")
 META_QUALITY = os.path.join(os.path.dirname(os.path.abspath(__file__)), "metadata_quality_report.json")
@@ -788,21 +787,6 @@ def load_official_excludes():
             "displays": displays}
 
 
-def load_keep_sources():
-    """读取防清洗/防覆盖保留源清单（keep_sources.txt，每行 owner/repo，小写归一化）。
-
-    保留源在三种场景下获得硬保护：
-    1. 每日不可达自动清洗（PRUNE）豁免；
-    2. 同名跨源覆盖时强制优先（等价 FAVORED_SOURCES 且更靠前）；
-    3. 去重评分大幅加权，防止被数据更全的其他源反超。
-    """
-    try:
-        with open(KEEP_LIST, encoding="utf-8") as f:
-            return {l.strip().lower() for l in f if l.strip() and not l.startswith("#")}
-    except FileNotFoundError:
-        return set()
-
-
 # 源健康检查候选路径（fnpack.json 可能位于根或子目录）
 HEALTH_PATHS = ("fnpack.json", "apps.json")
 
@@ -916,18 +900,13 @@ def check_source_health(sources):
 HEALTH_STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "source_health_state.json")
 PRUNE_THRESHOLD = 3  # 连续不可达天数阈值，达到后自动剔除
 # 用户决策：以下源即使长期不可达也保留在 repo_list.txt（不移除、不剔除）
-PRUNE_EXEMPT = {"Blue-Mink/moo", "kci-lnk/fn-knock-turborepo", "KITblue/fantune"}
-# 防清洗/防覆盖保留源（keep_sources.txt）：不可达豁免 + 同名强制优先 + 去重加权。
-# keep_sources.txt 可随时增删；默认与内置 PRUNE_EXEMPT / FAVORED_SOURCES 合并。
-KEEP_SOURCES = load_keep_sources() | {"KITblue/fantune", "kitblue/fnthird"}
-PRUNE_EXEMPT = PRUNE_EXEMPT | KEEP_SOURCES
-# 同名冲突优先级源：与其它源 appname 撞名时，优先保留本源的条目（后源覆盖先源场景下不被普通源顶掉）
-FAVORED_SOURCES = KEEP_SOURCES | {"KITblue/fantune"}
+# 注：keep_sources.txt 机制已废弃；KITblue/fantune 不再作为独立源，其条目由 fnthird 收录承接。
+PRUNE_EXEMPT = {"Blue-Mink/moo", "kci-lnk/fn-knock-turborepo"}
 # 直引源模式（原样保留）：以下源引入的 app 条目完全保留上游原始信息，
 # 跳过 normalize_entry 的全部信息改写（developer/publisher 兜底、author/distributor 继承、
 # display_name/desc/categories 归一化等），且不强制改写 _src/_upstream 溯源。
-# 覆盖 10 个优质聚合源（repo_list 保留的 13 源中除自有源 kitblue/fnthird、KITblue/fantune 外）
-# + conversun/fnos-apps 官方源；fnthird / fantune 仍按自有逻辑处理。
+# 覆盖 10 个优质聚合源 + conversun/fnos-apps 官方源；自有子源 kitblue/fnthird 仍按自有逻辑处理。
+# （KITblue/fantune 已不再作为独立源收录，其条目经 fnthird 承接。）
 DIRECT_SOURCES = {
     "shuangji66/FnDepot", "bekafka/FnDepot", "rockchild2332/fnos-apps-fndepot",
     "RROrg/fn-apps", "Brian099/FnDepot", "yuexps/FnDepot", "cmbya/FnDepot",
@@ -1147,13 +1126,11 @@ def dedup_apps(apps_out):
             k0 = keys[0]
             final_out[apps_out[k0].get("appname") or k0] = apps_out[k0]
             continue
-        # 评分：keep 保留源(+100 强制胜出) > fnos-apps 类源(+10) > maintainer(+3) > distributor(+2) > developer(+1) > icon_url(+1)
+        # 评分：fnos-apps 类源(+10) > maintainer(+3) > distributor(+2) > developer(+1) > icon_url(+1)
         def score(k):
             e = apps_out[k]
             s = 0
             src = e.get("_src", "")
-            if str(src).lower() in KEEP_SOURCES:
-                s += 100
             if _is_fnos_apps_like(src):
                 s += 10
             if e.get("maintainer"):
@@ -1244,8 +1221,8 @@ def main():
                 entries.append((an, entry))
 
     # 自家子源兜底：并发拉取可能因 GitHub 限流/抖动漏掉 kitblue/fnthird，
-    # 漏了会导致独立应用（hermes-studio/qwenpaw/deepseek.harness 等）被转发源低质条目顶掉。
-    # 顺序重拉一次，保证子源条目一定进入去重池（KEEP_SOURCES +100 权重下必然胜出）。
+    # 漏了会导致独立应用（hermes-studio/qwenpaw/deepseek.harness 及承接的 FanTune 等）被转发源低质条目顶掉。
+    # 顺序重拉一次，保证子源条目一定进入去重池。
     if not any((e.get("_src") or "").startswith("kitblue/fnthird") for _, e in entries):
         print("[fallback] kitblue/fnthird 未收录，顺序重拉兜底...")
         fb = load_source("kitblue/fnthird")
@@ -1311,14 +1288,7 @@ def main():
             used_keys.add(key)
         out["appname"] = raw_appname
         if key in apps_out:
-            cur_src = apps_out[key].get("_src", "")
-            if src in FAVORED_SOURCES and cur_src not in FAVORED_SOURCES:
-                apps_out[key] = out  # 优先源覆盖普通源（fantune 同名撞车时保自己）
-            elif src in FAVORED_SOURCES and cur_src in FAVORED_SOURCES:
-                apps_out[key] = out  # 同为优先源，后写覆盖
-            elif cur_src not in FAVORED_SOURCES:
-                apps_out[key] = out  # 普通源对普通源维持原后写覆盖
-            # cur_src 是优先源且 src 是普通源：保留优先源
+            apps_out[key] = out  # 后写覆盖（keep_sources 优先机制已废弃）
         else:
             apps_out[key] = out
         if not is_direct and not out.get("icon_url"):
@@ -1492,7 +1462,7 @@ def main():
         "name": "FnUnify",
         "author": "kitblue",
         "homepage": "https://github.com/kitblue/FnUnify",
-        "description": f"飞牛 fnOS 第三方应用聚合源：聚合 {len(sources)} 个第三方源、去重后收录 {len(apps_out)} 个应用（含官方 conversun/fnos-apps 源收录）。",
+        "description": f"飞牛 fnOS 第三方应用聚合源：聚合 {len(sources)} 个第三方源（含自有子源 kitblue/fnthird，承接 FanTune 等独立应用收录），去重后收录 {len(apps_out)} 个应用（默认排除 fnOS 官方商店已收录应用）。",
         "source_contrib": {k: v for k, v in top_contrib},
     }
     with open(OUTPUT, "w", encoding="utf-8") as f:
