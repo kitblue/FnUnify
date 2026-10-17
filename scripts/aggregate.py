@@ -906,7 +906,7 @@ PRUNE_EXEMPT = {"Blue-Mink/moo", "kci-lnk/fn-knock-turborepo"}
 # 跳过 normalize_entry 的全部信息改写（developer/publisher 兜底、author/distributor 继承、
 # display_name/desc/categories 归一化等），且不强制改写 _src/_upstream 溯源。
 # 覆盖 14 个优质聚合源 + conversun/fnos-apps 官方源；自有子源 kitblue/fnthird 仍按自有逻辑处理。
-# （KITblue/fantune 于 2026-10-17 起改为直引独立源，条目不再经 fnthird 承接。）
+# （kitblue/FanControlServerApp 于 2026-10-17 起承接 fantune 直引独立源（fork 自 guan-ry/FanControlServerApp），条目不再经 fnthird 承接。）
 # 2026-10-17 清理：移除零贡献直引源 rockchild2332/fnos-apps-fndepot、Hxido-RXM/FnDepot。
 # 2026-10-17 扩充：新增 hbestm/FnDepot、jiankujidu/Store、IMGZCQ/FnDepot、MisiteQ/FnDepot、moxyis/FnDepot。
 DIRECT_SOURCES = {
@@ -916,7 +916,7 @@ DIRECT_SOURCES = {
     "conversun/fnos-apps", "EWEDLCM/FnDepot", "tnnevol/fn-os-apps",
     "hbestm/FnDepot", "jiankujidu/Store", "IMGZCQ/FnDepot",
     "MisiteQ/FnDepot", "moxyis/FnDepot",
-    "KITblue/fantune",
+    "kitblue/FanControlServerApp",
 }
 
 def prune_unreachable_sources(sources, unreachable_sources):
