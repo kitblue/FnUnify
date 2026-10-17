@@ -31,7 +31,7 @@
 - **大规模聚合**：16 个源统一归一化为 FnDepot V2 格式（兼容 V1 与 `apps.json` 包装层）。
 - **去重与溯源**：按应用显示名去重并保留数据最完整条目，同名不同源以 `_fork_of` 标记、`_src` 保留多来源。
 - **官方不重复**：默认排除 fnOS 官方商店已收录应用。
-- **独立应用承接**：FanTune 与 Blue-Mink/FnDepot 独立应用等经自有子源 fnthird 收录。
+- **独立应用承接**：FanControlServerApp 由聚合源直引，Blue-Mink/FnDepot 独立应用等经自有子源 fnthird 收录。
 - **全自动发布**：GitHub Actions 每日聚合、构建并发布定制版；上游发新版本自动提醒。
 
 ## 自动化与发版

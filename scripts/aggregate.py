@@ -906,7 +906,7 @@ PRUNE_EXEMPT = {"Blue-Mink/moo", "kci-lnk/fn-knock-turborepo"}
 # 跳过 normalize_entry 的全部信息改写（developer/publisher 兜底、author/distributor 继承、
 # display_name/desc/categories 归一化等），且不强制改写 _src/_upstream 溯源。
 # 覆盖 14 个优质聚合源 + conversun/fnos-apps 官方源；自有子源 kitblue/fnthird 仍按自有逻辑处理。
-# （kitblue/FanControlServerApp 于 2026-10-17 起承接 fantune 直引独立源（fork 自 guan-ry/FanControlServerApp），条目不再经 fnthird 承接。）
+# （kitblue/FanControlServerApp 于 2026-10-17 起直引独立源（fork 自 guan-ry/FanControlServerApp），条目不再经 fnthird 承接。）
 # 2026-10-17 清理：移除零贡献直引源 rockchild2332/fnos-apps-fndepot、Hxido-RXM/FnDepot。
 # 2026-10-17 扩充：新增 hbestm/FnDepot、jiankujidu/Store、IMGZCQ/FnDepot、MisiteQ/FnDepot、moxyis/FnDepot。
 DIRECT_SOURCES = {
@@ -1105,7 +1105,7 @@ def dedup_apps(apps_out):
         appname_groups[ag].append(key)
 
     # 跨 display_name 归并：同一 appname 去后缀出现在多个 display_name 组时合并（#2）
-    # 例：FanTune（display=FanTune, appname=fancontrolserver）与
+    # 例：Fan Control Server（定制版）（appname=fancontrolserver）与
     #     Fan Control Server（display=Fan Control Server, appname=fancontrolserver-2）→ 同一应用
     merged = []            # 最终组（每个组是 key 列表）
     consumed_groups = set()
@@ -1232,7 +1232,7 @@ def main():
                 entries.append((an, entry))
 
     # 自家子源兜底：并发拉取可能因 GitHub 限流/抖动漏掉 kitblue/fnthird，
-    # 漏了会导致独立应用（hermes-studio/qwenpaw/deepseek.harness 及承接的 FanTune 等）被转发源低质条目顶掉。
+    # 漏了会导致独立应用（hermes-studio/qwenpaw/deepseek.harness 及直引的 FanControlServerApp 等）被转发源低质条目顶掉。
     # 顺序重拉一次，保证子源条目一定进入去重池。
     if not any((e.get("_src") or "").startswith("kitblue/fnthird") for _, e in entries):
         print("[fallback] kitblue/fnthird 未收录，顺序重拉兜底...")
@@ -1484,7 +1484,7 @@ def main():
         "name": "FnUnify",
         "author": "kitblue",
         "homepage": "https://github.com/kitblue/FnUnify",
-        "description": f"飞牛 fnOS 第三方应用聚合源：聚合 {len(sources)} 个第三方源（含自有子源 kitblue/fnthird，承接 FanTune 等独立应用收录），去重后收录 {len(apps_out)} 个应用（默认排除 fnOS 官方商店已收录应用）。",
+        "description": f"飞牛 fnOS 第三方应用聚合源：聚合 {len(sources)} 个第三方源（含自有子源 kitblue/fnthird，承接独立应用收录），去重后收录 {len(apps_out)} 个应用（默认排除 fnOS 官方商店已收录应用）。",
         "source_contrib": {k: v for k, v in top_contrib},
     }
     with open(OUTPUT, "w", encoding="utf-8") as f:
