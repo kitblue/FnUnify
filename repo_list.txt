@@ -14,5 +14,5 @@ jiankujidu/Store
 IMGZCQ/FnDepot
 MisiteQ/FnDepot
 moxyis/FnDepot
-KITblue/fantune
+kitblue/FanControlServerApp
 kitblue/cloudlink-finder
