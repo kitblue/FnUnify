@@ -15,3 +15,4 @@ IMGZCQ/FnDepot
 MisiteQ/FnDepot
 moxyis/FnDepot
 KITblue/fantune
+kitblue/cloudlink-finder
