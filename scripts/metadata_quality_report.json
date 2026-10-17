@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-10-16 15:02:27",
-  "total_apps": 350,
-  "incomplete_count": 28,
+  "checked_at": "2026-10-17 13:58:50",
+  "total_apps": 371,
+  "incomplete_count": 313,
   "quality_level": "warning",
   "note": "缺失关键字段的应用标记为 warning 级别（非阻断）：商店仍可安装，仅详情页字段不完整；author/desc 缺失常见于官方直加与精简 fork 源。",
   "coverage_percent": {
@@ -10,10 +10,108 @@
     "version": 100.0,
     "download_url": 100.0,
     "icon_url": 100.0,
-    "author": 92.0,
+    "author": 15.6,
     "categories": 100.0
   },
   "incomplete_apps": [
+    {
+      "key": "fndesk",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "iconstation",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "mdesk",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fniconfree",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fncube",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "boombird",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "cutcubes",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "yesplaymusic",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fnpiano",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fndesk_jigsaw",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "bililivetools",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "cliproxyapi",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "f2media",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "streamcap",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
     {
       "key": "taosync",
       "missing": [
@@ -22,21 +120,112 @@
       "severity": "warning"
     },
     {
-      "key": "dbland",
+      "key": "zjjx",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "easytier-eui",
+      "key": "dombridge",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "小松鼠",
+      "key": "magic-bilisync",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "magic-fnmessagebot",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "magic-qiandao",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "magic-qinglong",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "magic-speedtest",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "magic-splayer",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fntermx",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "flatcms",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "flatnas",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-advancedsettings",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-appdownload",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-appsettings",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-audioplayer",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-bluetooth",
       "missing": [
         "author"
       ],
@@ -44,6 +233,20 @@
     },
     {
       "key": "fn-chromium-desktop",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "code-server",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-execute",
       "missing": [
         "author"
       ],
@@ -64,6 +267,34 @@
       "severity": "warning"
     },
     {
+      "key": "fn-guacamole",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-influxdb",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-installer",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "iventoy",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
       "key": "fn-kodi",
       "missing": [
         "author"
@@ -71,7 +302,21 @@
       "severity": "warning"
     },
     {
+      "key": "fn-linux-station",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
       "key": "fn-open-vm-tools",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-p2s",
       "missing": [
         "author"
       ],
@@ -92,6 +337,48 @@
       "severity": "warning"
     },
     {
+      "key": "fn-scrutiny",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-speedtest",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "terminal",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-vfnos",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-vfygoos",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-vgmng",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
       "key": "fn-virtualhereserver",
       "missing": [
         "author"
@@ -99,112 +386,1820 @@
       "severity": "warning"
     },
     {
-      "key": "fn-aic8800",
+      "key": "fn-wifi-hotspot",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "fn-broadcom-sta",
+      "key": "fn-wparted",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "fn-fnos-aarch64",
+      "key": "fpk-napcatqq",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "fn-ntfs3",
+      "key": "fpk-dnsmgr",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "fn-scrutiny-collector",
+      "key": "fn-zfile",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "fn-sshd-config",
+      "key": "fpk-panindex",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "fn-yt6801",
+      "key": "fpk-oneapi",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "r1toolbox",
+      "key": "fpk-xianyu",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "pipebridge",
+      "key": "fnnas_mysql",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "nodejs_v22-arm",
+      "key": "webserver",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "duanju",
+      "key": "musicwave",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "iptv-api",
+      "key": "video_transfer",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "nas-music",
+      "key": "xlist-strm",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "kerkerker",
+      "key": "php8.2",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "php-epg",
+      "key": "php8.3",
       "missing": [
         "author"
       ],
       "severity": "warning"
     },
     {
-      "key": "php-runtime",
+      "key": "php8.4",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "nginxmanager",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "notepad",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "apachemanager",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "phpmyadmin",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "mariadb12",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "appcenterthirdparty",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-reverseproxy",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-scheduledtask",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "mytvadmin",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "imageadmin",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fnosnassign",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "mediaplayer",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "music-toolkit",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "anniversary-reminder",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "dsm",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "wechat-article-exporter",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "mgvideo",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "easyvoice",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "termix",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "iptv",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "prunemate-cn",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "app2docker",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "kvideo",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "myspeed",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "usque",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "llm2api",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "znaide",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fnlxc",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "dianciniu",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "cliproxyapi-native",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "lunatv",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "reader",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "v2raya",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "read",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "lunatv-enhanced",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "omnibox",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "yuexps.2fmusic",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "netease",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "antigravity",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "mcsmanager",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "chrome-for-testing-yuexps",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "m.text.editor",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "eaglercraftx-1.8.8",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "yuexps-usb-fan",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "docker.updater",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "harness",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "miyoqian",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "frog-nas",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "netease_cloud_music",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "zcode",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "compareshare",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "telegram",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "hermes-agent",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "hermes",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "qyread",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "github-plus-plus",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "window-composer",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "com.qweather.widget",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "gstats",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "bombjackgame",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "qlink2desktop",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "qdassistant",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fnlogpush",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fnclearup",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fnm3u8",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fnm3u8dl",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fnytdlp",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fngetcookie",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "freepanel",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "netwatch",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fnstore",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-appcenter",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "usbrsync",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "vodcms",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-2fauth",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-adminer",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-ai-gateway",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-ai-portal",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-answer",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-archivebox",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-artalk",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-bitwarden",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-browserless",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-bytebase",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-casdoor",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-certd",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-changedetectionio",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-chatgpt-next-web",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-clawswarm",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-cloudbeaver",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-cloudflared",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-comfyui",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-convertx",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-cordys-crm",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-cyberchef",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-dashy",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-dataease",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-dbhub",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-dbx",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-discuz",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-domain-admin",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-dosgame",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-drawio",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-easyimage2",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-filecodebox",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-firefly-iii",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-flarum",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-focalboard",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-gatus",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-ghost",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-halo",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-keycloak",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-kibana",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-kirara-agent",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-kkfileview",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-komari",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-laya-server",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-linkding",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-linux-command",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-llama-cpp",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-lobe-chat",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-logto",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-manticoresearch",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-mblog",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-memcached",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-mkdocs-material",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-mysql_v8",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-newsnow",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-nexus",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-nezha",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-nodebb",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-nvm",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-obsidian-livesync",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-octop",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-ohmyzsh",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-onlyoffice",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-openclaw",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-opengist",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-openldap",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-palworld-server-tool",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-pgadmin4",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-qiandao",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-qinglong",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-quark-auto-save",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-reader",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-sftpgo",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-showdoc",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-siyuan",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-sqlbot",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-synapse",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-tinyrdm",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-tomcat",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-trendradar",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-trilium",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-twikoo",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-umami",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-upage",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-uv",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-vane",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-verdaccio",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-waline",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-wallos",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-web-check",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-wechatmarkdowneditor",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-wordpress",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-xiaoya-only",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-yesplaymusic",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-zabbix-agent",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-zabbix-proxy",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-zabbix-server",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fn-zentao",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "aria2",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "agent2api",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "asdf",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "bark",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "bitcomet",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "bitmeteor",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "bunjs",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "cloudimgs",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "cloudsaver",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "ech0",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "ekko",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "emby-crack",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fakehttp",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fakesip",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fluxor",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fnpack-editor",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fpkstudio",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "git",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "golang",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "guandan",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "igame",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "java-11-openj9",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "java-11-openjdk",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "java-17-openj9",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "java-17-openjdk",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "java-21-openj9",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "java-21-openjdk",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "java-25-openj9",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "java-25-openjdk",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "java-8-openj9",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "java-8-openjdk",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "komari-agent",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "landlord",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "liars-bar",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "localsend-web",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "mahjong",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "majiang",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "mbti",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "minesweeper",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "mi-paiai",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "movecar",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "mrrss",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "mtranserver",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "mysql8",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "nextexplorer",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "nodejs_v22",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "nodejs_v24",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "nodejs_v26",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "oms",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "openlist-beta",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "peerbanhelper",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "podman",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "python312",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "python313",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "python314",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "qbittorrent-enhanced",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "reader-rust",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "sbti",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "teamspeaker",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "teamspeaker6",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "tomato",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "tvheadend",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "unlockmusic",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "vscode",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "wb2api",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "webssh",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "wol",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "xboard",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "xiangqi",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "yarr",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "zdir",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "9router",
+      "missing": [
+        "author"
+      ],
+      "severity": "warning"
+    },
+    {
+      "key": "fancontrolserver",
       "missing": [
         "author"
       ],
