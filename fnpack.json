@@ -8408,7 +8408,7 @@
       "categories": [
         "系统工具"
       ],
-      "icon_url": "https://raw.githubusercontent.com/kitblue/FanControlServerApp/main/icons/fancontrol.png",
+      "icon_url": "https://raw.githubusercontent.com/kitblue/FanControlServerApp/main/FanControlServer/icon.png",
       "preview_urls": [
         "https://raw.githubusercontent.com/kitblue/FanControlServerApp/main/FanControlServer/Preview/01_overview.png",
         "https://raw.githubusercontent.com/kitblue/FanControlServerApp/main/FanControlServer/Preview/02_fans.png",
