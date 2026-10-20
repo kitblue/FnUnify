@@ -12,13 +12,14 @@ FnUnify 是一个 fnOS 第三方应用源聚合项目，同时维护一个 FnDep
 本脚本是「定制版自动发版流水线」：
 
 1. 查询唯一上游 Blue-Mink/FnDepot 的最新 release（tag + fpk 资产）
-2. 与本地记录版本（scripts/sync_state.json）比对；无新版 → 退出，不随编译递增版本
+2. 远端幂等判定：查询本仓库（PUBLISH_REPO）是否已存在 tag=fndepot-v<发版版本> 的 release；
+   已存在 → 直接跳过构建与发布（不依赖本地 state 文件，CI 全新 checkout 也能正确跳过）
 3. 下载原版 fpk → 解包（gzip + tar）
 4. 定制：新增 cmd/seed_fnunify.sh，并在 cmd/common 的 install/upgrade 回调中
    幂等注入「预置 FnUnify 源」调用（重复运行不重复注入）
 5. 重打包 fndepot_unify_v<ver>.fpk，manifest 版本跟随原版
 6. 可选发布（--publish）：GitHub API 创建 release 并上传 fpk
-7. 更新本地版本记录 scripts/sync_state.json
+7. 更新本地版本记录 scripts/sync_state.json（仅本地构建缓存提示，不参与发版判定）
 
 版本策略
 --------
@@ -35,7 +36,7 @@ FnUnify 是一个 fnOS 第三方应用源聚合项目，同时维护一个 FnDep
 python scripts/sync_fndepot.py            # 检查 + 构建，不发布
 python scripts/sync_fndepot.py --check-only  # 仅检查版本，输出 CHECK_ONLY 行（CI 友好，
                                              # 不下载/不构建/不写文件）；0=无需构建, 2=有新版本
-python scripts/sync_fndepot.py --force    # 忽略版本记录强制构建
+python scripts/sync_fndepot.py --force    # 跳过远端幂等判定，强制重建（发布时会先删旧 release 再重建）
 python scripts/sync_fndepot.py --publish  # 检查 + 构建 + 发布到 GitHub Releases
 python scripts/sync_fndepot.py --dry-run  # 构建 + 打印发布计划，不真正发布
 python scripts/sync_fndepot.py --token ghp_xxx  # 显式提供 GitHub Token
@@ -273,6 +274,34 @@ def query_upstream_release(tok: str = "") -> dict:
     }
 
 
+# ================================================================ 远端幂等判定
+
+def query_published_release(tok: str, tag: str):
+    """查询 PUBLISH_REPO 是否已存在指定 tag 的 release（远端幂等判定核心）。
+
+    返回值：
+        True  → 远端已存在该 release
+        False → 远端不存在该 release
+        None  → 查询失败，无法判定（上层回退本地 state 比对）
+
+    说明：只读 GET，公开仓库可匿名调用；不依赖本地 scripts/sync_state.json，
+    因此 CI 每次全新 checkout 也能正确判断是否需要发版。
+    """
+    try:
+        data = json.loads(
+            http_get(f"{API}/repos/{PUBLISH_REPO}/releases/tags/{tag}", auth_headers(tok))
+        )
+        return data.get("tag_name") == tag
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return False
+        log(f"WARNING: 查询远端 release 失败（HTTP {e.code} {tag}），回退本地记录判定")
+        return None
+    except Exception as e:  # 网络异常/限流等
+        log(f"WARNING: 查询远端 release 异常（{e}），回退本地记录判定")
+        return None
+
+
 # ================================================================ 本地状态
 
 def load_state() -> dict:
@@ -474,22 +503,44 @@ def main():
     release_version = get_custom_version(latest["version"])
     log(f"发版版本（跟随上游）: v{release_version}")
 
-    # 2) 版本比对（以发版版本为准）
+    # 2) 发版判定：远端幂等优先（不依赖本地 state 文件）
+    tag = f"fndepot-v{release_version}"
     state = load_state()
     last = state.get("last_version", "")
-    need_build = last != release_version
-    log(f"本地记录发版版本: v{last or '(无记录)'} -> {'需要构建' if need_build else '无需构建'}")
+
+    if args.force:
+        remote = None
+        need_build, reason = True, "指定 --force，跳过远端幂等判定强制重建"
+    else:
+        remote = query_published_release(tok, tag)
+        if remote is True:
+            need_build, reason = False, f"远端已存在 release {tag}，跳过（远端幂等）"
+        elif remote is False:
+            if args.publish:
+                need_build, reason = True, f"远端尚无 release {tag}，需要发版"
+            else:
+                need_build = last != release_version
+                reason = (f"远端无 release {tag}，本地已构建过 v{last}" if not need_build
+                          else f"远端无 release {tag}，需要构建")
+        else:
+            need_build = last != release_version
+            reason = "远端查询失败，回退本地记录比对"
+
+    remote_desc = {True: "已发布", False: "未发布", None: "未知/跳过"}[remote]
+    log(f"本地记录发版版本: v{last or '(无记录)'} | 远端 {tag}: {remote_desc}")
+    log(f"判定结果: {'需要构建' if need_build else '无需构建'}（{reason}）")
 
     # 3) check-only：CI 友好输出，不写任何文件
     if args.check_only:
         print(f"CHECK_ONLY upstream={latest['version']} local={last or 'none'} "
-              f"release={release_version} need_build={'yes' if need_build else 'no'} "
+              f"release={release_version} remote={remote_desc} "
+              f"need_build={'yes' if need_build else 'no'} "
               f"published_at={latest['published_at']}")
         return 0 if not need_build else 2
 
     # 4) 无需构建则退出
-    if not args.force and not need_build:
-        log(f"本地记录发版版本 {last} 与当前发版版本一致，无需发版（跟随上游策略，不随编译递增）")
+    if not need_build:
+        log(f"无需发版：{reason}（跟随上游策略，仅 {UPSTREAM_REPO} 发新版才发定制版）")
         return 0
 
     # 5) 下载 + 解包 + 定制 + 重打包
