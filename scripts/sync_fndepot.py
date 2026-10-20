@@ -11,7 +11,8 @@ FnUnify 是一个 fnOS 第三方应用源聚合项目，同时维护一个 FnDep
 
 本脚本是「定制版自动发版流水线」：
 
-1. 查询唯一上游 Blue-Mink/FnDepot 的最新 release（tag + fpk 资产）
+1. 查询唯一上游 Blue-Mink/FnDepot 中 FnDepot 产品自身的最新 release（tag + fpk 资产）
+   —— 该仓库为多产品 monorepo，必须按 tag=fndepot-v* 过滤，不能用 /releases/latest
 2. 远端幂等判定：查询本仓库（PUBLISH_REPO）是否已存在 tag=fndepot-v<发版版本> 的 release；
    已存在 → 直接跳过构建与发布（不依赖本地 state 文件，CI 全新 checkout 也能正确跳过）
 3. 下载原版 fpk → 解包（gzip + tar）
@@ -72,6 +73,10 @@ except Exception:
 
 # 唯一上游：Blue-Mink/FnDepot（原版 FnDepot 客户端，定制版 fpk 的原始来源，自动检查其 release 更新）
 UPSTREAM_REPO = "Blue-Mink/FnDepot"
+# Blue-Mink/FnDepot 是「多产品」仓库：同一仓库会发布 Dog-dev / Magpie / KSpeeder /
+# Ryzen 功耗控制 等其他产品的 release，因此不能用 /releases/latest（它返回全仓库
+# 最新一条 release，可能是别的产品），必须按 tag 过滤出 FnDepot 自身的产品版本。
+UPSTREAM_TAG_RE = re.compile(r"^fndepot-v?(\d+\.\d+(?:\.\d+)?)$", re.IGNORECASE)
 # 本项目发布仓库（定制版 fpk 发布目标；定制版客户端检查更新即检查本仓库 release）
 PUBLISH_REPO = "kitblue/FnUnify"
 # FnUnify 聚合源地址（seed 脚本写入客户端 sources 表的订阅源）
@@ -242,20 +247,44 @@ def auth_headers(tok: str) -> dict:
 
 # ================================================================ 上游查询
 
+def _version_key(version: str):
+    """版本号转可比较元组（1.3 → (1,3,0)），避免字符串比较出错。"""
+    parts = [int(p) for p in re.findall(r"\d+", version)[:3]]
+    return tuple(parts + [0] * (3 - len(parts)))
+
+
 def query_upstream_release(tok: str = "") -> dict:
     """
-    查询 Blue-Mink/FnDepot 的最新 release（tag + 原版 fpk 资产）。
+    查询上游 Blue-Mink/FnDepot 中「FnDepot 产品自身」的最新 release。
+
+    重要：该仓库为多产品 monorepo，/releases/latest 返回的是全仓库最新一条
+    release（可能是 Dog-dev / Magpie / KSpeeder 等其他产品，其 fpk 结构与
+    FnDepot 完全不同）。因此这里改为列出 releases 并按 tag 过滤 FnDepot 产品，
+    取版本号最大的一条，确保只在 FnDepot 自身发新版时才跟随发版。
 
     返回：
         {"tag": 上游 tag, "version": 上游规范化版本号, "asset_name": 原版 fpk 资产名,
          "asset_url": 资产下载地址, "published_at": 发布时间}
     """
-    data = json.loads(
-        http_get(f"{API}/repos/{UPSTREAM_REPO}/releases/latest", auth_headers(tok))
+    releases = json.loads(
+        http_get(f"{API}/repos/{UPSTREAM_REPO}/releases?per_page=100", auth_headers(tok))
     )
-    # 上游 tag 形如 fndepot-v0.6.6，统一提取首个语义化版本号
-    m = re.search(r"(\d+\.\d+(?:\.\d+)?)", data["tag_name"])
-    version = m.group(1) if m else data["tag_name"].lstrip("v")
+    picked = None  # (release, version)
+    for rel in releases:
+        if rel.get("draft") or rel.get("prerelease"):
+            continue
+        m = UPSTREAM_TAG_RE.match((rel.get("tag_name") or "").strip())
+        if not m:
+            continue
+        ver = m.group(1)
+        if picked is None or _version_key(ver) > _version_key(picked[1]):
+            picked = (rel, ver)
+    if not picked:
+        raise SystemExit(
+            f"{UPSTREAM_REPO} 中未找到 FnDepot 产品 release（tag 形如 fndepot-v0.6.6），"
+            f"已检查最近 {len(releases)} 条 release"
+        )
+    data, version = picked
 
     asset = None
     for a in data.get("assets", []):
@@ -366,6 +395,11 @@ def inject_customization(work_dir: Path):
     log(f"已写入 {SEED_MARKER}")
 
     # 2) common 注入（幂等：已含标记则跳过）
+    if not common_path.exists():
+        raise SystemExit(
+            f"上游 fpk 结构异常：缺少 cmd/common（{common_path}），"
+            f"可能取到了其他产品的 fpk，请检查上游 release 过滤逻辑"
+        )
     common_text = common_path.read_text(encoding="utf-8")
     if SEED_MARKER in common_text:
         log("cmd/common 已含预置调用，跳过注入")
