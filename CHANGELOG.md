@@ -1,4 +1,4 @@
 ## 2026-11-03 聚合更新
 - 应用总数: 415 -> 415
-- 新增 1: fn-postgres
-- 移除 1: fn-discourse
+- 新增 1: hermes-studio
+- 移除 1: hermes-agent
