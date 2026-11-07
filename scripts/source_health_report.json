@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-06 17:43:23",
+  "checked_at": "2026-11-07 16:39:28",
   "total": 18,
   "reachable": 18,
   "unreachable": 0,
@@ -14,7 +14,7 @@
       "structure_note": "ok",
       "pushed_at": "2026-09-22T07:48:11Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:23"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "EWEDLCM/FnDepot",
@@ -24,9 +24,9 @@
       "reason": "",
       "structure_ok": true,
       "structure_note": "ok",
-      "pushed_at": "2026-11-05T21:51:10Z",
+      "pushed_at": "2026-11-06T21:22:54Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:24"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "IMGZCQ/FnDepot",
@@ -38,7 +38,7 @@
       "structure_note": "ok",
       "pushed_at": "2026-11-06T14:48:41Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:24"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "Kasbuky-sudo/FnDepot",
@@ -50,7 +50,7 @@
       "structure_note": "ok",
       "pushed_at": "2026-11-06T00:56:56Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:24"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "MisiteQ/FnDepot",
@@ -58,11 +58,11 @@
       "http_status": 200,
       "probe_path": "main/fnpack.json",
       "reason": "",
-      "structure_ok": true,
-      "structure_note": "ok",
-      "pushed_at": "2026-11-06T07:00:18Z",
+      "structure_ok": false,
+      "structure_note": "非合法 JSON",
+      "pushed_at": "2026-11-07T08:48:30Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:24"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "RROrg/fn-apps",
@@ -74,7 +74,7 @@
       "structure_note": "ok",
       "pushed_at": "2026-11-05T19:37:47Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:23"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "cmbya/FnDepot",
@@ -84,9 +84,9 @@
       "reason": "",
       "structure_ok": true,
       "structure_note": "ok",
-      "pushed_at": "2026-11-06T09:21:37Z",
+      "pushed_at": "2026-11-07T15:58:09Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:24"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "conversun/fnos-apps",
@@ -96,9 +96,9 @@
       "reason": "",
       "structure_ok": true,
       "structure_note": "ok",
-      "pushed_at": "2026-11-06T08:09:42Z",
+      "pushed_at": "2026-11-07T08:08:02Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:24"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "hbestm/FnDepot",
@@ -110,7 +110,7 @@
       "structure_note": "ok",
       "pushed_at": "2026-11-05T15:17:45Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:24"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "jiankujidu/Store",
@@ -122,7 +122,7 @@
       "structure_note": "ok",
       "pushed_at": "2026-10-14T11:08:48Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:24"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "kitblue/FanControlServerApp",
@@ -134,7 +134,7 @@
       "structure_note": "ok",
       "pushed_at": "2026-10-19T17:44:15Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:24"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "kitblue/cloudlink-finder",
@@ -146,7 +146,7 @@
       "structure_note": "ok",
       "pushed_at": "2026-10-17T20:25:00Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:24"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "kitblue/fnthird",
@@ -156,9 +156,9 @@
       "reason": "",
       "structure_ok": true,
       "structure_note": "ok",
-      "pushed_at": "2026-11-06T05:28:00Z",
+      "pushed_at": "2026-11-07T04:56:23Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:24"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "magiccode1412/FnDepot",
@@ -170,7 +170,7 @@
       "structure_note": "ok",
       "pushed_at": "2026-10-12T12:05:39Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:24"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "moxyis/FnDepot",
@@ -182,7 +182,7 @@
       "structure_note": "ok",
       "pushed_at": "2026-10-31T02:55:36Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:24"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "shuangji66/FnDepot",
@@ -192,9 +192,9 @@
       "reason": "",
       "structure_ok": true,
       "structure_note": "ok",
-      "pushed_at": "2026-11-06T04:58:44Z",
+      "pushed_at": "2026-11-07T06:04:35Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:23"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "tnnevol/fn-os-apps",
@@ -206,7 +206,7 @@
       "structure_note": "ok",
       "pushed_at": "2026-11-04T07:43:09Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:24"
+      "checked_at": "2026-11-07 16:39:28"
     },
     {
       "owner/repo": "yuexps/FnDepot",
@@ -218,7 +218,7 @@
       "structure_note": "ok",
       "pushed_at": "2026-11-06T08:52:26Z",
       "archived": false,
-      "checked_at": "2026-11-06 17:43:24"
+      "checked_at": "2026-11-07 16:39:28"
     }
   ]
 }
