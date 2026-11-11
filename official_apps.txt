@@ -6,6 +6,7 @@ alist
 ani-rss
 appflowy
 arcane
+arcreel
 aria2-next
 astrbot
 audiobookshelf
@@ -23,6 +24,7 @@ clash-for-fnos
 clouddrive2
 cloudflared
 cloudreve
+cloudreve-v4
 coolercontrol
 copaw
 copyparty
@@ -33,10 +35,12 @@ ddns-go
 docsify
 dpanel
 duplicati
+dynv6
 easytier
 emby
 ente
 ezbookkeeping
+faststrm
 feigram
 filebrowser
 fileview
@@ -45,6 +49,7 @@ fnmonitor
 fnos-apps-store
 fnos-oidc-bridge
 fntv-plus
+fnysfd
 forgejo
 freshrss
 frigate
@@ -57,6 +62,7 @@ gotify
 grafana
 handbrake
 headscale
+hermes-agent
 homarr
 homeassistant
 homebox
@@ -82,6 +88,7 @@ localai
 loki
 lucky
 lyranest
+m3u-studio
 mail-archiver
 mattermost
 maxkb
@@ -96,6 +103,7 @@ miair-next
 mihomo
 miniflux
 mosdns
+motrix
 moviepilot
 msf
 n8n
@@ -114,6 +122,7 @@ node-red
 ntfy
 nvidia-driver
 obsidian
+ofterm
 ollama
 ombi
 open-webui
@@ -160,6 +169,7 @@ tailscale
 tautulli
 tinymediamanager
 transmission
+twitchdropsminer
 uptime-kuma
 vaultwarden
 verysync
