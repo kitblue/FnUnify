@@ -32,6 +32,7 @@ cowagent
 daidai-panel
 danmu-api
 ddns-go
+deepseek-harness
 docsify
 dpanel
 duplicati
@@ -45,15 +46,20 @@ feigram
 filebrowser
 fileview
 firefox
+flaresolverr
+fncal
+fnmedia-dl
 fnmonitor
 fnos-apps-store
 fnos-oidc-bridge
 fntv-plus
+fnvista
 fnysfd
 forgejo
 freshrss
 frigate
 frps
+gaps-2
 gitea
 glance
 glances
@@ -129,6 +135,7 @@ open-webui
 openlist
 opensurge
 paperless-ngx
+peerbanhelper
 penpot
 photoprism
 picoclaw
