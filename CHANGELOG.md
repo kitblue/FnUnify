@@ -1,4 +1,4 @@
 ## 2026-11-22 聚合更新
 - 应用总数: 411 -> 411
-- 新增 1: hermes-studio
-- 移除 1: hermes
+- 新增 1: hermes
+- 移除 1: hermes-studio
